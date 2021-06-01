@@ -4,16 +4,19 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(ActorStateMachine))]
-[RequireComponent(typeof(PlayerInput))]
 public class GameActor : GameObject
 {
     [SerializeField] private float m_MovementSpeed = 10f;
+    [SerializeField] private float m_JumpHeight = 1.0f;
+
+    public Vector3 m_Direction = Vector3.zero;
+    public bool m_Jumping = false;
 
     private CharacterController m_CharacterController;
     private ActorStateMachine m_StateMachine;
-    private PlayerInput m_Input;
 
-    private Vector3 m_Velocity = Vector3.zero;
+    private Vector3 m_HorizontalVelocity = Vector3.zero;
+    private Vector3 m_VerticalVelocity = Vector3.zero;
     private bool m_IsGrounded;
 
 
@@ -23,7 +26,6 @@ public class GameActor : GameObject
 
         m_CharacterController = GetComponent<CharacterController>();
         m_StateMachine = GetComponent<ActorStateMachine>();
-        m_Input = GetComponent<PlayerInput>();
 	}
 
     // Start is called before the first frame update
@@ -44,16 +46,24 @@ public class GameActor : GameObject
     }
 
 
-    public void Move()
+    private void Move()
 	{
+        // Ground Check
         m_IsGrounded = m_CharacterController.isGrounded;
-        if (m_IsGrounded && m_Velocity.y < 0f) m_Velocity.y = 0f;
+        if (m_IsGrounded && m_VerticalVelocity.y < 0f) m_VerticalVelocity.y = 0f;
 
-        m_Velocity = m_StateMachine.Move(m_Input.m_Movement) * m_MovementSpeed;
+        // Horizontal Movement
+        m_HorizontalVelocity = m_StateMachine.Move(m_Direction, m_IsGrounded) * m_MovementSpeed;
+        if (m_HorizontalVelocity != Vector3.zero) gameObject.transform.forward = m_HorizontalVelocity;
+        m_CharacterController.Move(m_HorizontalVelocity * Time.deltaTime);
 
-        if (m_Velocity != Vector3.zero) gameObject.transform.forward = m_Velocity;
-
-        m_Velocity += Physics.gravity * Time.deltaTime;
-        m_CharacterController.Move(m_Velocity * Time.deltaTime);
+        // Vertical Movement
+        if (m_Jumping && m_IsGrounded)
+        {
+            m_VerticalVelocity.y += m_StateMachine.Jump(Mathf.Sqrt(m_JumpHeight * -3.0f * Physics.gravity.y));
+            m_Jumping = false;
+        }
+        m_VerticalVelocity.y += Physics.gravity.y * Time.deltaTime;
+        m_CharacterController.Move(m_VerticalVelocity * Time.deltaTime);
     }
 }

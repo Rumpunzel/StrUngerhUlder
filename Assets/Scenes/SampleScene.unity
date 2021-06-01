@@ -252,6 +252,9 @@ MonoBehaviour:
   m_MaxHitPoints: 10
   m_Indestructible: 0
   m_MovementSpeed: 10
+  m_JumpHeight: 100
+  m_Direction: {x: 0, y: 0, z: 0}
+  m_Jumping: 0
 --- !u!143 &854319132
 CharacterController:
   m_ObjectHideFlags: 0
@@ -282,7 +285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b43d925f1b6e94458993f8a9666cc5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Movement: {x: 0, y: 0, z: 0}
 --- !u!114 &854319134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c03d54b73f8648b866ccfcd383f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SprintPercentage: 1
+  m_SprintPercentage: 1.5
   m_RunPercentage: 0.5
 --- !u!4 &854319135
 Transform:
@@ -383,8 +385,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
+  field of view: 20
+  orthographic: 0
   orthographic size: 10
   m_Depth: -1
   m_CullingMask:
@@ -408,13 +410,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.1464466, y: -0.8535535, z: 0.35355338, w: 0.35355338}
-  m_LocalPosition: {x: 7, y: 10, z: 7}
+  m_LocalRotation: {x: 0.108687945, y: -0.885834, z: 0.26239592, w: 0.36692443}
+  m_LocalPosition: {x: 25, y: 24, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: -135, z: 0}
+  m_LocalEulerAnglesHint: {x: 33, y: -135, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,10 +430,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FollowTransform: {fileID: 854319135}
-  m_DistanceOffGround: 10
-  m_DistanceFromFollow: 10
-  m_CameraStartingAngle: 45
-  m_CameraTurnSpeed: 1
+  m_ShoulderHeight: 1
+  m_DistanceOffGround: 23
+  m_DistanceFromFollow: 36
+  m_CameraAngleOffset: 45
+  m_CameraTurnAngle: 90
+  m_CameraTurnSmoothing: 0.02
+  m_CameraMinZoom: 1
+  m_CameraMaxZoom: 16
+  m_CameraScrollSpeed: 0.5
 --- !u!4 &1126723619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400122, guid: 317a56890b5c8e74ab1d492a2c7fb608, type: 3}

@@ -10,6 +10,7 @@ public class ActorStateMachine : MonoBehaviour
         Walking,
         Running,
         Sprinting,
+        Jumping,
     }
 
     [Range(0, 2f)] [SerializeField] private float m_SprintPercentage = 1.5f;
@@ -45,7 +46,7 @@ public class ActorStateMachine : MonoBehaviour
         EnterState(newState);
     }
 
-    public Vector3 Move(Vector3 directionVector)
+    public Vector3 Move(Vector3 directionVector, bool grounded)
     {
         k_STATES newState;
         m_Direction = directionVector;
@@ -67,9 +68,18 @@ public class ActorStateMachine : MonoBehaviour
             newState = k_STATES.Idle;
         }
         
-        if (newState != m_CurrentState) ChangeTo(newState);
+        if (grounded && newState != m_CurrentState) ChangeTo(newState);
         
         return m_Direction;
+    }
+
+    public float Jump(float jumpForce)
+    {
+        // Cannot Jump
+        if (m_CurrentState >= k_STATES.Jumping) return 0f;
+        
+        ChangeTo(k_STATES.Jumping);
+        return jumpForce;
     }
 
     public float Damage(float damage)
