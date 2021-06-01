@@ -27,5 +27,6 @@ public class PlayerInput : MonoBehaviour
         m_CameraRight.Normalize();
 
         m_Movement = m_CameraForward * Input.GetAxisRaw("Vertical") + m_CameraRight * Input.GetAxisRaw("Horizontal");
+        if (m_Movement.magnitude > 1f) m_Movement.Normalize();
     }
 }

@@ -14,6 +14,7 @@ public class GameActor : GameObject
     private PlayerInput m_Input;
 
     private Vector3 m_Velocity = Vector3.zero;
+    private bool m_IsGrounded;
 
 
     override protected void Awake()
@@ -39,13 +40,20 @@ public class GameActor : GameObject
 
     void FixedUpdate()
     {
-        Move(m_Input.m_Movement * m_MovementSpeed);
+        Move();
     }
 
 
-    public void Move(Vector3 direction)
+    public void Move()
 	{
-        m_Velocity = m_StateMachine.Move(direction);
-        m_CharacterController.SimpleMove(m_Velocity);
+        m_IsGrounded = m_CharacterController.isGrounded;
+        if (m_IsGrounded && m_Velocity.y < 0f) m_Velocity.y = 0f;
+
+        m_Velocity = m_StateMachine.Move(m_Input.m_Movement) * m_MovementSpeed;
+
+        if (m_Velocity != Vector3.zero) gameObject.transform.forward = m_Velocity;
+
+        m_Velocity += Physics.gravity * Time.deltaTime;
+        m_CharacterController.Move(m_Velocity * Time.deltaTime);
     }
 }
