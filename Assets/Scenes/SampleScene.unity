@@ -408,7 +408,8 @@ MonoBehaviour:
   m_FollowTransform: {fileID: 854319135}
   m_DistanceOffGround: 10
   m_DistanceFromFollow: 10
-  m_StartingYAngle: 45
+  m_CameraStartingAngle: 45
+  m_CameraTurnSpeed: 1
 --- !u!1 &1538891842
 GameObject:
   m_ObjectHideFlags: 0
