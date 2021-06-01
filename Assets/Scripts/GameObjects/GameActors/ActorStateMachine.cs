@@ -16,7 +16,7 @@ public class ActorStateMachine : MonoBehaviour
         Gathering,
     }
 
-    [Range(0, 2f)] [SerializeField] private float m_SprintPercentage = 1.5f;
+    [Range(0, 2f)] [SerializeField] private float m_SprintPercentage = 1.1f;
     [Range(0, 1f)] [SerializeField] private float m_RunPercentage = .5f;
 
     private Animator m_Animator;

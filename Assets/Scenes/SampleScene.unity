@@ -794,8 +794,10 @@ MonoBehaviour:
   m_MaxHitPoints: 10
   m_Indestructible: 0
   m_MovementSpeed: 10
+  m_SprintModifier: 1.5
   m_JumpHeight: 1
   m_Direction: {x: 0, y: 0, z: 0}
+  m_Sprinting: 0
   m_Jumping: 0
 --- !u!143 &854319132
 CharacterController:
@@ -839,7 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c03d54b73f8648b866ccfcd383f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SprintPercentage: 1.5
+  m_SprintPercentage: 1.1
   m_RunPercentage: 0.5
 --- !u!4 &854319135
 Transform:

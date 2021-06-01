@@ -37,6 +37,7 @@ public class PlayerInput : MonoBehaviour
         if (m_Movement.magnitude > 1f) m_Movement.Normalize();
 
         m_GameActor.m_Direction = m_Movement;
+        m_GameActor.m_Sprinting = Input.GetButton("Sprint");
         if (Input.GetButtonDown("Jump")) m_GameActor.m_Jumping = true;
     }
 }
