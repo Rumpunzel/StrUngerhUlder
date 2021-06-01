@@ -39,7 +39,7 @@ public class CameraFollow : MonoBehaviour
 
         m_CameraAngle = Mathf.Lerp(m_CameraAngle, (m_CameraTurnIndex * m_CameraTurnAngle + m_CameraAngleOffset) * Mathf.Deg2Rad, m_CameraTurnSmoothing);
 
-        m_CameraZoom -= Input.GetAxisRaw("Mouse ScrollWheel") * m_CameraScrollSpeed;
+        m_CameraZoom = Mathf.Lerp(m_CameraZoom, m_CameraZoom - Input.GetAxisRaw("Mouse ScrollWheel") * m_CameraScrollSpeed, m_CameraTurnSmoothing);
         m_CameraZoom = Mathf.Clamp(m_CameraZoom, 1f / m_CameraMaxZoom, 1f / m_CameraMinZoom);
 
         m_Offset = new Vector3(

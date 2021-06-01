@@ -252,7 +252,7 @@ MonoBehaviour:
   m_MaxHitPoints: 10
   m_Indestructible: 0
   m_MovementSpeed: 10
-  m_JumpHeight: 100
+  m_JumpHeight: 1
   m_Direction: {x: 0, y: 0, z: 0}
   m_Jumping: 0
 --- !u!143 &854319132
@@ -270,9 +270,9 @@ CharacterController:
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_SkinWidth: 0.1
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!114 &854319133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_CameraTurnSmoothing: 0.02
   m_CameraMinZoom: 1
   m_CameraMaxZoom: 16
-  m_CameraScrollSpeed: 0.5
+  m_CameraScrollSpeed: 16
 --- !u!4 &1126723619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400122, guid: 317a56890b5c8e74ab1d492a2c7fb608, type: 3}
