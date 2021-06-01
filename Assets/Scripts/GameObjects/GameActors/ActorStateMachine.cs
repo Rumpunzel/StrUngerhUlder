@@ -11,6 +11,9 @@ public class ActorStateMachine : MonoBehaviour
         Running,
         Sprinting,
         Jumping,
+        Mining,
+        Working,
+        Gathering,
     }
 
     [Range(0, 2f)] [SerializeField] private float m_SprintPercentage = 1.5f;
