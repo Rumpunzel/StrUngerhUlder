@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "MoveToPosition",
+                    "name": "MoveToPoint",
                     "type": "Button",
                     "id": "44a6ba07-651e-4e70-b6b1-cafdd70b4c15",
                     "expectedControlType": "Button",
@@ -50,7 +50,7 @@
                 {
                     "name": "",
                     "id": "10456f12-3f6e-4037-b749-ac23f686799e",
-                    "path": "<Keyboard>/alt",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -186,7 +186,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "MoveToPosition",
+                    "action": "MoveToPoint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -280,7 +280,7 @@
                 {
                     "name": "",
                     "id": "8440e36b-6d51-450d-9a42-26255ac1b58e",
-                    "path": "<Gamepad>/leftStick/right",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

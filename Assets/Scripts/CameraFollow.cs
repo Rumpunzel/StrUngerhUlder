@@ -27,33 +27,35 @@ public class CameraFollow : MonoBehaviour
     private float m_CameraZoom = 1f;
     
 
-    private void Awake()
+    private void Start()
     {
-        m_CameraAngle = m_CameraAngleOffset * Mathf.Deg2Rad;
+        m_CameraAngleOffset *= Mathf.Deg2Rad;
+        m_CameraTurnAngle *= Mathf.Deg2Rad;
+        m_CameraAngle = m_CameraAngleOffset;
     }
 
     void Update()
     {
         if (!m_FollowTransform) return;
-        
-        m_CameraAngle = Mathf.Lerp(m_CameraAngle, (m_CameraTurnIndex * m_CameraTurnAngle + m_CameraAngleOffset) * Mathf.Deg2Rad, m_CameraTurnSmoothing);
-        m_CameraZoom = Mathf.Clamp(m_CameraZoom, 1f / m_CameraMaxZoom, 1f / m_CameraMinZoom);
+
+        m_CameraAngle = Mathf.Lerp(m_CameraAngle, m_CameraTurnIndex * m_CameraTurnAngle + m_CameraAngleOffset, m_CameraTurnSmoothing);
+        m_CameraZoom = Mathf.Clamp(m_CameraZoom, 1f / m_CameraMaxZoom, 1f / m_CameraMinZoom);    
 
         m_Offset = new Vector3(
             m_DistanceFromFollow * Mathf.Cos(m_CameraAngle) * Mathf.Sqrt(m_CameraZoom),
-            0f,
+            0f,//Mathf.Lerp(m_Offset.y, m_ShoulderHeight + m_DistanceOffGround * m_CameraZoom, m_CameraScrollSpeed),
             m_DistanceFromFollow * Mathf.Sin(m_CameraAngle) * Mathf.Sqrt(m_CameraZoom)
         );
 
         m_CameraPosition = m_FollowTransform.position + m_Offset;
         m_CameraPosition.y = m_ShoulderHeight + m_DistanceOffGround * m_CameraZoom;
-
+        
         this.transform.position = m_CameraPosition;
-        this.transform.LookAt(new Vector3(
+        this.transform.LookAt(m_FollowTransform.position);/*new Vector3(
             m_FollowTransform.position.x,
             m_ShoulderHeight,
             m_FollowTransform.position.z
-        ));
+        ));*/
     }
 
 

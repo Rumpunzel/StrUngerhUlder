@@ -51,7 +51,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""MoveToPosition"",
+                    ""name"": ""MoveToPoint"",
                     ""type"": ""Button"",
                     ""id"": ""44a6ba07-651e-4e70-b6b1-cafdd70b4c15"",
                     ""expectedControlType"": ""Button"",
@@ -63,7 +63,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""10456f12-3f6e-4037-b749-ac23f686799e"",
-                    ""path"": ""<Keyboard>/alt"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -199,7 +199,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""MoveToPosition"",
+                    ""action"": ""MoveToPoint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -293,7 +293,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8440e36b-6d51-450d-9a42-26255ac1b58e"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -340,7 +340,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
         m_PlayerControls_Sprint = m_PlayerControls.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerControls_Jump = m_PlayerControls.FindAction("Jump", throwIfNotFound: true);
         m_PlayerControls_Interact = m_PlayerControls.FindAction("Interact", throwIfNotFound: true);
-        m_PlayerControls_MoveToPosition = m_PlayerControls.FindAction("MoveToPosition", throwIfNotFound: true);
+        m_PlayerControls_MoveToPoint = m_PlayerControls.FindAction("MoveToPoint", throwIfNotFound: true);
         // CameraControls
         m_CameraControls = asset.FindActionMap("CameraControls", throwIfNotFound: true);
         m_CameraControls_TurnLeft = m_CameraControls.FindAction("TurnLeft", throwIfNotFound: true);
@@ -399,7 +399,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_Sprint;
     private readonly InputAction m_PlayerControls_Jump;
     private readonly InputAction m_PlayerControls_Interact;
-    private readonly InputAction m_PlayerControls_MoveToPosition;
+    private readonly InputAction m_PlayerControls_MoveToPoint;
     public struct PlayerControlsActions
     {
         private @PlayerActions m_Wrapper;
@@ -408,7 +408,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
         public InputAction @Sprint => m_Wrapper.m_PlayerControls_Sprint;
         public InputAction @Jump => m_Wrapper.m_PlayerControls_Jump;
         public InputAction @Interact => m_Wrapper.m_PlayerControls_Interact;
-        public InputAction @MoveToPosition => m_Wrapper.m_PlayerControls_MoveToPosition;
+        public InputAction @MoveToPoint => m_Wrapper.m_PlayerControls_MoveToPoint;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -430,9 +430,9 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
-                @MoveToPosition.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMoveToPosition;
-                @MoveToPosition.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMoveToPosition;
-                @MoveToPosition.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMoveToPosition;
+                @MoveToPoint.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMoveToPoint;
+                @MoveToPoint.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMoveToPoint;
+                @MoveToPoint.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMoveToPoint;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -449,9 +449,9 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @MoveToPosition.started += instance.OnMoveToPosition;
-                @MoveToPosition.performed += instance.OnMoveToPosition;
-                @MoveToPosition.canceled += instance.OnMoveToPosition;
+                @MoveToPoint.started += instance.OnMoveToPoint;
+                @MoveToPoint.performed += instance.OnMoveToPoint;
+                @MoveToPoint.canceled += instance.OnMoveToPoint;
             }
         }
     }
@@ -529,7 +529,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnMoveToPosition(InputAction.CallbackContext context);
+        void OnMoveToPoint(InputAction.CallbackContext context);
     }
     public interface ICameraControlsActions
     {

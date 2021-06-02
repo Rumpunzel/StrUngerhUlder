@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 7f8e66956406b154bbfda80b4a43f0cb, type: 2}
 --- !u!1 &156704411 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 385491262653265843, guid: 1ac31fb474aead74ab0101d0d6546c52, type: 3}
@@ -676,12 +676,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 854319135}
-  - component: {fileID: 854319132}
   - component: {fileID: 854319131}
+  - component: {fileID: 854319132}
   - component: {fileID: 854319134}
   - component: {fileID: 854319136}
   - component: {fileID: 854319137}
-  - component: {fileID: 854319133}
   - component: {fileID: 854319138}
   m_Layer: 6
   m_Name: GameActor
@@ -723,18 +722,6 @@ CharacterController:
   m_SkinWidth: 0.1
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1.1, z: 0}
---- !u!114 &854319133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 854319130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49329851101fdec48b37dcfb7698ed54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &854319134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1073,6 +1060,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 715d5d53-aa87-481d-96aa-78655a2b6f5a
     m_ActionName: CameraControls/Zoom[/Mouse/scroll/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 44a6ba07-651e-4e70-b6b1-cafdd70b4c15
+    m_ActionName: PlayerControls/MoveToPoint[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: CameraControls
@@ -1210,7 +1201,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &1538891843
 MeshCollider:
@@ -1938,7 +1929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78677323563688e4ca54a50877a31c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerActor: {fileID: 854319133}
+  m_PlayerObject: {fileID: 854319130}
 --- !u!114 &1922078470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2029,42 +2020,22 @@ MonoBehaviour:
     m_ActionId: db1083d0-14fa-42c6-a78b-5a6b41c16c07
     m_ActionName: PlayerControls/Interact[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 963194229}
-        m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
-        m_MethodName: OnTurnRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 01edde91-e104-4d2e-8060-99f067574355
     m_ActionName: CameraControls/TurnRight[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 963194229}
-        m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
-        m_MethodName: OnTurnLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 6e3d600a-1a0e-47ef-91ff-11dd0634490a
     m_ActionName: CameraControls/TurnLeft[/Keyboard/q]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 715d5d53-aa87-481d-96aa-78655a2b6f5a
+    m_ActionName: CameraControls/Zoom[/Mouse/scroll/y]
+  - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 963194229}
-        m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
-        m_MethodName: OnZoom
+      - m_Target: {fileID: 1922078469}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnMoveToPoint
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2074,14 +2045,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 715d5d53-aa87-481d-96aa-78655a2b6f5a
-    m_ActionName: CameraControls/Zoom[/Mouse/scroll/y]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 44a6ba07-651e-4e70-b6b1-cafdd70b4c15
     m_ActionName: PlayerControls/MoveToPosition[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: PlayerControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 963194227}

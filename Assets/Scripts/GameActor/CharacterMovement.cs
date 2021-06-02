@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(ActorStateMachine))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private float m_MovementSpeed = 10f;
@@ -17,6 +19,7 @@ public class CharacterMovement : MonoBehaviour
 
     private CharacterController m_CharacterController;
     private ActorStateMachine m_StateMachine;
+    private NavMeshAgent m_NavMeshAgent;
 
     private Vector3 m_HorizontalVelocity = Vector3.zero;
     private Vector3 m_VerticalVelocity = Vector3.zero;
@@ -27,6 +30,7 @@ public class CharacterMovement : MonoBehaviour
 	{
         m_CharacterController = GetComponent<CharacterController>();
         m_StateMachine = GetComponent<ActorStateMachine>();
+        m_NavMeshAgent = GetComponent<NavMeshAgent>();
 	}
 
     void FixedUpdate()
@@ -81,7 +85,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void MoveTowardDestination()
     {
-
+        m_NavMeshAgent.destination = m_Destination;
     }
 
     private void Move()
