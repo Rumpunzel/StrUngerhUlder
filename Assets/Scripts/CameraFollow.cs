@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] private float m_CameraMinZoom = 1f;
     [SerializeField] private float m_CameraMaxZoom = 16f;
-    [SerializeField] private float m_CameraScrollSpeed = .5f;
+    [SerializeField] private float m_CameraScrollSpeed = .02f;
     
 
     private Camera m_MainCamera;
@@ -34,12 +36,7 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("CameraRotateRight")) m_CameraTurnIndex++;
-        if (Input.GetButtonDown("CameraRotateLeft")) m_CameraTurnIndex--;
-
         m_CameraAngle = Mathf.Lerp(m_CameraAngle, (m_CameraTurnIndex * m_CameraTurnAngle + m_CameraAngleOffset) * Mathf.Deg2Rad, m_CameraTurnSmoothing);
-
-        m_CameraZoom = Mathf.Lerp(m_CameraZoom, m_CameraZoom - Input.GetAxisRaw("Mouse ScrollWheel") * m_CameraScrollSpeed, m_CameraTurnSmoothing);
         m_CameraZoom = Mathf.Clamp(m_CameraZoom, 1f / m_CameraMaxZoom, 1f / m_CameraMinZoom);
 
         m_Offset = new Vector3(
@@ -57,5 +54,21 @@ public class CameraFollow : MonoBehaviour
             m_ShoulderHeight,
             m_FollowTransform.position.z
         ));
+    }
+
+
+    public void OnTurnRight(InputAction.CallbackContext value)
+    {
+        if (value.started) m_CameraTurnIndex++;
+    }
+
+    public void OnTurnLeft(InputAction.CallbackContext value)
+    {
+        if (value.started) m_CameraTurnIndex--;
+    }
+
+    public void OnZoom(InputAction.CallbackContext value)
+    {
+        m_CameraZoom = Mathf.Lerp(m_CameraZoom, m_CameraZoom - value.ReadValue<float>() * m_CameraScrollSpeed, m_CameraTurnSmoothing);
     }
 }

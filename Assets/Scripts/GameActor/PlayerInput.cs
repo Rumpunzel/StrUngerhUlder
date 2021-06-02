@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CharacterMovement))]
 public class PlayerInput : MonoBehaviour
@@ -10,7 +12,7 @@ public class PlayerInput : MonoBehaviour
     private Vector3 m_CameraForward;
     private Vector3 m_CameraRight;
 
-    private Vector3 m_Movement = Vector3.zero;
+    private Vector3 m_Direction = Vector3.zero;
 
 
     void Awake()
@@ -18,13 +20,11 @@ public class PlayerInput : MonoBehaviour
         m_CharacterMovement = GetComponent<CharacterMovement>();
 	}
 
-    void Update()
-    {
-        GetInputs();
-    }
 
-    protected void GetInputs()
+    public void OnMovement(InputAction.CallbackContext value)
     {
+        Vector2 inputMovement = value.ReadValue<Vector2>();
+
         m_MainCamera = Camera.main;
         m_CameraForward = m_MainCamera.transform.forward;
         m_CameraRight = m_MainCamera.transform.right;
@@ -33,12 +33,21 @@ public class PlayerInput : MonoBehaviour
         m_CameraForward.Normalize();
         m_CameraRight.Normalize();
 
-        m_Movement = m_CameraForward * Input.GetAxisRaw("Vertical") + m_CameraRight * Input.GetAxisRaw("Horizontal");
-        if (m_Movement.magnitude > 1f) m_Movement.Normalize();
+        m_Direction = m_CameraRight * inputMovement.x + m_CameraForward * inputMovement.y;
+        if (m_Direction.magnitude > 1f) m_Direction.Normalize();
 
-        m_CharacterMovement.m_Direction = m_Movement;
-        m_CharacterMovement.m_Sprinting = Input.GetButton("Sprint");
+        m_CharacterMovement.Direction = m_Direction;
+    }
+
+    public void OnSprint(InputAction.CallbackContext value)
+    {
+        if (value.started) m_CharacterMovement.Sprinting = true;
         
-        if (Input.GetButtonDown("Jump")) m_CharacterMovement.m_Jumping = true;
+        if (value.canceled) m_CharacterMovement.Sprinting = false;
+    }
+
+    public void OnJump(InputAction.CallbackContext value)
+    {
+        if (value.started) m_CharacterMovement.Jump();
     }
 }
