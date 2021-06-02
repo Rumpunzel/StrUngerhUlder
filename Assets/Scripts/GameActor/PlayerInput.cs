@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(GameActor))]
+[RequireComponent(typeof(CharacterMovement))]
 public class PlayerInput : MonoBehaviour
 {
-    private GameActor m_GameActor;
+    private CharacterMovement m_CharacterMovement;
     private Camera m_MainCamera;
     private Vector3 m_CameraForward;
     private Vector3 m_CameraRight;
@@ -15,7 +15,7 @@ public class PlayerInput : MonoBehaviour
 
     void Awake()
 	{
-        m_GameActor = GetComponent<GameActor>();
+        m_CharacterMovement = GetComponent<CharacterMovement>();
 	}
 
     void Update()
@@ -36,9 +36,9 @@ public class PlayerInput : MonoBehaviour
         m_Movement = m_CameraForward * Input.GetAxisRaw("Vertical") + m_CameraRight * Input.GetAxisRaw("Horizontal");
         if (m_Movement.magnitude > 1f) m_Movement.Normalize();
 
-        m_GameActor.m_Direction = m_Movement;
-        m_GameActor.m_Sprinting = Input.GetButton("Sprint");
+        m_CharacterMovement.m_Direction = m_Movement;
+        m_CharacterMovement.m_Sprinting = Input.GetButton("Sprint");
         
-        if (Input.GetButtonDown("Jump")) m_GameActor.m_Jumping = true;
+        if (Input.GetButtonDown("Jump")) m_CharacterMovement.m_Jumping = true;
     }
 }

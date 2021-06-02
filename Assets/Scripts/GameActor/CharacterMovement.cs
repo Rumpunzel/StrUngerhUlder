@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(ActorStateMachine))]
-public class GameActor : GameObject
+public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private float m_MovementSpeed = 10f;
     [SerializeField] private float m_SprintModifier = 1.5f;
@@ -22,25 +22,11 @@ public class GameActor : GameObject
     private bool m_IsGrounded;
 
 
-    override protected void Awake()
+    private void Awake()
 	{
-        base.Awake();
-
         m_CharacterController = GetComponent<CharacterController>();
         m_StateMachine = GetComponent<ActorStateMachine>();
 	}
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void FixedUpdate()
     {

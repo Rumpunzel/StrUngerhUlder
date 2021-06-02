@@ -486,21 +486,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2731975, y: 0.5706775, z: 0.1368143}
   m_Center: {x: -0.000041261315, y: 0.12687168, z: -0.00044099998}
---- !u!114 &653086512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653086507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed995db329e4f8b449c21224e9389ec5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MaxHitPoints: 10
-  m_Indestructible: 0
-  m_Weight: 1
 --- !u!54 &653086513
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -789,11 +774,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 854319130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eca72d9f30fc214f8efa1af6747688d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a487d5eb12a74a4a94b2423f182560e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxHitPoints: 10
-  m_Indestructible: 0
   m_MovementSpeed: 10
   m_SprintModifier: 1.5
   m_JumpHeight: 1
@@ -814,7 +797,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.1
+  m_StepOffset: 0.3
   m_SkinWidth: 0.1
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1.1, z: 0}
@@ -1109,21 +1092,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6236404751104730969, guid: 5d7b706f2c3d0444799b4dfe37bce441, type: 3}
   m_PrefabInstance: {fileID: 496963578}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1190515308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190515304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed995db329e4f8b449c21224e9389ec5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MaxHitPoints: 10
-  m_Indestructible: 0
-  m_Weight: 1
 --- !u!54 &1190515309
 Rigidbody:
   m_ObjectHideFlags: 0
