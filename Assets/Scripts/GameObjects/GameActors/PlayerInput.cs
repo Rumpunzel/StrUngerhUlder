@@ -38,6 +38,7 @@ public class PlayerInput : MonoBehaviour
 
         m_GameActor.m_Direction = m_Movement;
         m_GameActor.m_Sprinting = Input.GetButton("Sprint");
-        if (Input.GetButton("Jump")) m_GameActor.m_Jumping = true;
+        
+        if (Input.GetButtonDown("Jump")) m_GameActor.m_Jumping = true;
     }
 }
