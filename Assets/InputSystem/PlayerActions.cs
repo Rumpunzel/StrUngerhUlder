@@ -49,6 +49,14 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveToPosition"",
+                    ""type"": ""Button"",
+                    ""id"": ""44a6ba07-651e-4e70-b6b1-cafdd70b4c15"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -181,6 +189,17 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f62c0c32-61e1-48fe-bc99-d536e4cf715e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""MoveToPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -321,6 +340,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
         m_PlayerControls_Sprint = m_PlayerControls.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerControls_Jump = m_PlayerControls.FindAction("Jump", throwIfNotFound: true);
         m_PlayerControls_Interact = m_PlayerControls.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerControls_MoveToPosition = m_PlayerControls.FindAction("MoveToPosition", throwIfNotFound: true);
         // CameraControls
         m_CameraControls = asset.FindActionMap("CameraControls", throwIfNotFound: true);
         m_CameraControls_TurnLeft = m_CameraControls.FindAction("TurnLeft", throwIfNotFound: true);
@@ -379,6 +399,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_Sprint;
     private readonly InputAction m_PlayerControls_Jump;
     private readonly InputAction m_PlayerControls_Interact;
+    private readonly InputAction m_PlayerControls_MoveToPosition;
     public struct PlayerControlsActions
     {
         private @PlayerActions m_Wrapper;
@@ -387,6 +408,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
         public InputAction @Sprint => m_Wrapper.m_PlayerControls_Sprint;
         public InputAction @Jump => m_Wrapper.m_PlayerControls_Jump;
         public InputAction @Interact => m_Wrapper.m_PlayerControls_Interact;
+        public InputAction @MoveToPosition => m_Wrapper.m_PlayerControls_MoveToPosition;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -408,6 +430,9 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
+                @MoveToPosition.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMoveToPosition;
+                @MoveToPosition.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMoveToPosition;
+                @MoveToPosition.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMoveToPosition;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -424,6 +449,9 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @MoveToPosition.started += instance.OnMoveToPosition;
+                @MoveToPosition.performed += instance.OnMoveToPosition;
+                @MoveToPosition.canceled += instance.OnMoveToPosition;
             }
         }
     }
@@ -501,6 +529,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnMoveToPosition(InputAction.CallbackContext context);
     }
     public interface ICameraControlsActions
     {

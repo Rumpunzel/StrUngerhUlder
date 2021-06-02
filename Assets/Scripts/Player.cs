@@ -7,9 +7,9 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(PlayerInput))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private GameObject m_PlayerObject;
+    [SerializeField] private Actor m_PlayerActor;
 
-    private Camera m_MainCamera;
+    private Camera m_PlayerCamera;
     private Vector3 m_CameraForward;
     private Vector3 m_CameraRight;
 
@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        m_MainCamera = Camera.main;
-        PlayerObject = m_PlayerObject;
+        m_PlayerCamera = Camera.main;
+        PlayerActor = m_PlayerActor;
     }
 
 
@@ -28,8 +28,8 @@ public class Player : MonoBehaviour
     {
         Vector2 inputMovement = value.ReadValue<Vector2>();
 
-        m_CameraForward = m_MainCamera.transform.forward;
-        m_CameraRight = m_MainCamera.transform.right;
+        m_CameraForward = m_PlayerCamera.transform.forward;
+        m_CameraRight = m_PlayerCamera.transform.right;
         m_CameraForward.y = 0f;
         m_CameraRight.y = 0f;
         m_CameraForward.Normalize();
@@ -59,12 +59,12 @@ public class Player : MonoBehaviour
     }
 
 
-    public GameObject PlayerObject {
-        get { return m_PlayerObject; }
+    public Actor PlayerActor {
+        get { return m_PlayerActor; }
         set {
-            m_PlayerObject = value;
-            m_MainCamera.GetComponent<CameraFollow>().FollowTransform = m_PlayerObject.transform;
-            m_PlayerMovement = m_PlayerObject.GetComponent<CharacterMovement>();
+            m_PlayerActor = value;
+            m_PlayerCamera.GetComponent<CameraFollow>().FollowTransform = m_PlayerActor.transform;
+            m_PlayerMovement = m_PlayerActor.GetComponent<CharacterMovement>();
         }
     }
 }
