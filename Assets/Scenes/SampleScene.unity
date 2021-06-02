@@ -693,19 +693,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 501295248943222296, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5, type: 3}
   m_PrefabInstance: {fileID: 1739654352}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &814955194
-BoxCollider:
+--- !u!136 &814955194
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 814955190}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2b4ee78a07ba7c04589410efc6d85eb9, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 10, z: 1}
-  m_Center: {x: 0, y: 5, z: 0}
+  m_Radius: 1
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0.06976879, y: 0.2259494, z: 0.016719982}
 --- !u!114 &814955195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,7 +814,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.1
   m_SkinWidth: 0.1
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1.1, z: 0}

@@ -52,6 +52,7 @@ public class GameActor : GameObject
 	{
         // Ground Check
         m_IsGrounded = m_CharacterController.isGrounded;
+        m_Jumping = m_Jumping && m_IsGrounded;
         if (m_IsGrounded && m_VerticalVelocity.y < 0f) m_VerticalVelocity.y = 0f;
 
         // Horizontal Movement
