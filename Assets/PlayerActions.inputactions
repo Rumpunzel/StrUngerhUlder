@@ -216,6 +216,17 @@
                 },
                 {
                     "name": "",
+                    "id": "5ddecf62-7f4f-4519-9dc2-d38d69ae8356",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "TurnLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "3b92622a-25da-4937-8b2d-d2c21251422c",
                     "path": "<Mouse>/scroll/y",
                     "interactions": "",
@@ -227,11 +238,33 @@
                 },
                 {
                     "name": "",
+                    "id": "6e40d4a4-73b4-4f17-b888-61bb38f12e2d",
+                    "path": "<Gamepad>/dpad/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b7cf1d25-1104-486f-95ee-d5dd282b9d3f",
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "TurnRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8440e36b-6d51-450d-9a42-26255ac1b58e",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "TurnRight",
                     "isComposite": false,
                     "isPartOfComposite": false
