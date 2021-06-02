@@ -10,25 +10,6 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float m_SprintModifier = 1.5f;
     [SerializeField] private float m_JumpHeight = 1.0f;
 
-    public Vector3 Destination {
-        get { return m_Destination; }
-        set {
-            m_Destination = value;
-            m_SeekingDestination = true;
-        }
-    }
-    public Vector3 Direction {
-        get { return m_Direction; }
-        set {
-            m_Direction = value;
-            m_SeekingDestination = false;
-        }
-    }
-    public bool Sprinting {
-        get { return m_Sprinting; }
-        set { m_Sprinting = value; }
-    }
-
     private Vector3 m_Destination = Vector3.zero;
     private bool m_SeekingDestination = false;
     private Vector3 m_Direction = Vector3.zero;
@@ -75,6 +56,26 @@ public class CharacterMovement : MonoBehaviour
             m_VerticalVelocity.y += m_StateMachine.Jump(Mathf.Sqrt(m_JumpHeight * -3.0f * Physics.gravity.y));
             m_IsGrounded = false;
         }
+    }
+
+
+    public Vector3 Destination {
+        get { return m_Destination; }
+        set {
+            m_Destination = value;
+            m_SeekingDestination = true;
+        }
+    }
+    public Vector3 Direction {
+        get { return m_Direction; }
+        set {
+            m_Direction = value;
+            m_SeekingDestination = false;
+        }
+    }
+    public bool Sprinting {
+        get { return m_Sprinting; }
+        set { m_Sprinting = value; }
     }
 
 

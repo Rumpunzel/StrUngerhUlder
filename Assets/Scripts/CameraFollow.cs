@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform m_FollowTransform;
     [SerializeField] private float m_ShoulderHeight = 1f;
     [SerializeField] private float m_DistanceOffGround = 23f;
     [SerializeField] private float m_DistanceFromFollow = 36f;
@@ -20,7 +19,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float m_CameraScrollSpeed = .02f;
     
 
-    private Camera m_MainCamera;
+    private Transform m_FollowTransform;
     private Vector3 m_CameraPosition;
     private Vector3 m_Offset;
     private float m_CameraAngle;
@@ -31,11 +30,12 @@ public class CameraFollow : MonoBehaviour
     private void Awake()
     {
         m_CameraAngle = m_CameraAngleOffset * Mathf.Deg2Rad;
-        m_MainCamera = GetComponent<Camera>();
     }
 
     void Update()
     {
+        if (!m_FollowTransform) return;
+        
         m_CameraAngle = Mathf.Lerp(m_CameraAngle, (m_CameraTurnIndex * m_CameraTurnAngle + m_CameraAngleOffset) * Mathf.Deg2Rad, m_CameraTurnSmoothing);
         m_CameraZoom = Mathf.Clamp(m_CameraZoom, 1f / m_CameraMaxZoom, 1f / m_CameraMinZoom);
 
@@ -70,5 +70,11 @@ public class CameraFollow : MonoBehaviour
     public void OnZoom(InputAction.CallbackContext value)
     {
         m_CameraZoom = Mathf.Lerp(m_CameraZoom, m_CameraZoom - value.ReadValue<float>() * m_CameraScrollSpeed, m_CameraTurnSmoothing);
+    }
+
+
+    public Transform FollowTransform {
+        get { return m_FollowTransform; }
+        set { m_FollowTransform = value; }
     }
 }
