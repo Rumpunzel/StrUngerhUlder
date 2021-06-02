@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/PlayerActions.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/InputSystem/PlayerActions.inputactions'
 
 using System;
 using System.Collections;
@@ -55,7 +55,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""10456f12-3f6e-4037-b749-ac23f686799e"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/alt"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -77,7 +77,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f2dd68dc-ba1d-4f3d-9b22-6c959d35e211"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -219,7 +219,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6feaf319-7b6f-4279-ae3b-a79bb315b95b"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -263,7 +263,7 @@ public class @PlayerActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b7cf1d25-1104-486f-95ee-d5dd282b9d3f"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
