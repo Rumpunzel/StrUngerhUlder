@@ -10,31 +10,28 @@ public class PerceptionArea : MonoBehaviour
     [Range(0f, 16f)] [SerializeField] private float m_PerceptionRange = 5f;
     [Range(0f, 10f)] [SerializeField] private float m_InteractionRange = 1f;
 
-    [Header("Public Members")]
-    public bool LookForObject = false;
-
-    private ActorStateMachine m_ActorStateMachine;
     private Transform m_NearestCollider = null;
 
-
-    private void Awake()
-    {
-        m_ActorStateMachine = GetComponent<ActorStateMachine>();
-    }
 
     // Update is called once per frame
     private void Update()
     {
         if (m_NearestCollider) m_NearestCollider.GetComponent<cakeslice.Outline>().eraseRenderer = true;
         m_NearestCollider = null;
+    }
 
-        if (LookForObject)
+
+    public SpottedTransform CheckAreaForObjects()
+    {
+        m_NearestCollider = CheckForColliders(m_PerceptionRange, m_WhatToCheck);
+
+        if (m_NearestCollider)
         {
-            m_NearestCollider = CheckForColliders(m_PerceptionRange, m_WhatToCheck);
-            if (m_NearestCollider) m_NearestCollider.GetComponent<cakeslice.Outline>().eraseRenderer = false;
+            m_NearestCollider.GetComponent<cakeslice.Outline>().eraseRenderer = false;
+            return InteractWithCollider();
         }
 
-        if (m_NearestCollider) InteractWithCollider();
+        return null;
     }
 
 
@@ -57,15 +54,33 @@ public class PerceptionArea : MonoBehaviour
         return nearestCollider;
     }
 
-    private void InteractWithCollider()
+    private SpottedTransform InteractWithCollider()
     {
         if (Vector3.Distance(this.transform.position, m_NearestCollider.position) <= m_InteractionRange)
         {
-            
+            return new SpottedTransform(m_NearestCollider);
         }
         else
         {
-            m_ActorStateMachine.DestinationInput = m_NearestCollider.position;
+            return new SpottedTransform(m_NearestCollider.position);
+        }
+    }
+
+
+    public class SpottedTransform
+    {
+        public Transform transform = null;
+        public Vector3 position;
+
+        public SpottedTransform(Transform t)
+        {
+            this.transform = t;
+            this.position = transform.position;
+        }
+
+        public SpottedTransform(Vector3 p)
+        {
+            this.position = p;
         }
     }
 }

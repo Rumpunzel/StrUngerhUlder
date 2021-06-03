@@ -24,25 +24,26 @@ public class ActorStateMachine : MonoBehaviour
     [Range(0f, 2f)] [SerializeField] private float m_SprintPercentage = 1.1f;
     [Range(0f, 1f)] [SerializeField] private float m_RunPercentage = .5f;
 
-    # region Inputs
-    [Header("Public Members")]
-    public bool SprintInput = false;
-    public bool JumpInput = false;
-    public bool LookForObjectInput = false;
-    # endregion
-
     private CharacterMovement m_CharacterMovement;
     private PerceptionArea m_PerceptionArea;
     private Animator m_Animator;
     private k_STATES m_CurrentState;
 
+    # region Inputs
     private Vector3 m_DestinationInput;
     private bool m_SeekingDestination = false;
     private Vector3 m_DirectionInput = Vector3.zero;
 
+    private bool m_SprintInput = false;
+    private bool m_JumpInput = false;
+
+    private bool m_LookForObjectInput = false;
+    # endregion
+
     private Vector3 m_HorizontalVelocity = Vector3.zero;
     private Vector3 m_VerticalVelocity = Vector3.zero;
     private bool m_IsGrounded;
+    private bool m_CanReceiveInput = true;
 
 
     private void Awake()
@@ -58,7 +59,60 @@ public class ActorStateMachine : MonoBehaviour
         EnterState(k_STATES.Idle);
     }
 
-    private void FixedUpdate()
+    private void Update()
+    {
+        m_CanReceiveInput = true;
+
+        if (m_LookForObjectInput) HandleInteraction();
+        HandleMovement();
+
+        ParseStates();
+    }
+
+
+
+    # region Input Properties
+    public Vector3 DestinationInput {
+        get { return m_DestinationInput; }
+        set {
+            if (!m_CanReceiveInput) return;
+            m_DestinationInput = value;
+            m_SeekingDestination = true;
+        }
+    }
+    public Vector3 DirectionInput {
+        get { return m_DirectionInput; }
+        set {
+            if (!m_CanReceiveInput) return;
+            m_DirectionInput = value;
+            m_SeekingDestination = false;
+        }
+    }
+    public bool SprintInput {
+        get { return m_SprintInput; }
+        set {
+            if (!m_CanReceiveInput) return;
+            m_SprintInput = value;
+        }
+    }
+    public bool JumpInput {
+        get { return m_JumpInput; }
+        set {
+            if (!m_CanReceiveInput) return;
+            m_JumpInput = value;
+        }
+    }
+    public bool LookForObjectInput {
+        get { return m_LookForObjectInput; }
+        set {
+            m_LookForObjectInput = value;
+        }
+    }
+    # endregion
+
+
+    # region Movement
+    private void HandleMovement()
     {
         m_IsGrounded = m_CharacterMovement.IsGrounded;
         JumpInput = JumpInput && m_IsGrounded;
@@ -68,30 +122,10 @@ public class ActorStateMachine : MonoBehaviour
         if (JumpInput && m_IsGrounded && m_CurrentState < k_STATES.Jumping)
         {
             JumpInput = false;
+            m_IsGrounded = false;
             m_VerticalVelocity = m_CharacterMovement.Jump();
-
-            EnterState(k_STATES.Jumping);
-        }
-
-        ParseStates();
-    }
-
-
-    public Vector3 DestinationInput {
-        get { return m_DestinationInput; }
-        set {
-            m_DestinationInput = value;
-            m_SeekingDestination = true;
         }
     }
-    public Vector3 DirectionInput {
-        get { return m_DirectionInput; }
-        set {
-            m_DirectionInput = value;
-            m_SeekingDestination = false;
-        }
-    }
-
 
     private bool CanMove() {
         return m_CurrentState < k_STATES.Dead;
@@ -110,12 +144,42 @@ public class ActorStateMachine : MonoBehaviour
 
         return Vector3.zero;
     }
+    # endregion
 
+
+    # region Interaction
+    private void HandleInteraction()
+    {
+        PerceptionArea.SpottedTransform spottedTransform = m_PerceptionArea.CheckAreaForObjects();
+
+        if (spottedTransform == null) return;
+
+        if (!m_SeekingDestination) DirectionInput = Vector3.zero;
+
+        if (spottedTransform.transform)
+        {
+            DestinationInput = this.transform.position;
+        }
+        else
+        {
+            DestinationInput = spottedTransform.position;
+        }
+
+        m_CanReceiveInput = false;
+    }
+    # endregion
+
+
+    # region State Machine
     private void ParseStates()
     {
         k_STATES newState;
 
-        if (m_HorizontalVelocity.magnitude > m_SprintPercentage)
+        if (!m_IsGrounded)
+        {
+            newState = k_STATES.Jumping;
+        }
+        else if (m_HorizontalVelocity.magnitude > m_SprintPercentage)
         {
             newState = k_STATES.Sprinting;
         }
@@ -132,9 +196,8 @@ public class ActorStateMachine : MonoBehaviour
             newState = k_STATES.Idle;
         }
         
-        if (m_IsGrounded && newState != m_CurrentState) EnterState(newState);
+        if (newState != m_CurrentState) EnterState(newState);
     }
-
 
     private void EnterState(k_STATES newState)
     {
@@ -153,4 +216,5 @@ public class ActorStateMachine : MonoBehaviour
                 break;
         }
     }
+    #endregion
 }

@@ -676,12 +676,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 854319135}
+  - component: {fileID: 854319134}
   - component: {fileID: 854319131}
   - component: {fileID: 854319132}
-  - component: {fileID: 854319134}
-  - component: {fileID: 854319136}
   - component: {fileID: 854319137}
   - component: {fileID: 854319133}
+  - component: {fileID: 854319136}
   m_Layer: 6
   m_Name: GameActor
   m_TagString: Untagged
@@ -704,9 +704,7 @@ MonoBehaviour:
   m_MovementSpeed: 10
   m_SprintModifier: 1.5
   m_JumpHeight: 1
-  SprintInput: 0
-  JumpInput: 0
-  m_IsGrounded: 0
+  IsGrounded: 0
 --- !u!143 &854319132
 CharacterController:
   m_ObjectHideFlags: 0
@@ -740,6 +738,8 @@ MonoBehaviour:
   m_WhatToCheck:
     serializedVersion: 2
     m_Bits: 128
+  m_PerceptionRange: 5
+  m_InteractionRange: 1
 --- !u!114 &854319134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,8 +754,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SprintPercentage: 1.1
   m_RunPercentage: 0.5
-  IsGrounded: 0
-  Velocity: {x: 0, y: 0, z: 0}
+  SprintInput: 0
+  JumpInput: 0
+  LookForObjectInput: 0
 --- !u!4 &854319135
 Transform:
   m_ObjectHideFlags: 0
@@ -764,7 +765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854319130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.5, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1126723619}
