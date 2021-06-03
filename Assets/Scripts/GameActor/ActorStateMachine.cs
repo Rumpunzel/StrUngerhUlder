@@ -18,13 +18,14 @@ public class ActorStateMachine : MonoBehaviour
         Dead,
     }
 
-    [Range(0, 2f)] [SerializeField] private float m_SprintPercentage = 1.1f;
-    [Range(0, 1f)] [SerializeField] private float m_RunPercentage = .5f;
+    public bool IsGrounded;
+    public Vector3 Velocity;
+
+    [Range(0f, 2f)] [SerializeField] private float m_SprintPercentage = 1.1f;
+    [Range(0f, 1f)] [SerializeField] private float m_RunPercentage = .5f;
 
     private Animator m_Animator;
     private k_STATES m_CurrentState;
-    public bool IsGrounded;
-    public Vector3 Velocity;
 
 
     private void Awake()

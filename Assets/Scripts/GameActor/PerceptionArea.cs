@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterMovement))]
 public class PerceptionArea : MonoBehaviour
 {
-    [SerializeField] private LayerMask m_WhatToCheck;
+    public bool LookForObject = false;
 
-    private ArrayList m_CollidersInArea = new ArrayList(32);
-    private Collider m_NearestCollider = null;
+    [SerializeField] private LayerMask m_WhatToCheck;
+    [Range(0f, 16f)] [SerializeField] private float m_PerceptionRange = 5f;
+
+    private Transform m_NearestCollider = null;
 
 
     // Start is called before the first frame update
@@ -19,43 +22,30 @@ public class PerceptionArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckForColliders();
+    }
+
+
+    private void CheckForColliders()
+    {
         if (m_NearestCollider) m_NearestCollider.GetComponent<cakeslice.Outline>().eraseRenderer = true;
         m_NearestCollider = null;
 
-        float nearestDistance = Mathf.Infinity;
-        Vector3 currentPosition = transform.position;
+        if (!LookForObject) return;
 
-        foreach (Collider collider in m_CollidersInArea)
-        {
-            float distance = Vector3.Distance(collider.transform.position, currentPosition);
-            if (distance < nearestDistance)
-            {
-                m_NearestCollider = collider;
-                nearestDistance = distance;
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, m_PerceptionRange, m_WhatToCheck);
+        float nearDist = float.PositiveInfinity;
+
+        foreach (Collider collider in hitColliders) {
+            Vector3 offset = this.transform.position - collider.transform.position;
+            float thisDist = offset.sqrMagnitude;
+
+            if (thisDist < nearDist) {
+                nearDist = thisDist;
+                m_NearestCollider = collider.transform;
             }
         }
 
         if (m_NearestCollider) m_NearestCollider.GetComponent<cakeslice.Outline>().eraseRenderer = false;
-    }
-
-
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider == null) return;
-
-        if (((1 << collider.gameObject.layer) & m_WhatToCheck) != 0)
-        {
-            m_CollidersInArea.Add(collider);
-        }
-    }
-
-    private void OnTriggerExit(Collider collider)
-    {
-        if (collider == null) return;
-
-        if (((1 << collider.gameObject.layer) & m_WhatToCheck) != 0)
-        {
-            m_CollidersInArea.Remove(collider);
-        }
     }
 }

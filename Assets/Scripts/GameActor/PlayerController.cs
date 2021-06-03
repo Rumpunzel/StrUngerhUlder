@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 m_CameraRight;
 
     private CharacterMovement m_PlayerMovement;
+    private PerceptionArea m_PlayerPerception;
+
     private Vector3 m_MouseDestination;
     private Vector3 m_Direction;
     private bool m_WalkToPoint = false;
@@ -69,7 +71,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext value)
     {
-
+        if (value.started) m_PlayerPerception.LookForObject = true;
+        if (value.canceled) m_PlayerPerception.LookForObject = false;
     }
 
 
@@ -79,6 +82,7 @@ public class PlayerController : MonoBehaviour
             m_PlayerObject = value;
             m_PlayerCamera.GetComponent<CameraFollow>().FollowTransform = m_PlayerObject.transform;
             m_PlayerMovement = m_PlayerObject.GetComponent<CharacterMovement>();
+            m_PlayerPerception = m_PlayerObject.GetComponent<PerceptionArea>();
         }
     }
 

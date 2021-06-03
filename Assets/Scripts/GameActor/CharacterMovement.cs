@@ -8,12 +8,12 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class CharacterMovement : MonoBehaviour
 {
+    public bool SprintInput = false;
+    public bool JumpInput = false;
+
     [SerializeField] private float m_MovementSpeed = 10f;
     [SerializeField] private float m_SprintModifier = 1.5f;
     [SerializeField] private float m_JumpHeight = 1.0f;
-
-    public bool SprintInput = false;
-    public bool JumpInput = false;
 
     private CharacterController m_CharacterController;
     private ActorStateMachine m_StateMachine;
@@ -25,7 +25,7 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector3 m_HorizontalVelocity = Vector3.zero;
     private Vector3 m_VerticalVelocity = Vector3.zero;
-    public bool m_IsGrounded;
+    private bool m_IsGrounded;
 
 
     private void Awake()
@@ -80,22 +80,25 @@ public class CharacterMovement : MonoBehaviour
     /// </summary>
     private void ProcessActions()
     {
-        // Movement
-        if (m_SeekingDestination)
+        if (m_StateMachine.CanMove())
         {
-            MoveTowardDestination();
-        }
-        else
-        {
-            Move();
-        }
+            // Movement
+            if (!m_SeekingDestination)
+            {
+                Move();
+            }
+            else if (m_IsGrounded)
+            {
+                MoveTowardDestination();
+            }
 
-        // Jump
-        if (JumpInput && m_IsGrounded)
-        {
-            JumpInput = false;
-            ToggleManualMovement(true);
-            m_VerticalVelocity.y += m_StateMachine.Jump(Mathf.Sqrt(m_JumpHeight * -3.0f * Physics.gravity.y));
+            // Jump
+            if (JumpInput && m_IsGrounded)
+            {
+                JumpInput = false;
+                ToggleManualMovement(true);
+                m_VerticalVelocity.y += m_StateMachine.Jump(Mathf.Sqrt(m_JumpHeight * -3.0f * Physics.gravity.y));
+            }
         }
 
         if (m_CharacterController.enabled)
@@ -107,8 +110,6 @@ public class CharacterMovement : MonoBehaviour
 
     private void MoveTowardDestination()
     {
-        if (!m_StateMachine.CanMove() || !m_IsGrounded) return;
-
         ToggleManualMovement(false);
         m_NavMeshAgent.speed = m_MovementSpeed * (SprintInput ? m_SprintModifier : 1f);
         m_NavMeshAgent.destination = m_DestinationInput;
@@ -118,12 +119,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void Move()
 	{
-        if (!m_StateMachine.CanMove()) return;
-
         ToggleManualMovement(true);
         m_HorizontalVelocity = Vector3.Lerp(m_HorizontalVelocity, m_DirectionInput * m_MovementSpeed * (SprintInput ? m_SprintModifier : 1f), m_NavMeshAgent.acceleration * Time.deltaTime);
 
-        if (m_HorizontalVelocity != Vector3.zero) transform.forward = Vector3.Lerp(transform.forward, m_HorizontalVelocity, (m_NavMeshAgent.angularSpeed / 60f) * Time.fixedDeltaTime);
+        if (m_HorizontalVelocity != Vector3.zero) this.transform.forward = Vector3.Lerp(this.transform.forward, m_HorizontalVelocity, (m_NavMeshAgent.angularSpeed / 60f) * Time.fixedDeltaTime);
         m_CharacterController.Move(m_HorizontalVelocity * Time.deltaTime);
 
         m_StateMachine.Velocity = m_HorizontalVelocity / m_MovementSpeed;
