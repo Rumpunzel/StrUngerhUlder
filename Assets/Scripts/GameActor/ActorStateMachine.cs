@@ -24,10 +24,12 @@ public class ActorStateMachine : MonoBehaviour
     [Range(0f, 2f)] [SerializeField] private float m_SprintPercentage = 1.1f;
     [Range(0f, 1f)] [SerializeField] private float m_RunPercentage = .5f;
 
+    # region Inputs
     [Header("Public Members")]
     public bool SprintInput = false;
     public bool JumpInput = false;
     public bool LookForObjectInput = false;
+    # endregion
 
     private CharacterMovement m_CharacterMovement;
     private PerceptionArea m_PerceptionArea;
@@ -63,7 +65,7 @@ public class ActorStateMachine : MonoBehaviour
 
         m_HorizontalVelocity = CanMove() ? Move() : m_CharacterMovement.MoveTowardDestination(Vector3.zero);;
 
-        if (JumpInput && m_IsGrounded && m_CurrentState >= k_STATES.Jumping)
+        if (JumpInput && m_IsGrounded && m_CurrentState < k_STATES.Jumping)
         {
             JumpInput = false;
             m_VerticalVelocity = m_CharacterMovement.Jump();
@@ -131,15 +133,6 @@ public class ActorStateMachine : MonoBehaviour
         }
         
         if (m_IsGrounded && newState != m_CurrentState) EnterState(newState);
-    }
-
-    public float Jump(float jumpForce)
-    {
-        // Cannot Jump
-        if (m_CurrentState >= k_STATES.Jumping) return 0f;
-        
-        EnterState(k_STATES.Jumping);
-        return jumpForce;
     }
 
 
