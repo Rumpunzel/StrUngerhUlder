@@ -14,8 +14,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 m_CameraForward;
     private Vector3 m_CameraRight;
 
-    private CharacterMovement m_PlayerMovement;
-    private PerceptionArea m_PlayerPerception;
+    private ActorStateMachine m_PlayerStateMachine;
 
     private Vector3 m_MouseDestination;
     private Vector3 m_Direction;
@@ -49,7 +48,7 @@ public class PlayerController : MonoBehaviour
         
         if (m_Direction.magnitude > 1f) m_Direction.Normalize();
         
-        m_PlayerMovement.DirectionInput = m_Direction;
+        m_PlayerStateMachine.DirectionInput = m_Direction;
     }
 
     public void OnMoveToPoint(InputAction.CallbackContext value)
@@ -60,19 +59,19 @@ public class PlayerController : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext value)
     {
-        if (value.started) m_PlayerMovement.SprintInput = true;
-        if (value.canceled) m_PlayerMovement.SprintInput = false;
+        if (value.started) m_PlayerStateMachine.SprintInput = true;
+        if (value.canceled) m_PlayerStateMachine.SprintInput = false;
     }
 
     public void OnJump(InputAction.CallbackContext value)
     {
-        if (value.started) m_PlayerMovement.JumpInput = true;
+        if (value.started) m_PlayerStateMachine.JumpInput = true;
     }
 
     public void OnInteract(InputAction.CallbackContext value)
     {
-        if (value.started) m_PlayerPerception.LookForObject = true;
-        if (value.canceled) m_PlayerPerception.LookForObject = false;
+        if (value.started) m_PlayerStateMachine.LookForObjectInput = true;
+        if (value.canceled) m_PlayerStateMachine.LookForObjectInput = false;
     }
 
 
@@ -81,8 +80,7 @@ public class PlayerController : MonoBehaviour
         set {
             m_PlayerObject = value;
             m_PlayerCamera.GetComponent<CameraFollow>().FollowTransform = m_PlayerObject.transform;
-            m_PlayerMovement = m_PlayerObject.GetComponent<CharacterMovement>();
-            m_PlayerPerception = m_PlayerObject.GetComponent<PerceptionArea>();
+            m_PlayerStateMachine = m_PlayerObject.GetComponent<ActorStateMachine>();
         }
     }
 
@@ -96,7 +94,7 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100f, m_WorldLayer))
         {
             m_MouseDestination = hit.point;
-            m_PlayerMovement.DestinationInut = m_MouseDestination;
+            m_PlayerStateMachine.DestinationInput = m_MouseDestination;
         }
     }
 }
