@@ -12,18 +12,20 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float m_SprintModifier = 1.5f;
     [SerializeField] private float m_JumpHeight = 1.0f;
 
-    private Vector3 m_Destination = Vector3.zero;
-    private bool m_SeekingDestination = false;
-    private Vector3 m_Direction = Vector3.zero;
-    private bool m_Sprinting = false;
+    public bool SprintInput = false;
+    public bool JumpInput = false;
 
     private CharacterController m_CharacterController;
     private ActorStateMachine m_StateMachine;
     private NavMeshAgent m_NavMeshAgent;
 
+    private Vector3 m_DestinationInput = Vector3.zero;
+    private bool m_SeekingDestination = false;
+    private Vector3 m_DirectionInput = Vector3.zero;
+
     private Vector3 m_HorizontalVelocity = Vector3.zero;
     private Vector3 m_VerticalVelocity = Vector3.zero;
-    private bool m_IsGrounded;
+    public bool m_IsGrounded;
 
 
     private void Awake()
@@ -33,12 +35,52 @@ public class CharacterMovement : MonoBehaviour
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
 	}
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        // Ground Check
-        m_IsGrounded = m_CharacterController.isGrounded;
-        if (m_IsGrounded && m_VerticalVelocity.y < 0f) m_VerticalVelocity.y = 0f;
+        CheckGrounded();
+        ProcessActions();
+    }
 
+
+    public Vector3 DestinationInut {
+        get { return m_DestinationInput; }
+        set {
+            m_DestinationInput = value;
+            m_SeekingDestination = true;
+        }
+    }
+    public Vector3 DirectionInput {
+        get { return m_DirectionInput; }
+        set {
+            m_DirectionInput = value;
+            m_SeekingDestination = false;
+
+            if (m_NavMeshAgent.enabled)
+            {
+                m_NavMeshAgent.velocity = Vector3.zero;
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Checks whether the character is on the ground and updates <see cref="IsGrounded"/>
+    /// </summary>
+    private void CheckGrounded()
+    {
+        m_IsGrounded = m_CharacterController.isGrounded;
+        JumpInput = JumpInput && m_IsGrounded;
+        if (m_IsGrounded && m_VerticalVelocity.y < 0f) m_VerticalVelocity.y = 0f;
+        
+        m_StateMachine.IsGrounded = m_IsGrounded;
+    }
+
+    /// <summary>
+    /// Processes input actions and converts them into movement
+    /// </summary>
+    private void ProcessActions()
+    {
+        // Movement
         if (m_SeekingDestination)
         {
             MoveTowardDestination();
@@ -48,50 +90,48 @@ public class CharacterMovement : MonoBehaviour
             Move();
         }
 
-        m_VerticalVelocity.y += Physics.gravity.y * Time.deltaTime;
-        m_CharacterController.Move(m_VerticalVelocity * Time.deltaTime);
-    }
-
-
-    public void Jump()
-    {
-        if (m_IsGrounded)
+        // Jump
+        if (JumpInput && m_IsGrounded)
         {
+            JumpInput = false;
+            ToggleManualMovement(true);
             m_VerticalVelocity.y += m_StateMachine.Jump(Mathf.Sqrt(m_JumpHeight * -3.0f * Physics.gravity.y));
-            m_IsGrounded = false;
+        }
+
+        if (m_CharacterController.enabled)
+        {
+            m_VerticalVelocity.y += Physics.gravity.y * Time.deltaTime;
+            m_CharacterController.Move(m_VerticalVelocity * Time.deltaTime);
         }
     }
-
-
-    public Vector3 Destination {
-        get { return m_Destination; }
-        set {
-            m_Destination = value;
-            m_SeekingDestination = true;
-        }
-    }
-    public Vector3 Direction {
-        get { return m_Direction; }
-        set {
-            m_Direction = value;
-            m_SeekingDestination = false;
-        }
-    }
-    public bool Sprinting {
-        get { return m_Sprinting; }
-        set { m_Sprinting = value; }
-    }
-
 
     private void MoveTowardDestination()
     {
-        m_NavMeshAgent.destination = m_Destination;
+        if (!m_StateMachine.CanMove() || !m_IsGrounded) return;
+
+        ToggleManualMovement(false);
+        m_NavMeshAgent.speed = m_MovementSpeed * (SprintInput ? m_SprintModifier : 1f);
+        m_NavMeshAgent.destination = m_DestinationInput;
+
+        m_StateMachine.Velocity = m_NavMeshAgent.velocity / m_MovementSpeed;
     }
 
     private void Move()
 	{
-        m_HorizontalVelocity = m_StateMachine.Move(m_Direction * (m_Sprinting ? m_SprintModifier : 1f), m_IsGrounded) * m_MovementSpeed;
-        if (m_HorizontalVelocity != Vector3.zero) gameObject.transform.forward = m_HorizontalVelocity;
+        if (!m_StateMachine.CanMove()) return;
+
+        ToggleManualMovement(true);
+        m_HorizontalVelocity = Vector3.Lerp(m_HorizontalVelocity, m_DirectionInput * m_MovementSpeed * (SprintInput ? m_SprintModifier : 1f), m_NavMeshAgent.acceleration * Time.deltaTime);
+
+        if (m_HorizontalVelocity != Vector3.zero) transform.forward = Vector3.Lerp(transform.forward, m_HorizontalVelocity, (m_NavMeshAgent.angularSpeed / 60f) * Time.fixedDeltaTime);
         m_CharacterController.Move(m_HorizontalVelocity * Time.deltaTime);
+
+        m_StateMachine.Velocity = m_HorizontalVelocity / m_MovementSpeed;
+    }
+
+    private void ToggleManualMovement(bool manual)
+    {
+        m_CharacterController.enabled = manual;
+        m_NavMeshAgent.enabled = !manual;
     }
 }

@@ -23,7 +23,8 @@ public class ActorStateMachine : MonoBehaviour
 
     private Animator m_Animator;
     private k_STATES m_CurrentState;
-    private Vector3 m_Direction;
+    public bool IsGrounded;
+    public Vector3 Velocity;
 
 
     private void Awake()
@@ -40,31 +41,17 @@ public class ActorStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-
-    public void ChangeTo(k_STATES newState)
-    {
-        if (newState == m_CurrentState) return;
-
-        EnterState(newState);
-    }
-
-    public Vector3 Move(Vector3 directionVector, bool grounded)
-    {
         k_STATES newState;
-        m_Direction = directionVector;
 
-        if (m_Direction.magnitude > m_SprintPercentage)
+        if (Velocity.magnitude > m_SprintPercentage)
         {
             newState = k_STATES.Sprinting;
         }
-        else if (m_Direction.magnitude > m_RunPercentage)
+        else if (Velocity.magnitude > m_RunPercentage)
         {
             newState = k_STATES.Running;
         }
-        else if (m_Direction.magnitude > .01f)
+        else if (Velocity.magnitude > .01f)
         {
             newState = k_STATES.Walking;
         }
@@ -73,9 +60,12 @@ public class ActorStateMachine : MonoBehaviour
             newState = k_STATES.Idle;
         }
         
-        if (grounded && newState != m_CurrentState) ChangeTo(newState);
-        
-        return m_Direction;
+        if (IsGrounded && newState != m_CurrentState) EnterState(newState);
+    }
+
+
+    public bool CanMove() {
+        return m_CurrentState < k_STATES.Dead;
     }
 
     public float Jump(float jumpForce)
@@ -83,7 +73,7 @@ public class ActorStateMachine : MonoBehaviour
         // Cannot Jump
         if (m_CurrentState >= k_STATES.Jumping) return 0f;
         
-        ChangeTo(k_STATES.Jumping);
+        EnterState(k_STATES.Jumping);
         return jumpForce;
     }
 
@@ -95,6 +85,8 @@ public class ActorStateMachine : MonoBehaviour
 
     private void EnterState(k_STATES newState)
     {
+        if (newState == m_CurrentState) return;
+
         m_CurrentState = newState;
         UpdateAnimator(newState);
     }
