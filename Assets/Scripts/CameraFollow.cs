@@ -51,11 +51,11 @@ public class CameraFollow : MonoBehaviour
         m_CameraPosition.y = m_ShoulderHeight + m_DistanceOffGround * m_CameraZoom;
         
         this.transform.position = m_CameraPosition;
-        this.transform.LookAt(m_FollowTransform.position);/*new Vector3(
+        this.transform.LookAt(new Vector3(
             m_FollowTransform.position.x,
             m_ShoulderHeight,
             m_FollowTransform.position.z
-        ));*/
+        ));
     }
 
 
