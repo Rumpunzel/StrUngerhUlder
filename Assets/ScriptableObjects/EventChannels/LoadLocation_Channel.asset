@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ad8eab8c9f1cd42b59bf4a32a5c167, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: a2d4c00c38e33bc43b1667bcc31bdb56, type: 3}
+  m_Name: LoadLocation_Channel
   m_EditorClassIdentifier: 
-  m_InventorySize: 9
-  m_Items: []
+  description: Raised to change scene, and load one or multiple new scenes. Usually
+    as a result of the player entering a trigger to move to another location.

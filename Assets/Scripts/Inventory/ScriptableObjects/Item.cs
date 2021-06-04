@@ -4,53 +4,40 @@ using UnityEngine.Localization;
 
 // Created with collaboration from:
 // https://forum.unity.com/threads/inventory-system.980646/
-[CreateAssetMenu(fileName = "Item", menuName = "Inventory/Item", order = 51)]
+[CreateAssetMenu(fileName = "Item", menuName = "Inventory/Item")]
 public class Item : SerializableScriptableObject
 {
 	[Tooltip("The name of the item")]
-	[SerializeField] private LocalizedString _name = default;
+	[SerializeField] private LocalizedString m_Name = default;
 
 	[Tooltip("A preview image for the item")]
-	[SerializeField]
-	private Sprite _previewImage = default;
+	[SerializeField] private Sprite m_PreviewImage = default;
 
 	[Tooltip("A description of the item")]
-	[SerializeField]
-	private LocalizedString _description = default;
+	[SerializeField] private LocalizedString m_Description = default;
 
 
 	[Tooltip("The type of item")]
-	[SerializeField]
-	private ItemType _itemType = default;
+	[SerializeField] private ItemType m_ItemType = default;
 
 	[Tooltip("A prefab reference for the model of the item")]
-	[SerializeField]
-	private GameObject _prefab = default;
+	[SerializeField] private GameObject m_Prefab = default;
 
-	[Tooltip("The list of the ingredients necessary to the recipe")]
-	[SerializeField]
-	private List<ItemStack> _ingredientsList = new List<ItemStack>();
+    [Tooltip("The number of items able to stack into on in the inventory")]
+    [SerializeField] private int m_StackSize = 1;
 
-	[Tooltip("The resulting dish to the recipe")]
-	[SerializeField]
-	private Item _resultingDish = default;
-
-	[Tooltip("a checkbox for localized asset")]
-	[SerializeField]
-	private bool _isLocalized = default;
+	
+	[SerializeField] private bool m_IsLocalized = default;
 	[Tooltip("A localized preview image for the item")]
-	[SerializeField]
-	private LocalizedSprite _localizePreviewImage = default;
+	[SerializeField] private LocalizedSprite m_LocalizePreviewImage = default;
 
-	public LocalizedString Name => _name;
-	public Sprite PreviewImage => _previewImage;
-	public LocalizedString Description => _description;
-	public ItemType ItemType => _itemType;
-	public GameObject Prefab => _prefab;
-	public List<ItemStack> IngredientsList => _ingredientsList;
-	public Item ResultingDish => _resultingDish;
+	public LocalizedString Name => m_Name;
+	public Sprite PreviewImage => m_PreviewImage;
+	public LocalizedString Description => m_Description;
+	public ItemType ItemType => m_ItemType;
+	public GameObject Prefab => m_Prefab;
+    public int StackSize => m_StackSize;
 
-	public bool IsLocalized => _isLocalized;
-	public LocalizedSprite LocalizePreviewImage => _localizePreviewImage;
-
+	public bool IsLocalized => m_IsLocalized;
+	public LocalizedSprite LocalizePreviewImage => m_LocalizePreviewImage;
 }

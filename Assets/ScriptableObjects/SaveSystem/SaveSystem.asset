@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c81221e8da77f4690470655c688356, type: 3}
+  m_Name: SaveSystem
+  m_EditorClassIdentifier: 
+  m_LoadLocation: {fileID: 11400000, guid: e3cb4e460de9e774c8b16c2b8c4b793b, type: 2}
+  m_PlayerInventory: {fileID: 11400000, guid: 8ba6f32b50b60564b8553996d849df62, type: 2}
+  saveFilename: save.strungerhulder
+  backupSaveFilename: save.strungerhulder.bak
+  saveData:
+    m_LocationId: 2f386bbc670c05145834a0f9c7d55798
+    m_ItemStacks: []

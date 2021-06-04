@@ -31,6 +31,10 @@ MonoBehaviour:
     m_Key: Pickaxe
     m_Metadata:
       m_Items: []
+  - m_Id: 62153804947456
+    m_Key: Wood
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

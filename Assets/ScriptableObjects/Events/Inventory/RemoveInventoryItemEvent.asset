@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ad8eab8c9f1cd42b59bf4a32a5c167, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: 7f3510ba737e4f7499ea29c8f0b3a9e9, type: 3}
+  m_Name: RemoveInventoryItemEvent
   m_EditorClassIdentifier: 
-  m_InventorySize: 9
-  m_Items: []

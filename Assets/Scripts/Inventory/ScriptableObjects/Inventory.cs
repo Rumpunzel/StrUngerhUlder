@@ -6,10 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/Inventory")]
 public class Inventory : ScriptableObject
 {
-	[Tooltip("The collection of items and their quantities.")]
-	[SerializeField]
-	private List<ItemStack> m_Items = new List<ItemStack>();
+    [Tooltip("The amount of inventory slots")]
+    [SerializeField] private int m_InventorySize = 9;
 
+	[Tooltip("The collection of items and their quantities")]
+	[SerializeField] private List<ItemStack> m_Items = new List<ItemStack>();
+
+    public int InventorySize => m_InventorySize;
 	public List<ItemStack> Items => m_Items;
 
 	public void Add(Item item, int count = 1)
@@ -20,9 +23,10 @@ public class Inventory : ScriptableObject
 		for (int i = 0; i < m_Items.Count; i++)
 		{
 			ItemStack currentItemStack = m_Items[i];
-			if (item == currentItemStack.Item)
+
+			if ((item == currentItemStack.Item) && (currentItemStack.Amount + count <= item.StackSize))
 			{
-				//only add to the amount if the item is usable 
+				// Only add to the amount if the item is usable 
 				if (currentItemStack.Item.ItemType.ActionType == ItemInventoryActionType.use)
 				{
 					currentItemStack.Amount += count;
@@ -32,7 +36,17 @@ public class Inventory : ScriptableObject
 			}
 		}
 
-		m_Items.Add(new ItemStack(item, count));
+		while (m_Items.Count < m_InventorySize)
+		{
+			int amountToSubtract = count <= item.StackSize ? count : item.StackSize;
+			m_Items.Add(new ItemStack(item, amountToSubtract));
+			count -= amountToSubtract;
+
+			if (count <= 0)
+				return;
+		}
+		
+		// TODO: Drop the remaining items
 	}
 
 	public void Remove(Item item, int count = 1)
@@ -74,7 +88,7 @@ public class Inventory : ScriptableObject
 		for (int i = 0; i < m_Items.Count; i++)
 		{
 			ItemStack currentItemStack = m_Items[i];
-			
+
 			if (item == currentItemStack.Item)
 			{
 				return currentItemStack.Amount;

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CollectableItem : MonoBehaviour
 {
-
 	[SerializeField] private Item m_CurrentItem = default;
 	[SerializeField] private GameObject m_ItemGameObject = default;
 
@@ -15,22 +14,19 @@ public class CollectableItem : MonoBehaviour
 
 	public Item GetItem()
 	{
-
 		return m_CurrentItem;
-
 	}
+
 	public void SetItem(Item item)
 	{
 		m_CurrentItem = item;
-
 	}
+
 	public void AnimateItem()
 	{
-
 		if (m_ItemGameObject != null)
 		{
 			//m_ItemGameObject.transform.DORotate(Vector3.one * 180, 5, RotateMode.Fast).SetLoops(-1, LoopType.Incremental);
 		}
 	}
-
 }
