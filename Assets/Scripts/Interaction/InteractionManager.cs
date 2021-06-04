@@ -33,6 +33,13 @@ public class InteractionManager : MonoBehaviour
 		m_OnInteractionEnded.OnEventRaised -= OnInteractionEnd;
 	}
 
+    // Called mid-way through the AnimationClip of collecting
+    private void LookAtItem()
+    {
+        GameObject itemObject = m_PotentialInteractions.First.Value.interactableObject;
+		this.transform.LookAt(itemObject.transform);
+    }
+
 	// Called mid-way through the AnimationClip of collecting
 	private void Collect()
 	{

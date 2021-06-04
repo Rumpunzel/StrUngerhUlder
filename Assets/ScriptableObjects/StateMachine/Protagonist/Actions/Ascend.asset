@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82fe74e40a1afd64dbbb40ce6e4ff160, type: 3}
   m_Name: Ascend
   m_EditorClassIdentifier: 
-  jumpHeight: 2
+  jumpHeight: 1.5
