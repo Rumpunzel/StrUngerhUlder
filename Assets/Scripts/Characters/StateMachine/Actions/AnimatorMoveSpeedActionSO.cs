@@ -21,7 +21,7 @@ public class AnimatorMoveSpeedAction : StateAction
 	private Animator m_Animator;
 	private Protagonist m_Protagonist;
 
-	private AnimatorParameterActionSO m_OriginSO => (AnimatorParameterActionSO)base.OriginSO; // The SO this StateAction spawned from
+	private AnimatorParameterActionSO OriginSO => (AnimatorParameterActionSO)base.OriginSO; // The SO this StateAction spawned from
 	private int m_ParameterHash;
 
 	public AnimatorMoveSpeedAction(int parameterHash)

@@ -14,7 +14,7 @@ public class GroundGravityAction : StateAction
 	//Component references
 	private Protagonist m_ProtagonistScript;
 
-	private GroundGravityActionSO m_OriginSO => (GroundGravityActionSO)base.OriginSO; // The SO this StateAction spawned from
+	private GroundGravityActionSO OriginSO => (GroundGravityActionSO)base.OriginSO; // The SO this StateAction spawned from
 
 	public override void Awake(StateMachine stateMachine)
 	{
@@ -23,6 +23,6 @@ public class GroundGravityAction : StateAction
 
 	public override void OnUpdate()
 	{
-		m_ProtagonistScript.movementVector.y = m_OriginSO.verticalPull;
+		m_ProtagonistScript.movementVector.y = OriginSO.verticalPull;
 	}
 }

@@ -23,11 +23,11 @@ public class Protagonist : MonoBehaviour
 	[NonSerialized] public ControllerColliderHit lastHit;
 	[NonSerialized] public bool isRunning; // Used when using the keyboard to run, brings the normalised speed to 1
 
-	public const float GRAVITY_MULTIPLIER = 2f;
+	public const float GRAVITY_MULTIPLIER = 2.2f;
 	public const float MAX_FALL_SPEED = -50f;
 	public const float MAX_RISE_SPEED = 100f;
-	public const float GRAVITY_COMEBACK_MULTIPLIER = .03f;
-	public const float GRAVITY_DIVIDER = .9f;
+	//public const float GRAVITY_COMEBACK_MULTIPLIER = .03f;
+	//public const float GRAVITY_DIVIDER = .9f;
 	public const float AIR_RESISTANCE = 5f;
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)

@@ -15,8 +15,7 @@ public class AscendAction : StateAction
 	private Protagonist m_ProtagonistScript;
 
 	private float m_VerticalMovement;
-	private float m_GravityContributionMultiplier;
-	private AscendActionSO m_OriginSO => (AscendActionSO)base.OriginSO; // The SO this StateAction spawned from
+	private AscendActionSO OriginSO => (AscendActionSO)base.OriginSO; // The SO this StateAction spawned from
 
 	public override void Awake(StateMachine stateMachine)
 	{
@@ -25,14 +24,12 @@ public class AscendAction : StateAction
 
 	public override void OnStateEnter()
 	{
-		m_VerticalMovement = Mathf.Sqrt(m_OriginSO.jumpHeight * -3.0f * Physics.gravity.y);
+		m_VerticalMovement = Mathf.Sqrt(OriginSO.jumpHeight * -3.0f * Physics.gravity.y);
 	}
 
 	public override void OnUpdate()
 	{
-		m_GravityContributionMultiplier += Protagonist.GRAVITY_COMEBACK_MULTIPLIER;
-		m_GravityContributionMultiplier *= Protagonist.GRAVITY_DIVIDER; //Reduce the gravity effect
-		m_VerticalMovement += Physics.gravity.y * Protagonist.GRAVITY_MULTIPLIER * Time.deltaTime * m_GravityContributionMultiplier;
+		m_VerticalMovement += Physics.gravity.y * Time.deltaTime;
 		//Note that even if it's added, the above value is negative due to Physics.gravity.y
 
 		m_ProtagonistScript.movementVector.y = m_VerticalMovement;
