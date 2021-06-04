@@ -30,6 +30,7 @@ public class Protagonist : MonoBehaviour
 	//public const float GRAVITY_COMEBACK_MULTIPLIER = .03f;
 	//public const float GRAVITY_DIVIDER = .9f;
 	public const float AIR_RESISTANCE = 5f;
+    public const float TURN_RATE = 500f;
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
@@ -113,7 +114,7 @@ public class Protagonist : MonoBehaviour
         if (movementInput != Vector3.zero)
 		{
             Quaternion toRotation = Quaternion.LookRotation(movementInput, Vector3.up);
-        	this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, toRotation, 480f * Time.deltaTime);
+            this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, toRotation, TURN_RATE * Time.deltaTime);
 		}
 
 		m_PreviousSpeed = targetSpeed;
