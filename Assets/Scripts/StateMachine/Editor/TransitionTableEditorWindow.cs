@@ -15,7 +15,7 @@ namespace Strungerhulder.StateMachine.Editor
 
 		private UnityEditor.Editor m_TransitionTableEditor;
 
-		[MenuItem("Transition Table Editor", menuItem = "ChopChop/Transition Table Editor")]
+		[MenuItem("Transition Table Editor", menuItem = "Strungerhulder/Transition Table Editor")]
 		internal static void Display()
 		{
 			if (m_Window == null)

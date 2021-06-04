@@ -7,9 +7,10 @@ using UnityEngine;
 public class Protagonist : MonoBehaviour
 {
 	[SerializeField] private InputReader m_InputReader = default;
-	public Camera gameplayCamera;
 
-	//[SerializeField] private VoidEventChannelSO m_OpenInventoryChannel = default;
+    public TransformAnchor gameplayCameraTransform;
+
+	[SerializeField] private VoidEventChannelSO m_OpenInventoryChannel = default;
 
 	private Vector2 m_InputVector;
 	private float m_PreviousSpeed;
@@ -69,12 +70,12 @@ public class Protagonist : MonoBehaviour
 		float targetSpeed = 0f;
 		Vector3 adjustedMovement;
 
-		if (gameplayCamera)
+		if (gameplayCameraTransform)
 		{
 			//Get the two axes from the camera and flatten them on the XZ plane
-			Vector3 cameraForward = gameplayCamera.transform.forward;
+			Vector3 cameraForward = gameplayCameraTransform.Transform.forward;
 			cameraForward.y = 0f;
-			Vector3 cameraRight = gameplayCamera.transform.right;
+			Vector3 cameraRight = gameplayCameraTransform.Transform.right;
 			cameraRight.y = 0f;
 
 			//Use the two axes, modulated by the corresponding inputs, and construct the final vector

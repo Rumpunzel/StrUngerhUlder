@@ -1,13 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
 
-public class CameraFollow : MonoBehaviour
+public class FollowCamera : MonoBehaviour
 {
-    [SerializeField] private Transform m_FollowTransform;
-    
     [SerializeField] private float m_ShoulderHeight = 1f;
     [SerializeField] private float m_DistanceOffGround = 23f;
     [SerializeField] private float m_DistanceFromFollow = 36f;
@@ -21,6 +17,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float m_CameraScrollSpeed = .02f;
 
 
+    private Transform m_FollowTransform;
     private Vector3 m_CameraPosition;
     private Vector3 m_Offset;
     private float m_CameraAngle;
@@ -59,7 +56,7 @@ public class CameraFollow : MonoBehaviour
         ));
     }
 
-
+    /*
     public void OnTurnRight(InputAction.CallbackContext value)
     {
         if (value.started) m_CameraTurnIndex++;
@@ -74,7 +71,7 @@ public class CameraFollow : MonoBehaviour
     {
         m_CameraZoom = Mathf.Lerp(m_CameraZoom, m_CameraZoom - value.ReadValue<float>() * m_CameraScrollSpeed, m_CameraTurnSmoothing);
     }
-
+    */
 
     public Transform FollowTransform {
         get { return m_FollowTransform; }

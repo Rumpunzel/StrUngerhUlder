@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         get { return m_PlayerObject; }
         set {
             m_PlayerObject = value;
-            m_PlayerCamera.GetComponent<CameraFollow>().FollowTransform = m_PlayerObject.transform;
+            m_PlayerCamera.GetComponent<FollowCamera>().FollowTransform = m_PlayerObject.transform;
             m_PlayerStateMachine = m_PlayerObject.GetComponent<ActorStateMachine>();
         }
     }
