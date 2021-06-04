@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class CameraFollow : MonoBehaviour
 {
+    [SerializeField] private Transform m_FollowTransform;
+    
     [SerializeField] private float m_ShoulderHeight = 1f;
     [SerializeField] private float m_DistanceOffGround = 23f;
     [SerializeField] private float m_DistanceFromFollow = 36f;
@@ -17,9 +19,8 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float m_CameraMinZoom = 1f;
     [SerializeField] private float m_CameraMaxZoom = 16f;
     [SerializeField] private float m_CameraScrollSpeed = .02f;
-    
 
-    private Transform m_FollowTransform;
+
     private Vector3 m_CameraPosition;
     private Vector3 m_Offset;
     private float m_CameraAngle;
