@@ -31,7 +31,7 @@ public class AnimatorParameterAction : StateAction
 {
 	//Component references
 	private Animator m_Animator;
-	private AnimatorParameterActionSO OriginSO => (AnimatorParameterActionSO)base.OriginSO; // The SO this StateAction spawned from
+	private new AnimatorParameterActionSO m_OriginSO => (AnimatorParameterActionSO)base.OriginSO; // The SO this StateAction spawned from
 	private int m_ParameterHash;
 
 	public AnimatorParameterAction(int parameterHash)
@@ -46,28 +46,28 @@ public class AnimatorParameterAction : StateAction
 
 	public override void OnStateEnter()
 	{
-		if (OriginSO.whenToRun == SpecificMoment.OnStateEnter)
+		if (m_OriginSO.whenToRun == SpecificMoment.OnStateEnter)
 			SetParameter();
 	}
 
 	public override void OnStateExit()
 	{
-		if (OriginSO.whenToRun == SpecificMoment.OnStateExit)
+		if (m_OriginSO.whenToRun == SpecificMoment.OnStateExit)
 			SetParameter();
 	}
 
 	private void SetParameter()
 	{
-		switch (OriginSO.parameterType)
+		switch (m_OriginSO.parameterType)
 		{
 			case AnimatorParameterActionSO.ParameterType.Bool:
-				m_Animator.SetBool(m_ParameterHash, OriginSO.boolValue);
+				m_Animator.SetBool(m_ParameterHash, m_OriginSO.boolValue);
 				break;
 			case AnimatorParameterActionSO.ParameterType.Int:
-				m_Animator.SetInteger(m_ParameterHash, OriginSO.intValue);
+				m_Animator.SetInteger(m_ParameterHash, m_OriginSO.intValue);
 				break;
 			case AnimatorParameterActionSO.ParameterType.Float:
-				m_Animator.SetFloat(m_ParameterHash, OriginSO.floatValue);
+				m_Animator.SetFloat(m_ParameterHash, m_OriginSO.floatValue);
 				break;
 			case AnimatorParameterActionSO.ParameterType.Trigger:
 				m_Animator.SetTrigger(m_ParameterHash);

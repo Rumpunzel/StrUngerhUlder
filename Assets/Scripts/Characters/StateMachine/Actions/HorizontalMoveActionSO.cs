@@ -13,7 +13,7 @@ public class HorizontalMoveAction : StateAction
 {
 	//Component references
 	private Protagonist m_ProtagonistScript;
-	private HorizontalMoveActionSO OriginSO => (HorizontalMoveActionSO)base.OriginSO; // The SO this StateAction spawned from
+	private new HorizontalMoveActionSO m_OriginSO => (HorizontalMoveActionSO)base.OriginSO; // The SO this StateAction spawned from
 
 	public override void Awake(StateMachine stateMachine)
 	{
@@ -22,7 +22,7 @@ public class HorizontalMoveAction : StateAction
 
 	public override void OnUpdate()
 	{
-		m_ProtagonistScript.movementVector.x = m_ProtagonistScript.movementInput.x * OriginSO.speed;
-		m_ProtagonistScript.movementVector.z = m_ProtagonistScript.movementInput.z * OriginSO.speed;
+		m_ProtagonistScript.movementVector.x = m_ProtagonistScript.movementInput.x * m_OriginSO.speed;
+		m_ProtagonistScript.movementVector.z = m_ProtagonistScript.movementInput.z * m_OriginSO.speed;
 	}
 }

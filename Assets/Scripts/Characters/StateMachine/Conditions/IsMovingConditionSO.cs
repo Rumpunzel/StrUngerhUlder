@@ -11,7 +11,7 @@ public class IsMovingConditionSO : StateConditionSO<IsMovingCondition>
 public class IsMovingCondition : Condition
 {
     private Protagonist m_ProtagonistScript;
-    private IsMovingConditionSO OriginSO => (IsMovingConditionSO)base.OriginSO; // The SO this Condition spawned from
+    private new IsMovingConditionSO m_OriginSO => (IsMovingConditionSO)base.OriginSO; // The SO this Condition spawned from
 
     public override void Awake(StateMachine stateMachine)
     {
@@ -22,6 +22,6 @@ public class IsMovingCondition : Condition
     {
         Vector3 movementVector = m_ProtagonistScript.movementInput;
         movementVector.y = 0f;
-        return movementVector.sqrMagnitude > OriginSO.treshold;
+        return movementVector.sqrMagnitude > m_OriginSO.treshold;
     }
 }
