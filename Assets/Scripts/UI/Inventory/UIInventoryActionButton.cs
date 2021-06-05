@@ -9,7 +9,7 @@ public class UIInventoryActionButton : MonoBehaviour
 {
     public UnityAction clicked;
 
-	[SerializeField] private LocalizeStringEvent mm_ButtonActionText = default;
+	[SerializeField] private LocalizeStringEvent m_ButtonActionText = default;
 	[SerializeField] private Button m_ButtonAction = default;
 	[SerializeField] private UIButtonPrompt m_ButtonPromptSetter = default;
 	[SerializeField] private InputReader m_InputReader = default;
@@ -20,7 +20,7 @@ public class UIInventoryActionButton : MonoBehaviour
 	public void FillInventoryButton(ItemType itemType, bool isInteractable = true)
 	{
 		m_ButtonAction.interactable = isInteractable;
-		mm_ButtonActionText.StringReference = itemType.ActionName;
+		m_ButtonActionText.StringReference = itemType.ActionName;
 		//bool isKeyboard = !(Input.GetJoystickNames() != null && Input.GetJoystickNames().Length > 0);
 
 		bool isKeyboard = true;

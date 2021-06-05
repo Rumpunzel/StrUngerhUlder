@@ -19,11 +19,6 @@ public class SpawnSystem : MonoBehaviour
 	[Header("Scene Ready Event")]
 	[SerializeField] private VoidEventChannelSO m_OnSceneReady = default; //Raised when the scene is loaded and set active
 
-
-	private void Start()
-	{
-		SpawnPlayer();
-	}
 	
 	private void OnEnable()
 	{
@@ -46,7 +41,7 @@ public class SpawnSystem : MonoBehaviour
 		Spawn(FindSpawnIndex(m_PathTaken?.Path ?? null));
 	}
 
-	void Reset()
+	private void Reset()
 	{
 		AutoFill();
 	}

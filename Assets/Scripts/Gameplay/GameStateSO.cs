@@ -13,7 +13,7 @@ public enum GameState
     Combat,//enemy is nearby and alert, player can't open Inventory or initiate dialogues, but can pause the game
 }
 
-//[CreateAssetMenu(fileName = "GameState", menuName = "Gameplay/GameState", order = 51)]
+[CreateAssetMenu(fileName = "GameState", menuName = "Gameplay/GameState", order = 51)]
 public class GameStateSO : ScriptableObject 
 {
     public GameState currentGameState => m_CurrentGameState;

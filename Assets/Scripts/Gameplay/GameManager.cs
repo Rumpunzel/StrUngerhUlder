@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    //[SerializeField] private QuestManagerSO m_QuestManager = default;
+
+    [SerializeField] private GameStateSO m_GameState = default;
+
+
+    private void Start()
+    {
+        StartGame();
+    }
+
+
+    public void PauseGame() { }
+
+    public void UnpauseGame()
+    {
+        m_GameState.ResetToPreviousGameState(); 
+    }
+
+
+    private void StartGame()
+    {
+        m_GameState.UpdateGameState(GameState.Gameplay);
+        //m_QuestManager.StartGame();
+    }
+}
