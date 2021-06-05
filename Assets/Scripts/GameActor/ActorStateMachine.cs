@@ -4,7 +4,6 @@ using UnityEngine;
 using GameActor;
 
 [RequireComponent(typeof(CharacterMovement))]
-[RequireComponent(typeof(PerceptionArea))]
 [RequireComponent(typeof(Animator))]
 public class ActorStateMachine : MonoBehaviour
 {
@@ -26,7 +25,6 @@ public class ActorStateMachine : MonoBehaviour
     [Range(0f, 1f)] [SerializeField] private float m_RunPercentage = .5f;
 
     private CharacterMovement m_CharacterMovement;
-    private PerceptionArea m_PerceptionArea;
     private Animator m_Animator;
     private k_STATES m_CurrentState;
 
@@ -50,7 +48,6 @@ public class ActorStateMachine : MonoBehaviour
     private void Awake()
 	{
         m_CharacterMovement = GetComponent<CharacterMovement>();
-        m_PerceptionArea = GetComponent<PerceptionArea>();
 		m_Animator = GetComponent<Animator>();
 	}
 
@@ -151,7 +148,7 @@ public class ActorStateMachine : MonoBehaviour
     # region Interaction
     private void HandleInteraction()
     {
-        PerceptionArea.SpottedTransform spottedTransform = m_PerceptionArea.CheckAreaForObjects();
+        /*PerceptionArea.SpottedTransform spottedTransform = m_PerceptionArea.CheckAreaForObjects();
 
         if (spottedTransform == null) return;
 
@@ -166,7 +163,7 @@ public class ActorStateMachine : MonoBehaviour
             DestinationInput = spottedTransform.position;
         }
 
-        m_CanReceiveInput = false;
+        m_CanReceiveInput = false;*/
     }
     # endregion
 
