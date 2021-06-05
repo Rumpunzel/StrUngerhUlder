@@ -8,13 +8,11 @@ using Strungerhulder.StateMachine.ScriptableObjects;
 [CreateAssetMenu(fileName = "AerialMovement", menuName = "State Machines/Actions/Aerial Movement")]
 public class AerialMovementActionSO : StateActionSO
 {
-	public float Speed => m_Speed;
-	public float Acceleration => m_Acceleration;
-
 	[Tooltip("Desired horizontal movement speed while in the air")]
-	[SerializeField] [Range(0.1f, 100f)] private float m_Speed = 10f;
+	[Range(0.1f, 100f)] public float speed = 10f;
+
 	[Tooltip("The acceleration applied to reach the desired speed")]
-	[SerializeField] [Range(0.1f, 100f)] private float m_Acceleration = 20f;
+	[Range(0.1f, 100f)] public float acceleration = 20f;
 
 	protected override StateAction CreateAction() => new AerialMovementAction();
 }
@@ -34,11 +32,9 @@ public class AerialMovementAction : StateAction
 	{
 		Vector3 velocity = m_Protagonist.movementVector;
 		Vector3 input = m_Protagonist.movementInput;
-		float speed = OriginSO.Speed;
-		float acceleration = OriginSO.Acceleration;
 
-		SetVelocityPerAxis(ref velocity.x, input.x, acceleration, speed);
-		SetVelocityPerAxis(ref velocity.z, input.z, acceleration, speed);
+		SetVelocityPerAxis(ref velocity.x, input.x, OriginSO.acceleration, OriginSO.speed);
+		SetVelocityPerAxis(ref velocity.z, input.z, OriginSO.acceleration, OriginSO.acceleration);
 
 		m_Protagonist.movementVector = velocity;
 	}

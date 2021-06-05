@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.AI;
 using Strungerhulder.StateMachine;
 using Strungerhulder.StateMachine.ScriptableObjects;
 using Moment = Strungerhulder.StateMachine.StateAction.SpecificMoment;
@@ -20,9 +21,11 @@ public class AnimatorMoveSpeedAction : StateAction
 	//Component references
 	private Animator m_Animator;
 	private Protagonist m_Protagonist;
+	private NavMeshAgent m_NavAgent;
 
 	private new AnimatorParameterActionSO m_OriginSO => (AnimatorParameterActionSO)base.OriginSO; // The SO this StateAction spawned from
 	private int m_ParameterHash;
+
 
 	public AnimatorMoveSpeedAction(int parameterHash)
 	{
@@ -33,12 +36,15 @@ public class AnimatorMoveSpeedAction : StateAction
 	{
 		m_Animator = stateMachine.GetComponent<Animator>();
 		m_Protagonist = stateMachine.GetComponent<Protagonist>();
+		m_NavAgent = stateMachine.GetComponent<NavMeshAgent>();
 	}
 
 	public override void OnUpdate()
 	{
-		//TODO: do we like that we're using the magnitude here, per frame? Can this be done in a smarter way?
-		float normalisedSpeed = m_Protagonist.movementInput.magnitude;
+		float normalisedSpeed = m_Protagonist.movingToDestination ?
+			m_NavAgent.velocity.magnitude :
+			m_Protagonist.movementInput.magnitude;
+		
 		m_Animator.SetFloat(m_ParameterHash, normalisedSpeed);
 	}
 }

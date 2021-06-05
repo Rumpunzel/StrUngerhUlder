@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045996ab843bdf443a5ada19199d2ec5, type: 3}
-  m_Name: AerialMovement
+  m_Script: {fileID: 11500000, guid: 71b68f7632c335140a184ac773bd468a, type: 3}
+  m_Name: EnableNavMeshAgent
   m_EditorClassIdentifier: 
-  speed: 12
-  acceleration: 40
+  controllerType: 1

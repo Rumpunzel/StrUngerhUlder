@@ -10,6 +10,11 @@ using Moment = Strungerhulder.StateMachine.StateAction.SpecificMoment;
 [CreateAssetMenu(fileName = "AnimatorParameterAction", menuName = "State Machines/Actions/Set Animator Parameter")]
 public class AnimatorParameterActionSO : StateActionSO
 {
+    public enum ParameterType
+    {
+        Bool, Int, Float, Trigger,
+    }
+	
 	public ParameterType parameterType = default;
 	public string parameterName = default;
 
@@ -20,11 +25,6 @@ public class AnimatorParameterActionSO : StateActionSO
 	public Moment whenToRun = default; // Allows this StateActionSO type to be reused for all 3 state moments
 
 	protected override StateAction CreateAction() => new AnimatorParameterAction(Animator.StringToHash(parameterName));
-
-	public enum ParameterType
-	{
-		Bool, Int, Float, Trigger,
-	}
 }
 
 public class AnimatorParameterAction : StateAction

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: JumpAscending
   m_EditorClassIdentifier: 
   m_Actions:
+  - {fileID: 11400000, guid: 5c40758ee2a58444ebf2cff5fe1bf66b, type: 2}
   - {fileID: 11400000, guid: 25cf57881388bbc419ab1b4e471764b5, type: 2}
   - {fileID: 11400000, guid: 3d058c8889ee86540b2d1d2f06ee97f0, type: 2}
   - {fileID: 11400000, guid: e7d567828fee4964c9f124b0053119d0, type: 2}

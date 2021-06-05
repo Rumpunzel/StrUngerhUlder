@@ -8,22 +8,22 @@ public class DescendActionSO : StateActionSO<DescendAction> { }
 public class DescendAction : StateAction
 {
 	//Component references
-	private Protagonist m_ProtagonistScript;
+	private Protagonist m_Protagonist;
 
 	private float m_VerticalMovement;
 
 	public override void Awake(StateMachine stateMachine)
 	{
-		m_ProtagonistScript = stateMachine.GetComponent<Protagonist>();
+		m_Protagonist = stateMachine.GetComponent<Protagonist>();
 	}
 
 	public override void OnStateEnter()
 	{
-		m_VerticalMovement = m_ProtagonistScript.movementVector.y;
+		m_VerticalMovement = m_Protagonist.movementVector.y;
 
 		//Prevents a double jump if the player keeps holding the jump button
 		//Basically it "consumes" the input
-		m_ProtagonistScript.jumpInput = false;
+		m_Protagonist.jumpInput = false;
 	}
 
 	public override void OnUpdate()
@@ -34,6 +34,6 @@ public class DescendAction : StateAction
 		//Cap the maximum so the player doesn't reach incredible speeds when freefalling from high positions
 		m_VerticalMovement = Mathf.Clamp(m_VerticalMovement, Protagonist.MAX_FALL_SPEED, Protagonist.MAX_RISE_SPEED);
 
-		m_ProtagonistScript.movementVector.y = m_VerticalMovement;
+		m_Protagonist.movementVector.y = m_VerticalMovement;
 	}
 }

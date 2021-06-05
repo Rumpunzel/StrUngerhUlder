@@ -12,17 +12,17 @@ public class GroundGravityActionSO : StateActionSO<GroundGravityAction>
 public class GroundGravityAction : StateAction
 {
 	//Component references
-	private Protagonist m_ProtagonistScript;
+	private Protagonist m_Protagonist;
 
 	private new GroundGravityActionSO m_OriginSO => (GroundGravityActionSO)base.OriginSO; // The SO this StateAction spawned from
 
 	public override void Awake(StateMachine stateMachine)
 	{
-		m_ProtagonistScript = stateMachine.GetComponent<Protagonist>();
+		m_Protagonist = stateMachine.GetComponent<Protagonist>();
 	}
 
 	public override void OnUpdate()
 	{
-		m_ProtagonistScript.movementVector.y = m_OriginSO.verticalPull;
+		m_Protagonist.movementVector.y = m_OriginSO.verticalPull;
 	}
 }

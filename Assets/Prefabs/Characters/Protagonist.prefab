@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2052951113435455109}
   - component: {fileID: 2052951113435455108}
+  - component: {fileID: 6302430076133886639}
   - component: {fileID: 2052951113435455111}
   - component: {fileID: 2052951113435455110}
   - component: {fileID: 3910216281229843498}
@@ -55,6 +56,28 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!195 &6302430076133886639
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052951113435455105}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &2052951113435455111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,9 +90,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4705082ac131aa4f922e8cb97c9344a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
   gameplayCameraTransform: {fileID: 11400000, guid: 8c24202029e259941afcfc7f68d3a014, type: 2}
+  m_InputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
   m_OpenInventoryChannel: {fileID: 0}
+  m_WorldLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &2052951113435455110
 MonoBehaviour:
   m_ObjectHideFlags: 0

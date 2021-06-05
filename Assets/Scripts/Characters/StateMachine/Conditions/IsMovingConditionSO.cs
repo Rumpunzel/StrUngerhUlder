@@ -22,6 +22,7 @@ public class IsMovingCondition : Condition
     {
         Vector3 movementVector = m_ProtagonistScript.movementInput;
         movementVector.y = 0f;
+        
         return movementVector.sqrMagnitude > m_OriginSO.treshold;
     }
 }

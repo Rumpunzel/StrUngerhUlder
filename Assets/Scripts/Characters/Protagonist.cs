@@ -1,36 +1,80 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// <para>This component consumes input on the InputReader and stores its values. The input is then read, and manipulated, by the StateMachines's Actions.</para>
 /// </summary>
+[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class Protagonist : MonoBehaviour
 {
-	[SerializeField] private InputReader m_InputReader = default;
+	# region Constants
+    public const float GRAVITY_MULTIPLIER = 2.2f;
+    public const float MAX_FALL_SPEED = -50f;
+    public const float MAX_RISE_SPEED = 100f;
+    //public const float GRAVITY_COMEBACK_MULTIPLIER = .03f;
+    //public const float GRAVITY_DIVIDER = .9f;
+    public const float AIR_RESISTANCE = 5f;
+    public const float TURN_RATE = 500f;
+	# endregion
 
     public TransformAnchor gameplayCameraTransform;
 
+	[SerializeField] private InputReader m_InputReader = default;
 	[SerializeField] private VoidEventChannelSO m_OpenInventoryChannel = default;
 
-	private Vector2 m_InputVector;
-	private float m_PreviousSpeed;
+	[Space]
+    [SerializeField] private LayerMask m_WorldLayer;
 
-	//These fields are read and manipulated by the StateMachine actions
+
+    //These fields are read and manipulated by the StateMachine actions
+    #region StateMachine Fields
+    //Set after a destination input
+    public bool movingToDestination {
+		get { return m_MovingToDestination; }
+		set {
+            m_MovingToDestination = value;
+			m_CharacterController.enabled = !m_MovingToDestination;
+			m_NavAgent.enabled = m_MovingToDestination;
+		}
+	} 
+    [NonSerialized] public Vector3 movementInput; //Initial input coming from the Protagonist script
+    [NonSerialized] public Vector3 movementVector; //Final movement vector, manipulated by the StateMachine actions
+
+    [NonSerialized] public Vector3 destinationInput; //Initial click input coming from the Protagonist script
+    [NonSerialized] public Vector3 destinationPoint; //Final destination point, manipulated by the StateMachine actions
+
+    [NonSerialized] public bool isRunning; // Used when using the keyboard to run, brings the normalised speed to 1
+    
 	[NonSerialized] public bool jumpInput;
+
 	[NonSerialized] public bool extraActionInput;
 	[NonSerialized] public bool attackInput;
-	[NonSerialized] public Vector3 movementInput; //Initial input coming from the Protagonist script
-	[NonSerialized] public Vector3 movementVector; //Final movement vector, manipulated by the StateMachine actions
-	[NonSerialized] public ControllerColliderHit lastHit;
-	[NonSerialized] public bool isRunning; // Used when using the keyboard to run, brings the normalised speed to 1
 
-	public const float GRAVITY_MULTIPLIER = 2.2f;
-	public const float MAX_FALL_SPEED = -50f;
-	public const float MAX_RISE_SPEED = 100f;
-	//public const float GRAVITY_COMEBACK_MULTIPLIER = .03f;
-	//public const float GRAVITY_DIVIDER = .9f;
-	public const float AIR_RESISTANCE = 5f;
-    public const float TURN_RATE = 500f;
+	[NonSerialized] public ControllerColliderHit lastHit;
+    #endregion
+
+
+	private CharacterController m_CharacterController;
+	private NavMeshAgent m_NavAgent;
+    private bool m_MovingToDestination;
+	private bool m_GettingPointFromMouse;
+
+    private Vector2 m_InputVector;
+    private float m_PreviousSpeed;
+
+
+	private void Awake()
+	{
+		m_CharacterController = GetComponent<CharacterController>();
+		m_NavAgent = GetComponent<NavMeshAgent>();
+		m_NavAgent.angularSpeed = TURN_RATE;
+		
+		movingToDestination = false;
+	}
+
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
@@ -40,9 +84,13 @@ public class Protagonist : MonoBehaviour
 	//Adds listeners for events being triggered in the InputReader script
 	private void OnEnable()
 	{
+        m_InputReader.moveEvent += OnMove;
+        m_InputReader.moveToPointEvent += OnMoveToPoint;
+        m_InputReader.moveToPointCanceledEvent += OnMoveToPointCanceled;
+
         m_InputReader.jumpEvent += OnJumpInitiated;
         m_InputReader.jumpCanceledEvent += OnJumpCanceled;
-        m_InputReader.moveEvent += OnMove;
+
         m_InputReader.startedRunning += OnStartedRunning;
         m_InputReader.stoppedRunning += OnStoppedRunning;
         //m_InputReader.attackEvent += OnStartedAttack;
@@ -52,9 +100,13 @@ public class Protagonist : MonoBehaviour
 	//Removes all listeners to the events coming from the InputReader script
 	private void OnDisable()
 	{
+        m_InputReader.moveEvent -= OnMove;
+        m_InputReader.moveToPointEvent -= OnMoveToPoint;
+        m_InputReader.moveToPointCanceledEvent -= OnMoveToPointCanceled;
+
         m_InputReader.jumpEvent -= OnJumpInitiated;
         m_InputReader.jumpCanceledEvent -= OnJumpCanceled;
-        m_InputReader.moveEvent -= OnMove;
+
         m_InputReader.startedRunning -= OnStartedRunning;
         m_InputReader.stoppedRunning -= OnStoppedRunning;
         //m_InputReader.attackEvent -= OnStartedAttack;
@@ -63,8 +115,15 @@ public class Protagonist : MonoBehaviour
 
 	private void Update()
 	{
+		if (!movingToDestination)
+            destinationInput = transform.position;
+
+		if (m_GettingPointFromMouse)
+			GetPointFromMouse();
+		
 		RecalculateMovement();
 	}
+
 
 	private void RecalculateMovement()
 	{
@@ -111,39 +170,37 @@ public class Protagonist : MonoBehaviour
 		targetSpeed = Mathf.Lerp(m_PreviousSpeed, targetSpeed, Time.deltaTime * 4f);
 
 		movementInput = adjustedMovement.normalized * targetSpeed;
-        if (movementInput != Vector3.zero)
-		{
-            Quaternion toRotation = Quaternion.LookRotation(movementInput, Vector3.up);
-            this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, toRotation, TURN_RATE * Time.deltaTime);
-		}
 
 		m_PreviousSpeed = targetSpeed;
 	}
 
+
+	private void GetPointFromMouse()
+	{
+        Vector3 mousePosition = Mouse.current.position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        RaycastHit hit;
+		
+        if (Physics.Raycast(ray, out hit, 100f, m_WorldLayer))
+        	destinationInput = hit.point;
+	}
+
+
 	//---- EVENT LISTENERS ----
 
-	private void OnMove(Vector2 movement)
-	{
-		m_InputVector = movement;
-	}
+	private void OnMove(Vector2 movement) => m_InputVector = movement;
 
-	private void OnJumpInitiated()
-	{
-		jumpInput = true;
-	}
+    private void OnMoveToPoint() => m_GettingPointFromMouse = true;
+    private void OnMoveToPointCanceled() =>  m_GettingPointFromMouse = false;
 
-	private void OnJumpCanceled()
-	{
-		jumpInput = false;
-	}
+	private void OnJumpInitiated() => jumpInput = true;
+	private void OnJumpCanceled() => jumpInput = false;
 
 	private void OnStoppedRunning() => isRunning = false;
-
 	private void OnStartedRunning() => isRunning = true;
 
 
 	private void OnStartedAttack() => attackInput = true;
-
 	// Triggered from Animation Event
 	public void ConsumeAttackInput() => attackInput = false;
 }

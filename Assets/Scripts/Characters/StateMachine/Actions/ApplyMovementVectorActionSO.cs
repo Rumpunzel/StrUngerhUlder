@@ -8,18 +8,24 @@ public class ApplyMovementVectorActionSO : StateActionSO<ApplyMovementVectorActi
 public class ApplyMovementVectorAction : StateAction
 {
 	//Component references
-	private Protagonist m_ProtagonistScript;
+	private Protagonist m_Protagonist;
 	private CharacterController m_CharacterController;
 
 	public override void Awake(StateMachine stateMachine)
 	{
-		m_ProtagonistScript = stateMachine.GetComponent<Protagonist>();
+		m_Protagonist = stateMachine.GetComponent<Protagonist>();
 		m_CharacterController = stateMachine.GetComponent<CharacterController>();
 	}
 
 	public override void OnUpdate()
 	{
-		m_CharacterController.Move(m_ProtagonistScript.movementVector * Time.deltaTime);
-		m_ProtagonistScript.movementVector = m_CharacterController.velocity;
+		m_CharacterController.Move(m_Protagonist.movementVector * Time.deltaTime);
+		m_Protagonist.movementVector = m_CharacterController.velocity;
+
+        if (!(m_Protagonist.movementVector.x == 0f && m_Protagonist.movementVector.z == 0f))
+        {
+            Quaternion toRotation = Quaternion.LookRotation(new Vector3(m_Protagonist.movementVector.x, 0f, m_Protagonist.movementVector.z), Vector3.up);
+            m_Protagonist.transform.rotation = Quaternion.RotateTowards(m_Protagonist.transform.rotation, toRotation, Protagonist.TURN_RATE * Time.deltaTime);
+        }
 	}
 }

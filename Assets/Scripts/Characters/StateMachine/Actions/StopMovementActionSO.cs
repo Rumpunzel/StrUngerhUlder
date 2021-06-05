@@ -27,18 +27,25 @@ public class StopMovement : StateAction
 	public override void OnUpdate()
 	{
 		if (OriginSO.Moment == SpecificMoment.OnUpdate)
-			m_Protagonist.movementVector = Vector3.zero;
+            NullMovement();
 	}
 
 	public override void OnStateEnter()
 	{
 		if (OriginSO.Moment == SpecificMoment.OnStateEnter)
-			m_Protagonist.movementVector = Vector3.zero;
+            NullMovement();
 	}
 
 	public override void OnStateExit()
 	{
 		if (OriginSO.Moment == SpecificMoment.OnStateExit)
-			m_Protagonist.movementVector = Vector3.zero;
+            NullMovement();
+	}
+
+
+	private void NullMovement()
+	{
+        m_Protagonist.destinationInput = m_Protagonist.transform.position;
+        m_Protagonist.movementVector = Vector3.zero;
 	}
 }

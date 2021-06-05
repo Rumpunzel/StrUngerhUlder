@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "MoveToPoint",
+                    "type": "Button",
+                    "id": "d92fa8ef-1685-412e-a51b-f89658be99c3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "d603fc26-b424-4cff-a593-71ee48e3d0ef",
@@ -368,6 +376,17 @@
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
                     "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad9a6e95-aded-495d-8b6b-c70aade61126",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveToPoint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
