@@ -22,12 +22,14 @@ public class HasHitHeadCondition : Condition
 	protected override bool Statement()
 	{
 		bool isMovingUpwards = m_ProtagonistScript.movementVector.y > 0f;
+
 		if (isMovingUpwards)
 		{
 			// Making sure the collision is near the top of the head
 			float permittedDistance = m_CharacterController.radius / 2f;
 			float topPositionY = m_Transform.position.y + m_CharacterController.height;
 			float distance = Mathf.Abs(m_ProtagonistScript.lastHit.point.y - topPositionY);
+			
 			if (distance <= permittedDistance)
 			{
 				m_ProtagonistScript.jumpInput = false;

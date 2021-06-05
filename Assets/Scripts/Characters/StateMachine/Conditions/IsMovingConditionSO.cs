@@ -5,13 +5,14 @@ using Strungerhulder.StateMachine.ScriptableObjects;
 [CreateAssetMenu(menuName = "State Machines/Conditions/Started Moving")]
 public class IsMovingConditionSO : StateConditionSO<IsMovingCondition>
 {
-    public float treshold = 0.02f;
+    public float threshold = 0.02f;
 }
 
 public class IsMovingCondition : Condition
 {
     private Protagonist m_ProtagonistScript;
-    private new IsMovingConditionSO m_OriginSO => (IsMovingConditionSO)base.OriginSO; // The SO this Condition spawned from
+    protected new IsMovingConditionSO OriginSO => (IsMovingConditionSO)base.OriginSO; // The SO this Condition spawned from
+
 
     public override void Awake(StateMachine stateMachine)
     {
@@ -22,7 +23,7 @@ public class IsMovingCondition : Condition
     {
         Vector3 movementVector = m_ProtagonistScript.movementInput;
         movementVector.y = 0f;
-        
-        return movementVector.sqrMagnitude > m_OriginSO.treshold;
+
+        return movementVector.sqrMagnitude > OriginSO.threshold;
     }
 }

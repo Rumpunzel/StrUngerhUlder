@@ -15,14 +15,15 @@ public class IsActuallyMovingCondition : Condition
     private float m_Threshold;
     private CharacterController m_CharacterController;
 
-    public override void Awake(StateMachine stateMachine)
-    {
-        m_CharacterController = stateMachine.GetComponent<CharacterController>();
-    }
 
     public IsActuallyMovingCondition(float threshold)
     {
         m_Threshold = threshold;
+    }
+    
+    public override void Awake(StateMachine stateMachine)
+    {
+        m_CharacterController = stateMachine.GetComponent<CharacterController>();
     }
 
     protected override bool Statement()

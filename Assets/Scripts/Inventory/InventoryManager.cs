@@ -14,6 +14,11 @@ public class InventoryManager : MonoBehaviour
 	[SerializeField] ItemEventChannelSO m_RemoveItemEvent = default;
 	[SerializeField] private SaveSystem m_SaveSystem;
 
+
+    public void UseItemEventRaised(Item item) => RemoveItem(item);
+    public void EquipItemEventRaised(Item item) { }
+
+
 	private void OnEnable()
 	{
 		//Check if the event exists to avoid errors
@@ -36,7 +41,7 @@ public class InventoryManager : MonoBehaviour
 	}
 
 
-	void AddItemWithUIUpdate(Item item)
+	private void AddItemWithUIUpdate(Item item)
 	{
 		m_CurrentInventory.Add(item);
 
@@ -47,7 +52,7 @@ public class InventoryManager : MonoBehaviour
 		}
 	}
 
-	void RemoveItemWithUIUpdate(Item item)
+	private void RemoveItemWithUIUpdate(Item item)
 	{
 		ItemStack itemToUpdate = new ItemStack();
 
@@ -63,27 +68,16 @@ public class InventoryManager : MonoBehaviour
 
 	}
 
-	void AddItem(Item item)
+	private void AddItem(Item item)
 	{
 		m_CurrentInventory.Add(item);
 		m_SaveSystem.SaveDataToDisk();
 	}
 
-	void RemoveItem(Item item)
+	private void RemoveItem(Item item)
 	{
 		m_CurrentInventory.Remove(item);
 		m_SaveSystem.SaveDataToDisk();
-	}
-	
-
-	public void UseItemEventRaised(Item item)
-	{
-		RemoveItem(item);
-	}
-
-	public void EquipItemEventRaised(Item item)
-	{
-
 	}
 }
 

@@ -12,6 +12,7 @@ public class ApplyDestinationPointAction : StateAction
 	private Protagonist m_Protagonist;
 	private NavMeshAgent m_NavAgent;
 
+
 	public override void Awake(StateMachine stateMachine)
 	{
 		m_Protagonist = stateMachine.GetComponent<Protagonist>();

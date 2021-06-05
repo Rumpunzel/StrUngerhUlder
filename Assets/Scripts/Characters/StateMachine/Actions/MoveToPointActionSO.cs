@@ -31,6 +31,6 @@ public class MoveToPointAction : StateAction
 	{
 		m_NavAgent.speed = m_OriginSO.speed;
 		m_NavAgent.acceleration = m_OriginSO.acceleration;
-		m_Protagonist.destinationPoint = m_Protagonist.destinationInput;
+        m_Protagonist.destinationPoint = m_Protagonist.destinationInput;
 	}
 }

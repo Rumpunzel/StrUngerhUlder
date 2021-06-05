@@ -15,39 +15,45 @@ public class Inventory : ScriptableObject
     public int InventorySize => m_InventorySize;
 	public List<ItemStack> Items => m_Items;
 
-	public void Add(Item item, int count = 1)
+
+	public bool Add(Item item)
 	{
-		if (count <= 0)
-			return;
-
-		for (int i = 0; i < m_Items.Count; i++)
+		foreach (ItemStack currentItemStack in m_Items)
 		{
-			ItemStack currentItemStack = m_Items[i];
-
-			if ((item == currentItemStack.Item) && (currentItemStack.Amount + count <= item.StackSize))
+			if (item == currentItemStack.Item && currentItemStack.Amount < item.StackSize)
 			{
 				// Only add to the amount if the item is usable 
 				if (currentItemStack.Item.ItemType.ActionType == ItemInventoryActionType.use)
 				{
-					currentItemStack.Amount += count;
+					currentItemStack.Amount++;
+					return true;
 				}
-
-				return;
+				
+				break;
 			}
 		}
 
-		while (m_Items.Count < m_InventorySize)
+		if (m_Items.Count < m_InventorySize)
 		{
-			int amountToSubtract = count <= item.StackSize ? count : item.StackSize;
-			m_Items.Add(new ItemStack(item, amountToSubtract));
-			count -= amountToSubtract;
-
-			if (count <= 0)
-				return;
+            m_Items.Add(new ItemStack(item, 1));
+			return true;
 		}
 		
 		// TODO: Drop the remaining items
+		return false;
 	}
+
+    public bool Add(Item item, int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+			if (!Add(item))
+				return false;
+		}
+
+		return true;
+    }
+
 
 	public void Remove(Item item, int count = 1)
 	{
@@ -105,7 +111,6 @@ public class Inventory : ScriptableObject
 		for (int i = 0; i < ingredients.Count; i++)
 		{
 			availabilityArray[i] = m_Items.Exists(o => o.Item == ingredients[i].Item && o.Amount >= ingredients[i].Amount);
-
 		}
 
 		return availabilityArray;

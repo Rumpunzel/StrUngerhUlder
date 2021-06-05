@@ -14,7 +14,8 @@ public class IsMovingToPointConditionSO : StateConditionSO<IsMovingToPointCondit
 public class IsMovingToPointCondition : Condition
 {
     private Protagonist m_ProtagonistScript;
-    private new IsMovingToPointConditionSO m_OriginSO => (IsMovingToPointConditionSO)base.OriginSO; // The SO this Condition spawned from
+    protected new IsMovingToPointConditionSO OriginSO => (IsMovingToPointConditionSO)base.OriginSO; // The SO this Condition spawned from
+
 
     public override void Awake(StateMachine stateMachine)
     {
@@ -23,12 +24,12 @@ public class IsMovingToPointCondition : Condition
 
     protected override bool Statement()
     {
-        if (m_ProtagonistScript.movementInput.magnitude > m_OriginSO.overrideSpeedThreshold)
+        if (m_ProtagonistScript.movementInput.magnitude > OriginSO.overrideSpeedThreshold)
             return false;
         
         Vector3 destination = m_ProtagonistScript.destinationInput;
         Vector3 distance = destination - m_ProtagonistScript.transform.position;
         
-        return distance.sqrMagnitude > m_OriginSO.minimumDistance;
+        return distance.sqrMagnitude > OriginSO.minimumDistance;
     }
 }

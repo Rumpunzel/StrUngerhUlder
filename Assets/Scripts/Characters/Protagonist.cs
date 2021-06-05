@@ -96,8 +96,8 @@ public class Protagonist : MonoBehaviour
 		
 		if (m_GettingPointFromMouse)
 			GetPointFromMouse();
-		
-		RecalculateMovement();
+		else
+			RecalculateMovement();
 	}
 
 

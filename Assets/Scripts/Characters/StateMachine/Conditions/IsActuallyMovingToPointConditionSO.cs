@@ -13,8 +13,8 @@ public class IsActuallyMovingToPointConditionSO : StateConditionSO
 
 public class IsActuallyMovingToPointCondition : Condition
 {
-    private float m_Threshold;
     private NavMeshAgent m_NavAgent;
+    private float m_Threshold;
 
     public override void Awake(StateMachine stateMachine)
     {

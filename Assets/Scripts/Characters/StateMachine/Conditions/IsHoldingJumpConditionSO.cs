@@ -10,6 +10,7 @@ public class IsHoldingJumpCondition : Condition
     //Component references
     private Protagonist m_ProtagonistScript;
 
+
     public override void Awake(StateMachine stateMachine)
     {
         m_ProtagonistScript = stateMachine.GetComponent<Protagonist>();

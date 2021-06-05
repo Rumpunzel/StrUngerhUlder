@@ -19,9 +19,8 @@ public class AerialMovementActionSO : StateActionSO
 
 public class AerialMovementAction : StateAction
 {
-	private new AerialMovementActionSO OriginSO => (AerialMovementActionSO)base.OriginSO;
-
 	private Protagonist m_Protagonist;
+    protected new AerialMovementActionSO OriginSO => (AerialMovementActionSO)base.OriginSO;
 
 	public override void Awake(StateMachine stateMachine)
 	{

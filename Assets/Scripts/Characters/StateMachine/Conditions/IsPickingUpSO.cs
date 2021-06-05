@@ -8,25 +8,23 @@ public class IsPickingUpSO : StateConditionSO<IsPickingUpCondition> { }
 public class IsPickingUpCondition : Condition
 {
 	//Component references
-	private InteractionManager m_InteractScript;
+	private InteractionManager m_InteractionManager;
 
-	public override void Awake(StateMachine stateMachine)
+
+    public override void Awake(StateMachine stateMachine)
 	{
-		m_InteractScript = stateMachine.GetComponent<InteractionManager>();
+		m_InteractionManager = stateMachine.GetComponent<InteractionManager>();
 	}
 
 	protected override bool Statement()
 	{
-		if (m_InteractScript.currentInteractionType == InteractionType.PickUp)
-		{
-			// Consume it
-			m_InteractScript.currentInteractionType = InteractionType.None;
-
-			return true;
-		}
-		else
-		{
+		if (m_InteractionManager.currentInteraction == null ||
+			m_InteractionManager.currentInteraction.type != InteractionType.PickUp)
 			return false;
-		}
+		
+
+		// Consume it
+		m_InteractionManager.currentInteraction.type = InteractionType.None;
+		return true;
 	}
 }

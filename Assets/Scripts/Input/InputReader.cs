@@ -25,6 +25,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	public event UnityAction attackCanceledEvent = delegate { };
 
 	public event UnityAction interactEvent = delegate { }; // Used to talk, pickup objects, interact with tools like the cooking cauldron
+    public event UnityAction interactCanceledEvent = delegate { };
 	public event UnityAction inventoryActionButtonEvent = delegate { };
 	# endregion
 
@@ -104,6 +105,9 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	{
 		if (context.phase == InputActionPhase.Performed)
 			interactEvent.Invoke();
+
+        if (context.phase == InputActionPhase.Canceled)
+        	interactCanceledEvent.Invoke();
 	}
 
 
