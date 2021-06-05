@@ -1,13 +1,9 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.InputSystem;
 
 /// <summary>
 /// <para>This component consumes input on the InputReader and stores its values. The input is then read, and manipulated, by the StateMachines's Actions.</para>
 /// </summary>
-[RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(NavMeshAgent))]
 public class Protagonist : MonoBehaviour
 {
 	# region Constants
@@ -31,15 +27,8 @@ public class Protagonist : MonoBehaviour
 
     //These fields are read and manipulated by the StateMachine actions
     #region StateMachine Fields
-    //Set after a destination input
-    public bool movingToDestination {
-		get { return m_MovingToDestination; }
-		set {
-            m_MovingToDestination = value;
-			m_CharacterController.enabled = !m_MovingToDestination;
-			m_NavAgent.enabled = m_MovingToDestination;
-		}
-	} 
+    [NonSerialized] public bool movingToDestination = false; //Set after a destination input
+
     [NonSerialized] public Vector3 movementInput; //Initial input coming from the Protagonist script
     [NonSerialized] public Vector3 movementVector; //Final movement vector, manipulated by the StateMachine actions
 
@@ -57,23 +46,10 @@ public class Protagonist : MonoBehaviour
     #endregion
 
 
-	private CharacterController m_CharacterController;
-	private NavMeshAgent m_NavAgent;
-    private bool m_MovingToDestination;
 	private bool m_GettingPointFromMouse;
 
     private Vector2 m_InputVector;
     private float m_PreviousSpeed;
-
-
-	private void Awake()
-	{
-		m_CharacterController = GetComponent<CharacterController>();
-		m_NavAgent = GetComponent<NavMeshAgent>();
-		m_NavAgent.angularSpeed = TURN_RATE;
-		
-		movingToDestination = false;
-	}
 
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -117,7 +93,7 @@ public class Protagonist : MonoBehaviour
 	{
 		if (!movingToDestination)
             destinationInput = transform.position;
-
+		
 		if (m_GettingPointFromMouse)
 			GetPointFromMouse();
 		
@@ -177,12 +153,11 @@ public class Protagonist : MonoBehaviour
 
 	private void GetPointFromMouse()
 	{
-        Vector3 mousePosition = Mouse.current.position.ReadValue();
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(m_InputReader.MousePosition());
         RaycastHit hit;
 		
         if (Physics.Raycast(ray, out hit, 100f, m_WorldLayer))
-        	destinationInput = hit.point;
+			destinationInput = hit.point;
 	}
 
 
@@ -191,7 +166,7 @@ public class Protagonist : MonoBehaviour
 	private void OnMove(Vector2 movement) => m_InputVector = movement;
 
     private void OnMoveToPoint() => m_GettingPointFromMouse = true;
-    private void OnMoveToPointCanceled() =>  m_GettingPointFromMouse = false;
+    private void OnMoveToPointCanceled() => m_GettingPointFromMouse = false;
 
 	private void OnJumpInitiated() => jumpInput = true;
 	private void OnJumpCanceled() => jumpInput = false;

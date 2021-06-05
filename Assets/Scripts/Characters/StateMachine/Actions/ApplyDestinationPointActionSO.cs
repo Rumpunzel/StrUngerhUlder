@@ -21,6 +21,6 @@ public class ApplyDestinationPointAction : StateAction
 	public override void OnUpdate()
 	{
         m_NavAgent.destination = m_Protagonist.destinationPoint;
-        m_Protagonist.destinationPoint = m_Protagonist.transform.position;
+        //m_Protagonist.destinationPoint = m_Protagonist.transform.position;
 	}
 }

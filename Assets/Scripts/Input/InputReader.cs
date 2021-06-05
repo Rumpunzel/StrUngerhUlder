@@ -132,15 +132,11 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 
 	public void OnRun(InputAction.CallbackContext context)
 	{
-		switch (context.phase)
-		{
-			case InputActionPhase.Performed:
-				startedRunning.Invoke();
-				break;
-			case InputActionPhase.Canceled:
-				stoppedRunning.Invoke();
-				break;
-		}
+        if (context.phase == InputActionPhase.Performed)
+            startedRunning.Invoke();
+
+		if (context.phase == InputActionPhase.Canceled)
+            stoppedRunning.Invoke();
 	}
 
 	public void OnPause(InputAction.CallbackContext context)
@@ -220,31 +216,20 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	}
 
 	public bool LeftMouseDown() => Mouse.current.leftButton.isPressed;
+    public bool RightMouseDown() => Mouse.current.rightButton.isPressed;
+    public Vector2 MousePosition() => Mouse.current.position.ReadValue();
 
 
 
-	public void OnClick(InputAction.CallbackContext context)
-	{
-	}
+    public void OnClick(InputAction.CallbackContext context) { }
 
-	public void OnSubmit(InputAction.CallbackContext context)
-	{
-	}
+	public void OnSubmit(InputAction.CallbackContext context) { }
 
-	public void OnPoint(InputAction.CallbackContext context)
-	{
-	}
+	public void OnPoint(InputAction.CallbackContext context) { }
 
-	public void OnRightClick(InputAction.CallbackContext context)
-	{
-	}
+	public void OnRightClick(InputAction.CallbackContext context) { }
 
-	public void OnNavigate(InputAction.CallbackContext context)
-	{
-	}
+	public void OnNavigate(InputAction.CallbackContext context) { }
 
-	public void OnCloseInventory(InputAction.CallbackContext context)
-	{
-		closeInventoryEvent.Invoke();
-	}
+	public void OnCloseInventory(InputAction.CallbackContext context) => closeInventoryEvent.Invoke();
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Idle
   m_EditorClassIdentifier: 
   m_Actions:
+  - {fileID: 11400000, guid: 5c40758ee2a58444ebf2cff5fe1bf66b, type: 2}
   - {fileID: 11400000, guid: 37eab9d561762dd40813855c4b7f3776, type: 2}
   - {fileID: 11400000, guid: 126110da48b6d034b95654200e10209a, type: 2}
   - {fileID: 11400000, guid: ee29037448c25aa42a2a8b8431928f36, type: 2}

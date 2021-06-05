@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b38ddb36181a643aef8f4b1c34199d, type: 3}
   m_Name: IsMovingToPoint
   m_EditorClassIdentifier: 
-  minimumDistance: 0.1
+  minimumDistance: 0.02
+  overrideSpeedThreshold: 0.2

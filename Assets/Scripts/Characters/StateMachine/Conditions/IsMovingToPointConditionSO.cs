@@ -5,7 +5,10 @@ using Strungerhulder.StateMachine.ScriptableObjects;
 [CreateAssetMenu(menuName = "State Machines/Conditions/Started Moving To Point")]
 public class IsMovingToPointConditionSO : StateConditionSO<IsMovingToPointCondition>
 {
-    public float minimumDistance = 0.1f;
+    [Tooltip("Minimal distance to the point to actually move")]
+    public float minimumDistance = .02f;
+    [Tooltip("Maximal manual speed from which navigation can be enabled")]
+    public float overrideSpeedThreshold = .2f;
 }
 
 public class IsMovingToPointCondition : Condition
@@ -20,7 +23,7 @@ public class IsMovingToPointCondition : Condition
 
     protected override bool Statement()
     {
-        if (m_ProtagonistScript.movementInput != Vector3.zero)
+        if (m_ProtagonistScript.movementInput.magnitude > m_OriginSO.overrideSpeedThreshold)
             return false;
         
         Vector3 destination = m_ProtagonistScript.destinationInput;

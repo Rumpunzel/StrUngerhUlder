@@ -42,7 +42,7 @@ public class AnimatorMoveSpeedAction : StateAction
 	public override void OnUpdate()
 	{
 		float normalisedSpeed = m_Protagonist.movingToDestination ?
-			m_NavAgent.velocity.magnitude :
+			m_NavAgent.velocity.magnitude / (m_NavAgent.speed * 2f) :
 			m_Protagonist.movementInput.magnitude;
 		
 		m_Animator.SetFloat(m_ParameterHash, normalisedSpeed);
