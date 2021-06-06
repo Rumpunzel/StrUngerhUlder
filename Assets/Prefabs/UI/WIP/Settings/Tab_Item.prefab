@@ -131,13 +131,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 9115052875433558162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa7c15a36589a494d85b3f722cd0eeb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b0779aea33b2ce4398d7cf33f8543a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localizedTabTitle: {fileID: 8821866469137432425}
-  _bgSelectedTab: {fileID: 9115052875433558161}
-  _colorSelectedTab: {r: 0.45490196, g: 0.30980393, b: 0.19607843, a: 1}
-  _colorUnselectedTab: {r: 0.93725497, g: 0.89019614, b: 0.75294125, a: 1}
+  m_LocalizedTabTitle: {fileID: 8821866469137432425}
+  m_BackgroundSelectedTab: {fileID: 9115052875433558161}
+  m_ColorSelectedTab: {r: 0.45490196, g: 0.30980393, b: 0.19607843, a: 0}
+  m_ColorUnselectedTab: {r: 0.9372549, g: 0.8901961, b: 0.7529412, a: 0}
 --- !u!1 &9115052875709954456
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,9 +206,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fe129390af88b40faa85c89db6820ea6, type: 2}
-  m_sharedMaterial: {fileID: -5592514773993622969, guid: fe129390af88b40faa85c89db6820ea6,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -293,6 +292,7 @@ MonoBehaviour:
       m_KeyId: 607506128896
       m_Key: 
     m_FallbackState: 0
+    m_WaitForCompletion: 1
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:

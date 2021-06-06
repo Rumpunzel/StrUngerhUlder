@@ -213,14 +213,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7048424685027339282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8decf51fce5024618bff0a4d68789bc1, type: 3}
+  m_Script: {fileID: 11500000, guid: bc3af73e8cdd0534bad4a1f98f2bec5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _imagePaginationPrefab: {fileID: 4854672706376042392, guid: e109f4e716dfb40f6b72daca9915eb6a,
-    type: 3}
-  _parentPagination: {fileID: 7048424685027339283}
-  _emptyPagination: {fileID: 21300000, guid: c0c863cad1ace4674964fcf9693e7868, type: 3}
-  _filledPagination: {fileID: 21300000, guid: 14d7f8c575c7340fe93d710ffc369d67, type: 3}
+  m_ImagePaginationPrefab: {fileID: 4854672706376042392, guid: e109f4e716dfb40f6b72daca9915eb6a, type: 3}
+  m_ParentPagination: {fileID: 7048424685027339283}
+  m_EmptyPagination: {fileID: 21300000, guid: c0c863cad1ace4674964fcf9693e7868, type: 3}
+  m_FilledPagination: {fileID: 21300000, guid: 14d7f8c575c7340fe93d710ffc369d67, type: 3}
 --- !u!1 &7048424685039854745
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,17 +307,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7048424685039854745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02a6bc9a95af04bb2824645c3268e511, type: 3}
+  m_Script: {fileID: 11500000, guid: 2311602621e0c704c8ee2fe4de98bafe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pagination: {fileID: 4380169374378362932}
-  _currentSelectedOption: {fileID: 7048424686388579767}
-  _bg: {fileID: 7048424685039854727}
-  _title: {fileID: 4000536134387010085}
-  _colorSelected: {r: 0.45490196, g: 0.30980393, b: 0.19607843, a: 1}
-  _colorUnselected: {r: 0.93725497, g: 0.89019614, b: 0.75294125, a: 1}
-  _bgSelected: {fileID: 21300000, guid: 3407fc574197a4a2cbec1c7cd06eee31, type: 3}
-  _bgUnselected: {fileID: 21300000, guid: e02a109c7d3ef456082a6a9968b98f8e, type: 3}
+  m_Pagination: {fileID: 4380169374378362932}
+  m_CurrentSelectedOption: {fileID: 7048424686388579767}
+  m_Background: {fileID: 7048424685039854727}
+  m_Title: {fileID: 4000536134387010085}
+  m_ColorSelected: {r: 0.45490196, g: 0.30980393, b: 0.19607843, a: 0}
+  m_ColorUnselected: {r: 0.9372549, g: 0.8901961, b: 0.7529412, a: 0}
+  m_BackgroundSelected: {fileID: 21300000, guid: 3407fc574197a4a2cbec1c7cd06eee31, type: 3}
+  m_BackgroundUnselected: {fileID: 21300000, guid: e02a109c7d3ef456082a6a9968b98f8e, type: 3}
 --- !u!1 &7048424685744053211
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,9 +611,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Graphics Presets
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fe129390af88b40faa85c89db6820ea6, type: 2}
-  m_sharedMaterial: {fileID: -5592514773993622969, guid: fe129390af88b40faa85c89db6820ea6,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -699,6 +697,7 @@ MonoBehaviour:
       m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
+    m_WaitForCompletion: 1
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
@@ -782,9 +781,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fe129390af88b40faa85c89db6820ea6, type: 2}
-  m_sharedMaterial: {fileID: -5592514773993622969, guid: fe129390af88b40faa85c89db6820ea6,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

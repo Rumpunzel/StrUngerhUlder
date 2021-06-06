@@ -31,7 +31,7 @@ public class UIInventory : MonoBehaviour
 
 	[SerializeField] private ItemEventChannelSO m_UseItemEvent = default;
 	[SerializeField] private ItemEventChannelSO m_EquipItemEvent = default;
-	[SerializeField] private ItemEventChannelSO m_CookRecipeEvent = default;
+	//[SerializeField] private ItemEventChannelSO m_CookRecipeEvent = default;
 
 	[SerializeField] private InputReader m_InputReader = default;
 
@@ -118,7 +118,7 @@ public class UIInventory : MonoBehaviour
 		m_ActionButton.clicked += OnActionButtonClicked;
 		m_TabsPanel.tabChanged += OnChangeTab;
 
-		m_OnInteractionEndedEvent.OnEventRaised += InteractionEnded;
+		m_OnInteractionEndedEvent.onEventRaised += InteractionEnded;
 
 		foreach (UIInventoryItem item in m_AvailableItemSlots)
 		{
@@ -303,7 +303,7 @@ public class UIInventory : MonoBehaviour
 	{
 		Debug.Log("USE ITEM " + itemToUse.name);
 
-		m_UseItemEvent.OnEventRaised(itemToUse);
+		m_UseItemEvent.onEventRaised(itemToUse);
 		//update inventory
 		UpdateInventory();
 	}
@@ -312,13 +312,13 @@ public class UIInventory : MonoBehaviour
     private void EquipItem(Item itemToUse)
 	{
 		Debug.Log("Equip ITEM " + itemToUse.name);
-		m_EquipItemEvent.OnEventRaised(itemToUse);
+		m_EquipItemEvent.onEventRaised(itemToUse);
 	}
 
     private void CookRecipe(Item recipeToCook)
 	{
 		//get item
-		m_CookRecipeEvent.OnEventRaised(recipeToCook);
+		//m_CookRecipeEvent.onEventRaised(recipeToCook);
 
 		//update inspector
 		InspectItem(recipeToCook);

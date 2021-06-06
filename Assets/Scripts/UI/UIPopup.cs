@@ -67,12 +67,14 @@ public class UIPopup : MonoBehaviour
 				m_PopupButton2.SetButton(tableEntryReferenceCancel, false);
 				hasExitButton = true;
 				break;
+			
 			case PopupType.Quit:
 				isConfirmation = true;
 				m_PopupButton1.SetButton(tableEntryReferenceConfirm, true);
 				m_PopupButton2.SetButton(tableEntryReferenceCancel, false);
 				hasExitButton = false;
 				break;
+			
 			default:
 				isConfirmation = false;
 				hasExitButton = false;

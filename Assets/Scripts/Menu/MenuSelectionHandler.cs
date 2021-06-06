@@ -7,8 +7,9 @@ public class MenuSelectionHandler : MonoBehaviour
     public GameObject currentSelection;
     public GameObject mouseSelection;
 
-	[SerializeField] private InputReader m_InputReader;
 	[SerializeField] private GameObject m_DefaultSelection;
+    [Space]
+    [SerializeField] private InputReader m_InputReader;
 
 
 	private void OnEnable()
@@ -26,25 +27,20 @@ public class MenuSelectionHandler : MonoBehaviour
 	}
 
     // Debug
-    // private void OnGUI()
-    // {
-    //	 	GUILayout.Box($"_currentSelection: {(_currentSelection != null ? _currentSelection.name : "null")}");
-    //	 	GUILayout.Box($"_mouseSelection: {(_mouseSelection != null ? _mouseSelection.name : "null")}");
-    // }
+    /*private void OnGUI()
+    {
+    	GUILayout.Box($"currentSelection: {(currentSelection != null ? currentSelection.name : "null")}");
+    	GUILayout.Box($"_mouseSelection: {(mouseSelection != null ? mouseSelection.name : "null")}");
+    }*/
 
     private void Update()
     {
         if ((EventSystem.current != null) && (EventSystem.current.currentSelectedGameObject == null) && (currentSelection != null))
-        {
-            EventSystem.current.SetSelectedGameObject(currentSelection);
-        }
+        	EventSystem.current.SetSelectedGameObject(currentSelection);
     }
 
 
-	public void UpdateDefault(GameObject newDefault)
-	{
-		m_DefaultSelection = newDefault;
-	}
+	public void UpdateDefault(GameObject newDefault) => m_DefaultSelection = newDefault;
 
     public void Unselect()
     {

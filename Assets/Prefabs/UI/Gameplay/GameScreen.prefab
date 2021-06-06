@@ -58,7 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958f072b8e0f3f342b7dbe4c934aa5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ListInteractions: []
+  m_ListInteractions:
+  - {fileID: 11400000, guid: 04c0d0251209ac449a6f599a7f8e9fd6, type: 2}
   m_InteractionItem: {fileID: 6516763038935766687}
 --- !u!1 &867124562088404035
 GameObject:

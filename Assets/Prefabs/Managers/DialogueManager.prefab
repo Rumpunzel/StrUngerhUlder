@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8980297398607076178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8980297398607076177}
+  - component: {fileID: 8980297398607076176}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8980297398607076177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980297398607076178}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8980297398607076176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980297398607076178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee131159df1908a4b91c862bd98c918d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
+  _startDialogue: {fileID: 11400000, guid: e9945f5c770845e42acf0246ee34b1e1, type: 2}
+  _makeDialogueChoiceEvent: {fileID: 11400000, guid: fa6a7e55278ba904bbb682cc4a5d0d39, type: 2}
+  _openUIDialogueEvent: {fileID: 11400000, guid: c1f68cf192ad6704788fc87a74bb1445, type: 2}
+  _showChoicesUIEvent: {fileID: 11400000, guid: 61e5fbedb7b30f640ab02b1d3c0c06c2, type: 2}
+  _endDialogue: {fileID: 11400000, guid: 7bc01b5a4d52a7d4bbd7dc6a6b7f4386, type: 2}
+  _continueWithStep: {fileID: 11400000, guid: cfb3de3450b31494d8901ecbc3843436, type: 2}
+  _closeDialogueUIEvent: {fileID: 11400000, guid: 223137bc2a97a0f4884c772c650e90c4, type: 2}
+  _gameState: {fileID: 11400000, guid: 15d82ba1b4c453c4da667c5cc1d4ed6e, type: 2}

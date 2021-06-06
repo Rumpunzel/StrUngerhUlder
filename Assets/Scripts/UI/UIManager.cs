@@ -10,8 +10,6 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private MenuSelectionHandler m_SelectionHandler = default;
 	[SerializeField] private UIPopup m_PopupPanel = default;
 
-	//[SerializeField] private UIDialogueManager m_DialogueController = default;
-
 	[SerializeField] private UIInventory m_InventoryPanel = default;
 
 	[SerializeField] private UIInteraction m_InteractionPanel = default;
@@ -32,8 +30,8 @@ public class UIManager : MonoBehaviour
 	//[SerializeField] private DialogueLineChannelSO m_OpenUIDialogueEvent = default;
 	[SerializeField] private VoidEventChannelSO m_CloseUIDialogueEvent = default;
 
-	[Header("Inventory Events")]
-	[SerializeField] private VoidEventChannelSO m_OpenInventoryScreenForCookingEvent = default;
+	//[Header("Inventory Events")]
+	//[SerializeField] private VoidEventChannelSO m_OpenInventoryScreenForCookingEvent = default;
 
 	[Header("Interaction Events")]
 	[SerializeField] private InteractionUIEventChannelSO m_SetInteractionEvent = default;
@@ -47,13 +45,13 @@ public class UIManager : MonoBehaviour
 
 	private void Start()
 	{
-		m_OnSceneReady.OnEventRaised += ResetUI;
-		//m_OpenUIDialogueEvent.OnEventRaised += OpenUIDialogue;
-		m_CloseUIDialogueEvent.OnEventRaised += CloseUIDialogue;
+		m_OnSceneReady.onEventRaised += ResetUI;
+		//m_OpenUIDialogueEvent.onEventRaised += OpenUIDialogue;
+		m_CloseUIDialogueEvent.onEventRaised += CloseUIDialogue;
 		m_InputReader.menuPauseEvent += OpenUIPause; // subscription to open Pause UI event happens in OnEnabled, but the close Event is only subscribed to when the popup is open
 
-		m_OpenInventoryScreenForCookingEvent.OnEventRaised += SetInventoryScreenForCooking;
-		m_SetInteractionEvent.OnEventRaised += SetInteractionPanel;
+		//m_OpenInventoryScreenForCookingEvent.onEventRaised += SetInventoryScreenForCooking;
+		m_SetInteractionEvent.onEventRaised += SetInteractionPanel;
 
 		m_InputReader.openInventoryEvent += SetInventoryScreen;
 		m_InventoryPanel.closed += CloseInventoryScreen;
@@ -86,14 +84,14 @@ public class UIManager : MonoBehaviour
 	private void OnDestroy()
 	{
 		//Check if the event exists to avoid errors
-		m_OnSceneReady.OnEventRaised -= ResetUI;
-		//m_OpenUIDialogueEvent.OnEventRaised -= OpenUIDialogue;
-		m_CloseUIDialogueEvent.OnEventRaised -= CloseUIDialogue;
+		m_OnSceneReady.onEventRaised -= ResetUI;
+		//m_OpenUIDialogueEvent.onEventRaised -= OpenUIDialogue;
+		m_CloseUIDialogueEvent.onEventRaised -= CloseUIDialogue;
 
 		m_InputReader.menuPauseEvent -= OpenUIPause;
 
-		m_OpenInventoryScreenForCookingEvent.OnEventRaised -= SetInventoryScreenForCooking;
-		m_SetInteractionEvent.OnEventRaised -= SetInteractionPanel;
+		//m_OpenInventoryScreenForCookingEvent.onEventRaised -= SetInventoryScreenForCooking;
+		m_SetInteractionEvent.onEventRaised -= SetInteractionPanel;
 		m_InputReader.openInventoryEvent -= SetInventoryScreen;
 
 		m_InventoryPanel.closed -= CloseInventoryScreen;

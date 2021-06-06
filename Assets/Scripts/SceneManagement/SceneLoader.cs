@@ -36,12 +36,17 @@ public class SceneLoader : MonoBehaviour
 
 	private void OnEnable()
 	{
+		print("Scene Loader");
+        print(m_LoadMenu.GetHashCode());
+        print(m_LoadMenu.GetInstanceID());
+        print(m_LoadMenu.ToString());
+		print(m_LoadMenu.OnLoadingRequested);
 		m_LoadLocation.OnLoadingRequested += LoadLocation;
 		m_LoadMenu.OnLoadingRequested += LoadMenu;
-
-		#if UNITY_EDITOR
+		print(m_LoadMenu.OnLoadingRequested);
+#if UNITY_EDITOR
 		m_ColdStartupLocation.OnLoadingRequested += LocationColdStartup;
-		#endif
+#endif
 	}
 
 	private void OnDisable()
@@ -49,12 +54,12 @@ public class SceneLoader : MonoBehaviour
 		m_LoadLocation.OnLoadingRequested -= LoadLocation;
 		m_LoadMenu.OnLoadingRequested -= LoadMenu;
 		
-		#if UNITY_EDITOR
+#if UNITY_EDITOR
 		m_ColdStartupLocation.OnLoadingRequested -= LocationColdStartup;
-		#endif
+#endif
 	}
 
-	#if UNITY_EDITOR
+#if UNITY_EDITOR
 	/// <summary>
 	/// This special loading function is only used in the editor, when the developer presses Play in a Location scene, without passing by Initialisation.
 	/// </summary>
@@ -72,13 +77,14 @@ public class SceneLoader : MonoBehaviour
 			StartGameplay();
 		}
 	}
-	#endif
+#endif
 
 	/// <summary>
 	/// This function loads the location scenes passed as array parameter
 	/// </summary>
 	private void LoadLocation(GameSceneSO locationToLoad, bool showLoadingScreen)
 	{
+		print("Loading Location");
 		m_SceneToLoad = locationToLoad;
 		m_ShowLoadingScreen = showLoadingScreen;
 
@@ -90,9 +96,7 @@ public class SceneLoader : MonoBehaviour
 			m_GameplayManagerLoadingOpHandle.Completed += OnGameplayMangersLoaded;
 		}
 		else
-		{
 			UnloadPreviousScene();
-		}
 	}
 
 	private void OnGameplayMangersLoaded(AsyncOperationHandle<SceneInstance> obj)
@@ -130,7 +134,7 @@ public class SceneLoader : MonoBehaviour
 				//Unload the scene through its AssetReference, i.e. through the Addressable system
 				m_CurrentlyLoadedScene.sceneReference.UnLoadScene();
 			}
-			#if UNITY_EDITOR
+#if UNITY_EDITOR
 			else
 			{
 				//Only used when, after a "cold start", the player moves to a new scene
@@ -138,7 +142,7 @@ public class SceneLoader : MonoBehaviour
 				//the scene needs to be unloaded using regular SceneManager instead of as an Addressable
 				SceneManager.UnloadSceneAsync(m_CurrentlyLoadedScene.sceneReference.editorAsset.name);
 			}
-			#endif
+#endif
 		}
 
 		LoadNewScene();
@@ -150,9 +154,7 @@ public class SceneLoader : MonoBehaviour
 	private void LoadNewScene()
 	{
 		if (m_ShowLoadingScreen)
-		{
 			m_ToggleLoadingScreen.RaiseEvent(true);
-		}
 
 		m_LoadingOperationHandle = m_SceneToLoad.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true, 0);
 		m_LoadingOperationHandle.Completed += OnNewSceneLoaded;
@@ -165,9 +167,7 @@ public class SceneLoader : MonoBehaviour
 		SetActiveScene();
 
 		if (m_ShowLoadingScreen)
-		{
 			m_ToggleLoadingScreen.RaiseEvent(false);
-		}
 	}
 
 	/// <summary>
@@ -175,18 +175,15 @@ public class SceneLoader : MonoBehaviour
 	/// </summary>
 	private void SetActiveScene()
 	{
-		Scene s = ((SceneInstance)m_LoadingOperationHandle.Result).Scene;
-		SceneManager.SetActiveScene(s);
+		Scene scene = ((SceneInstance)m_LoadingOperationHandle.Result).Scene;
+		SceneManager.SetActiveScene(scene);
 
-		LightProbes.TetrahedralizeAsync();
+		//LightProbes.TetrahedralizeAsync();
 
 		StartGameplay();
 	}
 
-	private void StartGameplay()
-	{
-		m_OnSceneReady.RaiseEvent(); //Spawn system will spawn the PigChef
-	}
+	private void StartGameplay() => m_OnSceneReady.RaiseEvent(); //Spawn system will spawn the Protagonist
 
 	private void ExitGame()
 	{

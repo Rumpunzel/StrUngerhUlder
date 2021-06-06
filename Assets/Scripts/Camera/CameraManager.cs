@@ -24,7 +24,7 @@ public class CameraManager : MonoBehaviour
 		//inputReader.cameraMoveEvent += OnCameraMove;
 
 		if (m_FrameObjectChannel != null)
-			m_FrameObjectChannel.OnEventRaised += OnFrameObjectEvent;
+			m_FrameObjectChannel.onEventRaised += OnFrameObjectEvent;
 
 		m_CameraTransformAnchor.Transform = mainCamera.transform;
 	}
@@ -34,7 +34,7 @@ public class CameraManager : MonoBehaviour
 		//inputReader.cameraMoveEvent -= OnCameraMove;
 
 		if (m_FrameObjectChannel != null)
-			m_FrameObjectChannel.OnEventRaised -= OnFrameObjectEvent;
+			m_FrameObjectChannel.onEventRaised -= OnFrameObjectEvent;
 	}
 
 	private void OnFrameObjectEvent(Transform value)

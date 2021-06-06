@@ -29,16 +29,12 @@ public class InteractionManager : MonoBehaviour
 	[SerializeField] private ItemEventChannelSO m_OnObjectPickUp = default;
 	//[SerializeField] private VoidEventChannelSO m_OnCookingStart = default;
 	//[SerializeField] private DialogueActorChannelSO m_StartTalking = default;
-	//UI event
-	[SerializeField] private InteractionUIEventChannelSO m_ToggleInteractionUI = default;
 
 	[Header("Listening to")]
 	[SerializeField] private VoidEventChannelSO m_OnInteractionEnded = default;
 
 
     private Protagonist m_Protagonist;
-    //To store the object we are currently interacting with
-    //private LinkedList<Interaction> m_PotentialInteractions = new LinkedList<Interaction>();
     private Interaction m_NearestInteraction;
 	private bool m_InteractButtonPressed = false;
 
@@ -48,7 +44,7 @@ public class InteractionManager : MonoBehaviour
 		m_InputReader.interactEvent += OnInteractEvent;
         m_InputReader.interactCanceledEvent += OnInteractCanceledEvent;
 
-		m_OnInteractionEnded.OnEventRaised += OnInteractionEnd;
+		m_OnInteractionEnded.onEventRaised += OnInteractionEnd;
 	}
 
 	private void OnDisable()
@@ -56,7 +52,7 @@ public class InteractionManager : MonoBehaviour
 		m_InputReader.interactEvent -= OnInteractEvent;
         m_InputReader.interactCanceledEvent -= OnInteractCanceledEvent;
 
-		m_OnInteractionEnded.OnEventRaised -= OnInteractionEnd;
+		m_OnInteractionEnded.onEventRaised -= OnInteractionEnd;
 	}
 
 	private void Awake()
@@ -71,16 +67,6 @@ public class InteractionManager : MonoBehaviour
 	}
 
 
-	//Called by the Event on the trigger collider on the child GO called "InteractionDetector"
-	/*public void OnTriggerChangeDetected(bool entered, GameObject obj)
-	{
-		if (entered)
-			AddPotentialInteraction(obj);
-		else
-			RemovePotentialInteraction(obj);
-	}*/
-
-
     // Called mid-way through the AnimationClip of collecting
     private void LookAtItem()
     {
@@ -92,7 +78,6 @@ public class InteractionManager : MonoBehaviour
     private void Collect()
     {
         GameObject itemObject = currentInteraction.interactableObject;
-        //m_PotentialInteractions.Remove(currentInteraction);
 
         if (m_OnObjectPickUp != null)
         {
@@ -195,49 +180,6 @@ public class InteractionManager : MonoBehaviour
 		return nearest;
 	}
 
-
-    /*private void AddPotentialInteraction(GameObject obj)
-    {
-        Interaction newPotentialInteraction = new Interaction(InteractionType.None, obj);
-
-        if (obj.CompareTag(PickableTag))
-        {
-            newPotentialInteraction.type = InteractionType.PickUp;
-        }
-        else if (obj.CompareTag("CookingPot"))
-		{
-			newPotentialInteraction.type = InteractionType.Cook;
-		}
-		else if (obj.CompareTag("NPC"))
-		{
-			newPotentialInteraction.type = InteractionType.Talk;
-		}
-
-        if (newPotentialInteraction.type != InteractionType.None)
-        {
-            //m_PotentialInteractions.AddFirst(newPotentialInteraction);
-            RequestUpdateUI(true);
-        }
-    }*/
-
-	/*private void RemovePotentialInteraction(GameObject obj)
-	{
-		LinkedListNode<Interaction> currentNode = m_PotentialInteractions.First;
-
-		while (currentNode != null)
-		{
-			if (currentNode.Value.interactableObject == obj)
-			{
-				m_PotentialInteractions.Remove(currentNode);
-				break;
-			}
-			currentNode = currentNode.Next;
-		}
-
-		RequestUpdateUI(m_PotentialInteractions.Count > 0);
-	}*/
-
-
 	private void RequestUpdateUI(bool visible)
 	{
 		/*if (visible)
@@ -247,6 +189,7 @@ public class InteractionManager : MonoBehaviour
 	}
 
     private void OnInteractEvent() => m_InteractButtonPressed = true;
+	
     private void OnInteractCanceledEvent()
 	{
 		m_InteractButtonPressed = false;

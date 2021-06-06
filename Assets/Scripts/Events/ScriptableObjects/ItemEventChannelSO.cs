@@ -9,11 +9,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Events/UI/Item Event Channel")]
 public class ItemEventChannelSO : ScriptableObject
 {
-	public UnityAction<Item> OnEventRaised;
+	public UnityAction<Item> onEventRaised;
 	public void RaiseEvent(Item item)
 	{
-		if (OnEventRaised != null)
-			OnEventRaised.Invoke(item);
+		if (onEventRaised != null)
+			onEventRaised.Invoke(item);
 	}
 }
 

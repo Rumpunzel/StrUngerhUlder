@@ -9,11 +9,11 @@ namespace Strungerhulder.StateMachine
         [Tooltip("Set the initial state of this StateMachine")]
         [SerializeField] private ScriptableObjects.TransitionTableSO m_TransitionTableSO = default;
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         [Space]
         [SerializeField]
         internal Debugging.StateMachineDebugger m_Debugger = default;
-        #endif
+#endif
 
         private readonly Dictionary<Type, Component> m_CachedComponents = new Dictionary<Type, Component>();
         internal State m_CurrentState;
@@ -22,12 +22,12 @@ namespace Strungerhulder.StateMachine
         {
             m_CurrentState = m_TransitionTableSO.GetInitialState(this);
 
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             m_Debugger.Awake(this);
-            #endif
+#endif
         }
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         private void OnEnable()
         {
             UnityEditor.AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
@@ -43,7 +43,7 @@ namespace Strungerhulder.StateMachine
         {
             UnityEditor.AssemblyReloadEvents.afterAssemblyReload -= OnAfterAssemblyReload;
         }
-        #endif
+#endif
 
         private void Start()
         {

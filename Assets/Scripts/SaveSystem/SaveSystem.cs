@@ -6,32 +6,31 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 [CreateAssetMenu(fileName = "SaveSystem", menuName = "Save System/Save System")]
 public class SaveSystem : ScriptableObject
 {
+    public string saveFilename = "save.strungerhulder";
+    public string backupSaveFilename = "save.strungerhulder.bak";
+    public Save saveData = new Save();
+
 	[SerializeField] private LoadEventChannelSO m_LoadLocation = default;
 	[SerializeField] private Inventory m_PlayerInventory;
 
-	public string saveFilename = "save.strungerhulder";
-	public string backupSaveFilename = "save.strungerhulder.bak";
-	public Save saveData = new Save();
 
-
-	void OnEnable()
+	private void OnEnable()
 	{
 		m_LoadLocation.OnLoadingRequested += CacheLoadLocations;
 	}
 
-	void OnDisable()
+	private void OnDisable()
 	{
 		m_LoadLocation.OnLoadingRequested -= CacheLoadLocations;
 	}
+	
 
 	private void CacheLoadLocations(GameSceneSO locationsToLoad, bool showLoadingScreen)
 	{
 		LocationSO locationSO = locationsToLoad as LocationSO;
 
 		if (locationSO)
-		{
 			saveData.m_LocationId = locationSO.Guid;
-		}
 
 		SaveDataToDisk();
 	}
@@ -76,14 +75,9 @@ public class SaveSystem : ScriptableObject
 		if (FileManager.MoveFile(saveFilename, backupSaveFilename))
 		{
 			if (FileManager.WriteToFile(saveFilename, saveData.ToJson()))
-			{
 				Debug.Log("Save successful");
-			}
 		}
 	}
 
-	public void WriteEmptySaveFile()
-	{
-		FileManager.WriteToFile(saveFilename, "");
-	}
+	public void WriteEmptySaveFile() => FileManager.WriteToFile(saveFilename, "");
 }

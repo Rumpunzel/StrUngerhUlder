@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Components;
-using TMPro;
 using UnityEngine.UI;
 
 public class UIInteractionIndicator : MonoBehaviour

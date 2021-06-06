@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: MusicTracks
+  m_EditorClassIdentifier: 
+  m_GroupName: MusicTracks
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d185cdcd983601a4db009ef26375c31a
+  m_SerializeEntries: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f43cee241ad6af649a6c3342fd92e1ec, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 5407d30b40336224a80552feb696fab7, type: 2}
+    - {fileID: 11400000, guid: 8861eb73368ba894e99076d4fa87a509, type: 2}

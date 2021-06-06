@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
   m_DefaultGroup: dff3573b77a1cad4384b9f2d78ca21a9
+  m_CachedHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -38,7 +41,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b8c46b9eb406c334c875505d1747b211, type: 2}
   - {fileID: 11400000, guid: b7711d534efd53b4691076098218c5b9, type: 2}
   - {fileID: 11400000, guid: 7634134de94a598438e0e73bd508a312, type: 2}
+  - {fileID: 11400000, guid: a07569f59c87fae42ba792a649570e67, type: 2}
+  - {fileID: 11400000, guid: a43dca84b4c314a459f4a67c3761b997, type: 2}
+  - {fileID: 11400000, guid: c290c6b8e2712f044af5b4e2689cc1a3, type: 2}
+  - {fileID: 11400000, guid: 3a27ac916885bcb439fffae1ee574b91, type: 2}
+  - {fileID: 11400000, guid: aa58338ef708e324cb6eb7c9bf00c178, type: 2}
+  - {fileID: 11400000, guid: 5a5b3fb8d59c6004ba0fcaa8c5e7a067, type: 2}
+  - {fileID: 11400000, guid: 8e2c27cf132d1cf45af248d496a2bb1c, type: 2}
   - {fileID: 11400000, guid: 37fe1ff3b78f299439c46df5511c6a78, type: 2}
+  - {fileID: 11400000, guid: ee3161a5bf583674b86df7480959c184, type: 2}
+  - {fileID: 11400000, guid: fe0cbf4db40200e4bbf31fb2cdbacde2, type: 2}
+  - {fileID: 11400000, guid: 8ff772fb76029174abfacc9de9c9468b, type: 2}
+  - {fileID: 11400000, guid: 6539fbbfdb4cb94429b2076785b55b6f, type: 2}
+  - {fileID: 11400000, guid: e32aced809116014fade51152652415b, type: 2}
+  - {fileID: 11400000, guid: 2e5defbe401e0b54dbf569e25117e68c, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -82,6 +98,13 @@ MonoBehaviour:
     - default
     - Locale
     - Locale-en
+    - MenuScenes
+    - WorldScenes
+    - ManagerScenes
+    - LogicScriptableObjects
+    - DataScriptableObjects
+    - MusicTracks
+    - SFX
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 4a730ef65c4511244ac9eab7508608fd, type: 2}

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: LogicScriptableObjects
+  m_EditorClassIdentifier: 
+  m_GroupName: LogicScriptableObjects
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8984c64469243fa429d8000e4bf01447
+  m_SerializeEntries:
+  - m_GUID: eecc002ebf28bf6459c4b5b9be4e44b0
+    m_Address: Assets/ScriptableObjects/EventChannels
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LogicScriptableObjects
+  - m_GUID: 421ba681d43c52242b44fad13243f4c5
+    m_Address: Assets/ScriptableObjects/Input
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LogicScriptableObjects
+  - m_GUID: 1f5b621facae2d643816107e476de7dd
+    m_Address: Assets/ScriptableObjects/Events
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LogicScriptableObjects
+  - m_GUID: b42fb216fabc1a64fb57aaa35c512f1e
+    m_Address: Assets/ScriptableObjects/RuntimeAnchors
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LogicScriptableObjects
+  - m_GUID: 4fc980825fd52f64d97d613faacc49bf
+    m_Address: Assets/ScriptableObjects/StateMachine
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LogicScriptableObjects
+  - m_GUID: 147157ee4a5414240ac3ae19090bbf4d
+    m_Address: Assets/ScriptableObjects/UI
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LogicScriptableObjects
+  - m_GUID: cce7e0e04519d6841a6cd725d808e987
+    m_Address: Assets/ScriptableObjects/Interaction
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LogicScriptableObjects
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f43cee241ad6af649a6c3342fd92e1ec, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8f8fdd1197313b64da62b3681f8ff81b, type: 2}
+    - {fileID: 11400000, guid: d9f4b6c2416d110468c695647634c46e, type: 2}

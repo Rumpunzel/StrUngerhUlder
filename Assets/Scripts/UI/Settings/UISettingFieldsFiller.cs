@@ -7,7 +7,6 @@ using UnityEngine.Localization.Settings;
 public class UISettingFieldsFiller : MonoBehaviour
 {
 	[SerializeField] private UISettingItemFiller[] m_SettingfieldsList = default;
-	[SerializeField] private InputReader m_InputReader = default; 
 
 
 	public void FillFields(List<SettingField> settingItems)
@@ -80,41 +79,11 @@ public class UISettingFieldsFiller : MonoBehaviour
 	}
 
 
-	private string GetQualityLevelTitle()
-	{
-		string title = ""; 
-
-		switch (QualitySettings.GetQualityLevel())
-		{
-			case (int) QualityLevel.Beautiful:
-				title = QualityLevel.Beautiful.ToString(); 
-				break;
-
-			case (int)QualityLevel.Fantastic:
-				title = QualityLevel.Fantastic.ToString();
-				break;
-
-			case (int)QualityLevel.Fast:
-				title = QualityLevel.Fast.ToString();
-				break;
-
-			case (int)QualityLevel.Fastest:
-				title = QualityLevel.Fastest.ToString();
-				break;
-
-			case (int)QualityLevel.Good:
-				title = QualityLevel.Good.ToString();
-				break;
-
-			case (int)QualityLevel.Simple:
-				title = QualityLevel.Simple.ToString();
-				break;
-		}
-
-		return title;
-	}
+	private string GetQualityLevelTitle() => QualitySettings.names[QualitySettings.GetQualityLevel()];
 
     private int IsFullscreen() => Screen.fullScreen ? 0 : 1;
+
     private void NextField() { }
+	
     private void PreviousField() { }
 }

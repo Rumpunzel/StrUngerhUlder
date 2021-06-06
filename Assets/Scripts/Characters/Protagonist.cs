@@ -19,7 +19,6 @@ public class Protagonist : MonoBehaviour
     public TransformAnchor gameplayCameraTransform;
 
 	[SerializeField] private InputReader m_InputReader = default;
-	[SerializeField] private VoidEventChannelSO m_OpenInventoryChannel = default;
 
 	[Space]
     [SerializeField] private LayerMask m_WorldLayer;
