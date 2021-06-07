@@ -929,7 +929,6 @@ MonoBehaviour:
   m_OnInteractionEndedEvent: {fileID: 11400000, guid: d72cb6331dbd3c74ebe7708d18f88e22, type: 2}
   m_UseItemEvent: {fileID: 11400000, guid: 5ab88b7f585418e46ba6403c0b53faec, type: 2}
   m_EquipItemEvent: {fileID: 11400000, guid: a7550223a57fc494486b77305b91637a, type: 2}
-  m_CookRecipeEvent: {fileID: 0}
   m_InputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
 --- !u!1001 &26049570273333792
 PrefabInstance:
@@ -2640,23 +2639,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3534184564156186192, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 19.1
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3782957049148758672, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 19.1
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3884472523506361021, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 19.1
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3915511773268854144, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 19.1
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4721789826247254098, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 19.1
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7499314617860786457, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_Pivot.x
@@ -2746,9 +2745,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inspector section
       objectReference: {fileID: 0}
+    - target: {fileID: 7499314617860786458, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7702129798801179661, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 23.4
+      value: 23.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
