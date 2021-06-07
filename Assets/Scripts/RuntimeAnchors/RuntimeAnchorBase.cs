@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RuntimeAnchorBase : ScriptableObject
+namespace Strungerhulder.RuntimeAnchors
 {
-	[TextArea] public string description;
+    public class RuntimeAnchorBase : ScriptableObject
+    {
+        [TextArea] public string description;
+    }
 }

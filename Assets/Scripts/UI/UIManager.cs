@@ -6,6 +6,7 @@ using Strungerhulder.Interactions;
 using Strungerhulder.Inventories.ScriptableObjects;
 using Strungerhulder.SceneManagement.ScriptableObjects;
 using Strungerhulder.Input;
+using Strungerhulder.Menues;
 
 namespace Strungerhulder.UI
 {

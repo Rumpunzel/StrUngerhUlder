@@ -3,7 +3,7 @@ using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.Quests.ScriptableObjects;
 using Strungerhulder.Dialogues.ScriptableObjects;
 
-namespace Strungerhulder
+namespace Strungerhulder.Quests
 {
     // This script needs to be put on the actor, and takes care of the current step to accomplish.
     // the step contains a dialogue and maybe an event.

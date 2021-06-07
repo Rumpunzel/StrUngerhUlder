@@ -2,6 +2,7 @@
 using UnityEngine.Localization.Components;
 using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.Dialogues.ScriptableObjects;
+using Strungerhulder.Menues;
 
 namespace Strungerhulder.UI.Dialogue
 {

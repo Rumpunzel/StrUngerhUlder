@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.Input;
+using Strungerhulder.RuntimeAnchors;
 
-namespace Strungerhulder.PlayerCamera
+namespace Strungerhulder.Cameras
 {
     public class CameraManager : MonoBehaviour
     {

@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 using Strungerhulder.SceneManagement.ScriptableObjects;
 
-[CreateAssetMenu(fileName = "New PathAnchor", menuName = "Runtime Anchors/Path")]
-public class PathAnchor : RuntimeAnchorBase
+namespace Strungerhulder.RuntimeAnchors
 {
-    [HideInInspector] public bool isSet = false; // Any script can check if the transform is null before using it, by just checking this bool
-
-    private PathSO m_Path;
-    public PathSO Path
+    [CreateAssetMenu(fileName = "New PathAnchor", menuName = "Runtime Anchors/Path")]
+    public class PathAnchor : RuntimeAnchorBase
     {
-        get { return m_Path; }
-        set
+        [HideInInspector] public bool isSet = false; // Any script can check if the transform is null before using it, by just checking this bool
+
+        private PathSO m_Path;
+        public PathSO Path
         {
-            m_Path = value;
-            isSet = m_Path != null;
+            get { return m_Path; }
+            set
+            {
+                m_Path = value;
+                isSet = m_Path != null;
+            }
         }
-    }
 
-    public void OnDisable()
-    {
-        m_Path = null;
-        isSet = false;
+        public void OnDisable()
+        {
+            m_Path = null;
+            isSet = false;
+        }
     }
 }

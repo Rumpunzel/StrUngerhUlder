@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Strungerhulder.Pool;
+using Strungerhulder.Pooling.ScriptableObjects;
 using Strungerhulder.Factory;
 
 namespace Strungerhulder.Audio.ScriptableObjects
