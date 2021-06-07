@@ -1,22 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Localization.Components;
-using UnityEngine.UI;
+using Strungerhulder.UI.ScriptableObjects;
 
-public class UIInteractionIndicator : MonoBehaviour
+namespace Strungerhulder.UI
 {
-	[SerializeField] private LocalizeStringEvent m_InteractionName = default;
+    public class UIInteractionIndicator : MonoBehaviour
+    {
+        [SerializeField] private LocalizeStringEvent m_InteractionName = default;
 
-	[SerializeField] private UIButtonPrompt m_ButtonPromptSetter = default;
+        [SerializeField] private UIButtonPrompt m_ButtonPromptSetter = default;
 
 
-	public void FillInteractionPanel(InteractionSO interactionItem)
-	{
-		m_InteractionName.StringReference = interactionItem.InteractionName;
+        public void FillInteractionPanel(InteractionSO interactionItem)
+        {
+            m_InteractionName.StringReference = interactionItem.InteractionName;
 
-		bool isKeyboard = true;
-		//	bool isKeyboard = !(Input.GetJoystickNames() != null && Input.GetJoystickNames().Length > 0);
-		m_ButtonPromptSetter.SetButtonPrompt(isKeyboard);
-	}
+            bool isKeyboard = true;
+            //	bool isKeyboard = !(Input.GetJoystickNames() != null && Input.GetJoystickNames().Length > 0);
+            m_ButtonPromptSetter.SetButtonPrompt(isKeyboard);
+        }
+    }
 }

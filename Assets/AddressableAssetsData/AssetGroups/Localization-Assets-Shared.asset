@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 62d537e2312160f4eaeef74f1a15105a
   m_SerializeEntries:
-  - m_GUID: 1dfd30dde1db73742a8d785680616736
-    m_Address: Assets/LocalizationFiles/AssetTables/Inventory/InventoryItemName Shared
-      Data.asset
-    m_ReadOnly: 1
-    m_SerializedLabels: []
   - m_GUID: e7e5ada6333974625b639508f505d755
     m_Address: Assets/LocalizationFiles/AssetTables/Inventory/LocalizedDish Shared
       Data.asset

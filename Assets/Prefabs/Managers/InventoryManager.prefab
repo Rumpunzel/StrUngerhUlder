@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f7b44ae5038e140941f67c65b59d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CurrentInventory: {fileID: 11400000, guid: 8ba6f32b50b60564b8553996d849df62, type: 2}
+  m_CurrentInventory: {fileID: 11400000, guid: d598b129ccea54d438c7996a314b4966, type: 2}
   m_UseItemEvent: {fileID: 11400000, guid: 5ab88b7f585418e46ba6403c0b53faec, type: 2}
   m_EquipItemEvent: {fileID: 11400000, guid: a7550223a57fc494486b77305b91637a, type: 2}
   m_AddItemEvent: {fileID: 11400000, guid: 83b35fd45376cb64798a07c8f538b727, type: 2}

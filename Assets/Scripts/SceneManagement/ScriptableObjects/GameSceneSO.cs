@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.AddressableAssets;
+﻿using UnityEngine.AddressableAssets;
+using Strungerhulder.Audio.ScriptableObjects;
 
 /// <summary>
 /// This class is a base class which contains what is common to all game scenes (Locations, Menus, Managers)
@@ -23,8 +23,8 @@ public class GameSceneSO : DescriptionBaseSO
         //Work in progress scenes that don't need to be played
         Art,
     }
-	
-	public GameSceneType sceneType;
-	public AssetReference sceneReference; //Used at runtime to load the scene from the right AssetBundle
-	public AudioCueSO musicTrack;
+
+    public GameSceneType sceneType;
+    public AssetReference sceneReference; //Used at runtime to load the scene from the right AssetBundle
+    public AudioCueSO musicTrack;
 }

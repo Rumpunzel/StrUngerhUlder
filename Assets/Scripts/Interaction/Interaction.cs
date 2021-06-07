@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
-public class Interaction
+namespace Strungerhulder.Interaction
 {
-	public InteractionType type;
-	public GameObject interactableObject;
+    public class Interaction
+    {
+        public InteractionType type;
+        public GameObject interactableObject;
 
-	public Interaction(InteractionType t, GameObject obj)
-	{
-		type = t;
-		interactableObject = obj;
-	}
+        public Interaction(InteractionType t, GameObject obj)
+        {
+            type = t;
+            interactableObject = obj;
+        }
+    }
 }

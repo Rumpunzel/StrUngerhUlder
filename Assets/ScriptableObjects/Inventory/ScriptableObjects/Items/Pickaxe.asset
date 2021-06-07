@@ -15,18 +15,18 @@ MonoBehaviour:
   _guid: f5e7a2a6dacd0a944aad605df3d2fe68
   m_Name:
     m_TableReference:
-      m_TableCollectionName: GUID:1dfd30dde1db73742a8d785680616736
+      m_TableCollectionName: GUID:41b74adf4121a468e9dbe8958eb2f813
     m_TableEntryReference:
-      m_KeyId: 1220256669696
+      m_KeyId: 24397351017934848
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1
   m_PreviewImage: {fileID: 21300000, guid: f5477fc8846d07f4199822e4e7daa105, type: 3}
   m_Description:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:63bf683e4210c4e48a201dfa773125d5
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 24381302830690304
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1

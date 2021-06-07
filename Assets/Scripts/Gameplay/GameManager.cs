@@ -1,31 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Strungerhulder.Gameplay.ScriptableObjects;
 
-public class GameManager : MonoBehaviour
+namespace Strungerhulder.Gameplay
 {
-    //[SerializeField] private QuestManagerSO m_QuestManager = default;
-
-    [SerializeField] private GameStateSO m_GameState = default;
-
-
-    private void Start()
+    public class GameManager : MonoBehaviour
     {
-        StartGame();
-    }
+        //[SerializeField] private QuestManagerSO m_QuestManager = default;
+
+        [SerializeField] private GameStateSO m_GameState = default;
 
 
-    public void PauseGame() { }
-
-    public void UnpauseGame()
-    {
-        m_GameState.ResetToPreviousGameState(); 
-    }
+        private void Start()
+        {
+            StartGame();
+        }
 
 
-    private void StartGame()
-    {
-        m_GameState.UpdateGameState(GameState.Gameplay);
-        //m_QuestManager.StartGame();
+        public void PauseGame() { }
+
+        public void UnpauseGame() => m_GameState.ResetToPreviousGameState();
+
+
+        private void StartGame()
+        {
+            m_GameState.UpdateGameState(GameState.Gameplay);
+            //m_QuestManager.StartGame();
+        }
     }
 }

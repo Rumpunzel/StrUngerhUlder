@@ -811,8 +811,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSelection: {fileID: 0}
   mouseSelection: {fileID: 0}
-  m_InputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
   m_DefaultSelection: {fileID: 0}
+  m_InputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
 --- !u!114 &1869732383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,7 +827,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SelectionHandler: {fileID: 1869732382}
   m_PopupPanel: {fileID: 1479900143}
-  m_DialogueController: {fileID: 3687453177731785293}
   m_InventoryPanel: {fileID: 1172743538}
   m_InteractionPanel: {fileID: 1353474981}
   m_PauseScreen: {fileID: 1476874068}
@@ -837,7 +836,6 @@ MonoBehaviour:
   m_InputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
   m_OnSceneReady: {fileID: 11400000, guid: 9b6dab412674c1c40ae5007ca60bbd80, type: 2}
   m_CloseUIDialogueEvent: {fileID: 11400000, guid: 223137bc2a97a0f4884c772c650e90c4, type: 2}
-  m_OpenInventoryScreenForCookingEvent: {fileID: 0}
   m_SetInteractionEvent: {fileID: 11400000, guid: 5477bab539af3be4cbe72917bf53717d, type: 2}
   m_LoadMenuEvent: {fileID: 11400000, guid: cf4ba49e49b97c244887a31a85593ce1, type: 2}
   m_OnInteractionEndedEvent: {fileID: 11400000, guid: d72cb6331dbd3c74ebe7708d18f88e22, type: 2}
@@ -1230,17 +1228,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac9fcac72b964a9181545df5e543b03, type: 3}
---- !u!114 &3687453177731785293 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5101994122190746414, guid: 0ac9fcac72b964a9181545df5e543b03, type: 3}
-  m_PrefabInstance: {fileID: 3687453177731785292}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7158f8fb07a85e94882b5ea250ed14d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &3687453177731785294 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3687453176568796422, guid: 0ac9fcac72b964a9181545df5e543b03, type: 3}

@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using Strungerhulder.Inventory.ScriptableObjects;
 
-public class UIInspectorPreview : MonoBehaviour
+namespace Strungerhulder.UI.Iventory
 {
-	[SerializeField] private Image m_PreviewImage = default;
+    public class UIInspectorPreview : MonoBehaviour
+    {
+        [SerializeField] private Image m_PreviewImage = default;
 
 
-	public void FillPreview(Item ItemToInspect)
-	{
-		m_PreviewImage.gameObject.SetActive(true);
-		m_PreviewImage.sprite = ItemToInspect.PreviewImage;
-	}
+        public void FillPreview(Item ItemToInspect)
+        {
+            m_PreviewImage.gameObject.SetActive(true);
+            m_PreviewImage.sprite = ItemToInspect.PreviewImage;
+        }
+    }
 }

@@ -22,9 +22,9 @@ MonoBehaviour:
     m_WaitForCompletion: 1
   m_TypeName:
     m_TableReference:
-      m_TableCollectionName: GUID:1dfd30dde1db73742a8d785680616736
+      m_TableCollectionName: GUID:4ac9e5091d0514d5c91eeeb5d5fb852e
     m_TableEntryReference:
-      m_KeyId: 106178224128
+      m_KeyId: 111147999232
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1

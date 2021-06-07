@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Strungerhulder.Events.ScriptableObjects;
+using Strungerhulder.Audio.ScriptableObjects;
 
-public class MusicPlayer : MonoBehaviour
+namespace Strungerhulder.Audio
 {
-	[SerializeField] private VoidEventChannelSO m_OnSceneReady = default;
-	[SerializeField] private AudioCueEventChannelSO m_PlayMusicOn = default;
-	[SerializeField] private GameSceneSO m_ThisSceneSO = default;
-	[SerializeField] private AudioConfigurationSO m_AudioConfig = default;
+    public class MusicPlayer : MonoBehaviour
+    {
+        [SerializeField] private VoidEventChannelSO m_OnSceneReady = default;
+        [SerializeField] private AudioCueEventChannelSO m_PlayMusicOn = default;
+        [SerializeField] private GameSceneSO m_ThisSceneSO = default;
+        [SerializeField] private AudioConfigurationSO m_AudioConfig = default;
 
 
-	private void OnEnable() => m_OnSceneReady.onEventRaised += PlayMusic;
-	private void OnDisable() => m_OnSceneReady.onEventRaised -= PlayMusic;
-	private void PlayMusic() => m_PlayMusicOn.RaisePlayEvent(m_ThisSceneSO.musicTrack, m_AudioConfig);
+        private void OnEnable() => m_OnSceneReady.onEventRaised += PlayMusic;
+        private void OnDisable() => m_OnSceneReady.onEventRaised -= PlayMusic;
+        private void PlayMusic() => m_PlayMusicOn.RaisePlayEvent(m_ThisSceneSO.musicTrack, m_AudioConfig);
+    }
 }

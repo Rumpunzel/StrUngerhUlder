@@ -43,12 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee131159df1908a4b91c862bd98c918d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
-  _startDialogue: {fileID: 11400000, guid: e9945f5c770845e42acf0246ee34b1e1, type: 2}
-  _makeDialogueChoiceEvent: {fileID: 11400000, guid: fa6a7e55278ba904bbb682cc4a5d0d39, type: 2}
-  _openUIDialogueEvent: {fileID: 11400000, guid: c1f68cf192ad6704788fc87a74bb1445, type: 2}
-  _showChoicesUIEvent: {fileID: 11400000, guid: 61e5fbedb7b30f640ab02b1d3c0c06c2, type: 2}
-  _endDialogue: {fileID: 11400000, guid: 7bc01b5a4d52a7d4bbd7dc6a6b7f4386, type: 2}
-  _continueWithStep: {fileID: 11400000, guid: cfb3de3450b31494d8901ecbc3843436, type: 2}
-  _closeDialogueUIEvent: {fileID: 11400000, guid: 223137bc2a97a0f4884c772c650e90c4, type: 2}
-  _gameState: {fileID: 11400000, guid: 15d82ba1b4c453c4da667c5cc1d4ed6e, type: 2}
+  m_InputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
+  m_StartDialogue: {fileID: 11400000, guid: e9945f5c770845e42acf0246ee34b1e1, type: 2}
+  m_MakeDialogueChoiceEvent: {fileID: 11400000, guid: fa6a7e55278ba904bbb682cc4a5d0d39, type: 2}
+  m_OpenUIDialogueEvent: {fileID: 11400000, guid: c1f68cf192ad6704788fc87a74bb1445, type: 2}
+  m_ShowChoicesUIEvent: {fileID: 11400000, guid: 61e5fbedb7b30f640ab02b1d3c0c06c2, type: 2}
+  m_EndDialogue: {fileID: 11400000, guid: 7bc01b5a4d52a7d4bbd7dc6a6b7f4386, type: 2}
+  m_ContinueWithStep: {fileID: 11400000, guid: cfb3de3450b31494d8901ecbc3843436, type: 2}
+  m_CloseDialogueUIEvent: {fileID: 11400000, guid: 223137bc2a97a0f4884c772c650e90c4, type: 2}
+  m_GameState: {fileID: 11400000, guid: 15d82ba1b4c453c4da667c5cc1d4ed6e, type: 2}

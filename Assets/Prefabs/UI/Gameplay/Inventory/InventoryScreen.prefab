@@ -899,7 +899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef635bd9d58b4cf4a99e99510032bed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CurrentInventory: {fileID: 11400000, guid: 8ba6f32b50b60564b8553996d849df62, type: 2}
+  m_CurrentInventory: {fileID: 11400000, guid: d598b129ccea54d438c7996a314b4966, type: 2}
   m_ItemPrefab: {fileID: 151566559, guid: b125620126ce3403f9719c1123999117, type: 3}
   m_ContentParent: {fileID: 6596066286505809922}
   m_InspectorPanel: {fileID: 6043718304312554480}
@@ -2639,23 +2639,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3534184564156186192, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 19
+      value: 32.65
       objectReference: {fileID: 0}
     - target: {fileID: 3782957049148758672, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 19
+      value: 32.65
       objectReference: {fileID: 0}
     - target: {fileID: 3884472523506361021, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 19
+      value: 32.65
       objectReference: {fileID: 0}
     - target: {fileID: 3915511773268854144, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 19
+      value: 32.65
       objectReference: {fileID: 0}
     - target: {fileID: 4721789826247254098, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 19
+      value: 32.65
       objectReference: {fileID: 0}
     - target: {fileID: 7499314617860786457, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_Pivot.x
@@ -2751,7 +2751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7702129798801179661, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}
       propertyPath: m_fontSize
-      value: 23.3
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1676cd460f4f4cc7a197021499c80d8, type: 3}

@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using Strungerhulder.Factory;
 
-[CreateAssetMenu(fileName = "NewSoundEmitterFactory", menuName = "Factory/SoundEmitter Factory")]
-public class SoundEmitterFactorySO : FactorySO<SoundEmitter>
+namespace Strungerhulder.Audio.ScriptableObjects
 {
-	public SoundEmitter prefab = default;
+    [CreateAssetMenu(fileName = "NewSoundEmitterFactory", menuName = "Factory/SoundEmitter Factory")]
+    public class SoundEmitterFactorySO : FactorySO<SoundEmitter>
+    {
+        public SoundEmitter prefab = default;
 
-	public override SoundEmitter Create() => Instantiate(prefab);
+        public override SoundEmitter Create() => Instantiate(prefab);
+    }
 }

@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class LocationEntrance : MonoBehaviour
+namespace Strungerhulder
 {
-	[Header("Asset References")]
-	[SerializeField] private PathSO m_EntrancePath;
+    public class LocationEntrance : MonoBehaviour
+    {
+        [Header("Asset References")]
+        [SerializeField] private PathSO m_EntrancePath;
 
-	public PathSO EntrancePath => m_EntrancePath;
+        public PathSO EntrancePath => m_EntrancePath;
+    }
 }

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class EventChannelBaseSO : ScriptableObject
+namespace Strungerhulder.Events.ScriptableObjects
 {
-	[TextArea] public string description;
+    public class EventChannelBaseSO : ScriptableObject
+    {
+        [TextArea] public string description;
+    }
 }

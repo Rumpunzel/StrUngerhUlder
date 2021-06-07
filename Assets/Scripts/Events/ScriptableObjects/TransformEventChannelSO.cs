@@ -1,18 +1,21 @@
 ﻿using UnityEngine.Events;
 using UnityEngine;
 
-/// <summary>
-/// This class is used for Events that have one transform argument.
-/// Example: Spawn system initializes player and fire event, where the transform is the position of player.
-/// </summary>
-[CreateAssetMenu(menuName = "Events/Transform Event Channel")]
-public class TransformEventChannelSO : EventChannelBaseSO
+namespace Strungerhulder.Events.ScriptableObjects
 {
-	public UnityAction<Transform> onEventRaised;
+    /// <summary>
+    /// This class is used for Events that have one transform argument.
+    /// Example: Spawn system initializes player and fire event, where the transform is the position of player.
+    /// </summary>
+    [CreateAssetMenu(menuName = "Events/Transform Event Channel")]
+    public class TransformEventChannelSO : EventChannelBaseSO
+    {
+        public UnityAction<Transform> onEventRaised;
 
-	public void RaiseEvent(Transform value)
-	{
-		if (onEventRaised != null)
-			onEventRaised.Invoke(value);
-	}
+        public void RaiseEvent(Transform value)
+        {
+            if (onEventRaised != null)
+                onEventRaised.Invoke(value);
+        }
+    }
 }

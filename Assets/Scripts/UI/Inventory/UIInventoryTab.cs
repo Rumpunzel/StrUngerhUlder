@@ -1,40 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Localization.Components;
 using UnityEngine.UI;
+using Strungerhulder.Inventory.ScriptableObjects;
 
-public class UIInventoryTab : MonoBehaviour
+namespace Strungerhulder.UI.Iventory
 {
-    [HideInInspector] public InventoryTabSO currentTabType = default;
+    public class UIInventoryTab : MonoBehaviour
+    {
+        [HideInInspector] public InventoryTabSO currentTabType = default;
 
-    public UnityAction<InventoryTabSO> tabClicked;
+        public UnityAction<InventoryTabSO> tabClicked;
 
-	[SerializeField] private Image m_TabImage = default;
+        [SerializeField] private Image m_TabImage = default;
 
-	[SerializeField] private Button m_ActionButton = default;
+        [SerializeField] private Button m_ActionButton = default;
 
-	[SerializeField] private Color m_SelectedIconColor = default;
-	[SerializeField] private Color m_DeselectedIconColor = default;
+        [SerializeField] private Color m_SelectedIconColor = default;
+        [SerializeField] private Color m_DeselectedIconColor = default;
 
 
-	public void SetTab(InventoryTabSO tabType, bool isSelected)
-	{
-		currentTabType = tabType;
-		m_TabImage.sprite = tabType.TabIcon;
-		UpdateState(isSelected);
-	}
+        public void SetTab(InventoryTabSO tabType, bool isSelected)
+        {
+            currentTabType = tabType;
+            m_TabImage.sprite = tabType.TabIcon;
+            UpdateState(isSelected);
+        }
 
-	public void UpdateState(bool isSelected)
-	{
-		m_ActionButton.interactable = !isSelected;
+        public void UpdateState(bool isSelected)
+        {
+            m_ActionButton.interactable = !isSelected;
 
-		if (isSelected)
-			m_TabImage.color = m_SelectedIconColor;
-		else
-			m_TabImage.color = m_DeselectedIconColor;
-	}
+            if (isSelected)
+                m_TabImage.color = m_SelectedIconColor;
+            else
+                m_TabImage.color = m_DeselectedIconColor;
+        }
 
-	public void ClickButton() => tabClicked.Invoke(currentTabType);
+        public void ClickButton() => tabClicked.Invoke(currentTabType);
+    }
 }

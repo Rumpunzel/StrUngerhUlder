@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.Localization;
+using Strungerhulder.Interaction;
 
-[CreateAssetMenu(fileName = "Interaction", menuName = "UI/Interaction", order = 51)]
-public class InteractionSO : ScriptableObject
+namespace Strungerhulder.UI.ScriptableObjects
 {
-	[Tooltip("The interaction name")]
-	[SerializeField] private LocalizedString m_InteractionName = default;
+    [CreateAssetMenu(fileName = "Interaction", menuName = "UI/Interaction", order = 51)]
+    public class InteractionSO : ScriptableObject
+    {
+        [Tooltip("The interaction name")]
+        [SerializeField] private LocalizedString m_InteractionName = default;
 
-	[Tooltip("The Interaction Type")]
-	[SerializeField] private InteractionType m_InteractionType = default;
+        [Tooltip("The Interaction Type")]
+        [SerializeField] private InteractionType m_InteractionType = default;
 
 
-	public LocalizedString InteractionName => m_InteractionName;
-	public InteractionType InteractionType => m_InteractionType;
-
+        public LocalizedString InteractionName => m_InteractionName;
+        public InteractionType InteractionType => m_InteractionType;
+    }
 }
