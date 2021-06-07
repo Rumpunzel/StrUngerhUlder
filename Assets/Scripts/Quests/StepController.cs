@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.Quests.ScriptableObjects;
+using Strungerhulder.Dialogues.ScriptableObjects;
 
 namespace Strungerhulder
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Strungerhulder
+namespace Strungerhulder.Characters
 {
     /// <summary>
     /// <para>This component consumes input on the InputReader and stores its values. The input is then read, and manipulated, by the StateMachines's Actions.</para>

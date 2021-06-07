@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Strungerhulder.Interaction;
+using Strungerhulder.Characters;
 
 namespace Strungerhulder.StateMachine.ScriptableObjects
 {

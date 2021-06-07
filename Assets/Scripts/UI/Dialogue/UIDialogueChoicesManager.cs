@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Strungerhulder.Dialogues.ScriptableObjects;
 
 namespace Strungerhulder.UI.Dialogue
 {

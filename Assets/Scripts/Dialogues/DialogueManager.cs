@@ -3,8 +3,9 @@ using UnityEngine;
 using UnityEngine.Localization;
 using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.Gameplay.ScriptableObjects;
+using Strungerhulder.Dialogues.ScriptableObjects;
 
-namespace Strungerhulder
+namespace Strungerhulder.Dialogues
 {
     /// <summary>
     /// Takes care of all things dialogue, whether they are coming from within a Timeline or just from the interaction with a character, or by any other mean.

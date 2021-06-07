@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Strungerhulder.Dialogues.ScriptableObjects;
 
-namespace Strungerhulder
+namespace Strungerhulder.Dialogues
 {
     public class DialogueTrigger : MonoBehaviour
     {

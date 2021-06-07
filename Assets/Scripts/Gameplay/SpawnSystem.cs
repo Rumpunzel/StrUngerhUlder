@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using Strungerhulder.Characters;
 using Strungerhulder.Events.ScriptableObjects;
 
 namespace Strungerhulder.Gameplay
