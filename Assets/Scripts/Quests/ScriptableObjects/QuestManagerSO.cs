@@ -43,17 +43,23 @@ public class QuestManagerSO : ScriptableObject
     public DialogueDataSO InteractWithCharacter(ActorSO actor, bool isCheckValidity, bool isValid)
     {
         if (m_CurrentQuest == null)
+		{
 			if (CheckQuestlineForQuestWithActor(actor))
             	StartQuest(actor);
+		}
 
         if (HasStep(actor))
+		{
             if (isCheckValidity)
+			{
             	if (isValid)
                 	return m_CurrentStep.CompleteDialogue;
                 else
                 	return m_CurrentStep.IncompleteDialogue;
+			}
             else
             	return m_CurrentStep.DialogueBeforeStep;
+		}
 
         return null;
     }
@@ -62,6 +68,7 @@ public class QuestManagerSO : ScriptableObject
     private void StartQuestline()
 	{
 		if (m_Questlines != null)
+		{
 			if (m_Questlines.Exists(o => !o.IsDone))
 			{
 				m_CurrentQuestlineIndex = m_Questlines.FindIndex(o => !o.IsDone);
@@ -69,22 +76,27 @@ public class QuestManagerSO : ScriptableObject
 				if (m_CurrentQuestlineIndex >= 0)
 					m_CurrentQuestline = m_Questlines.Find(o => !o.IsDone);
 			}
+		}
 	}
 
     private bool HasStep(ActorSO actorToCheckWith)
 	{
 		if (m_CurrentStep != null)
+		{
 			if (m_CurrentStep.Actor == actorToCheckWith)
 				return true;
+		}
 		
 		return false;
 	}
 
     private bool CheckQuestlineForQuestWithActor(ActorSO actorToCheckWith)
 	{
-		if (m_CurrentQuest == null)//check if there's a current quest 
+		if (m_CurrentQuest == null) // Check if there's a current quest 
+		{
 			if (m_CurrentQuestline != null)
 				return m_CurrentQuestline.Quests.Exists(o => !o.IsDone && o.Steps != null && o.Steps[0].Actor == actorToCheckWith);
+		}
 
 		return false;
 	}
@@ -116,8 +128,10 @@ public class QuestManagerSO : ScriptableObject
     private void StartStep()
 	{
 		if (m_CurrentQuest.Steps != null)
+		{
 			if (m_CurrentQuest.Steps.Count > m_CurrentStepIndex)
 				m_CurrentStep = m_CurrentQuest.Steps[m_CurrentStepIndex];
+		}
 	}
 
     private void CheckStepValidity()
@@ -156,11 +170,9 @@ public class QuestManagerSO : ScriptableObject
 				case StepType.RewardItem:
 					m_RewardItemEvent.RaiseEvent(m_CurrentStep.Item);
 
-					//no dialogue is needed after Reward Item
+					// No dialogue is needed after Reward Item
 					if (m_CurrentStep.CompleteDialogue != null)
-					{
 						m_CompleteDialogueEvent.RaiseEvent();
-					}
 					else
 						EndStep();
 					
@@ -224,8 +236,10 @@ public class QuestManagerSO : ScriptableObject
 		m_CurrentQuestIndex = -1;
 
 		if (m_CurrentQuestline != null)
+		{
 			if (!m_CurrentQuestline.Quests.Exists(o => !o.IsDone))
 				EndQuestline();
+		}
 	}
 
 	private void EndQuestline()

@@ -33,7 +33,7 @@ public class UIInventoryTab : MonoBehaviour
 		if (isSelected)
 			m_TabImage.color = m_SelectedIconColor;
 		else
-		m_TabImage.color = m_DeselectedIconColor;
+			m_TabImage.color = m_DeselectedIconColor;
 	}
 
 	public void ClickButton() => tabClicked.Invoke(currentTabType);

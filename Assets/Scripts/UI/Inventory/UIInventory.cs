@@ -48,15 +48,11 @@ public class UIInventory : MonoBehaviour
         {
             m_SelectedTab = m_TabTypesList.Find(o => o.TabType == m_SelectedTabType);
         }
-        else
-        {
-            if (m_TabTypesList != null)
-            {
-                if (m_TabTypesList.Count > 0)
-                    m_SelectedTab = m_TabTypesList[0];
-            }
-
-        }
+        else if (m_TabTypesList != null)
+		{
+			if (m_TabTypesList.Count > 0)
+				m_SelectedTab = m_TabTypesList[0];
+		}
 
         if (m_SelectedTab != null)
         {
@@ -220,9 +216,7 @@ public class UIInventory : MonoBehaviour
 			int index = 0;
 			//if the item has already been created
 			if (m_AvailableItemSlots.Exists(o => o.currentItem == itemToUpdate))
-			{
 				index = m_AvailableItemSlots.FindIndex(o => o.currentItem == itemToUpdate);
-			}
 			//if the item needs to be created
 			else
 			{
@@ -260,9 +254,7 @@ public class UIInventory : MonoBehaviour
 	private void UnselectItem(int itemIndex)
 	{
 		if (m_AvailableItemSlots.Count > itemIndex)
-		{
 			m_AvailableItemSlots[itemIndex].UnselectItem();
-		}
 	}
 
     private void UpdateInventory()

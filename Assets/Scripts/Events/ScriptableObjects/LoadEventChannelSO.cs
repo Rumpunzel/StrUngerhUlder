@@ -13,9 +13,7 @@ public class LoadEventChannelSO : EventChannelBaseSO
 	public void RaiseEvent(GameSceneSO locationToLoad, bool showLoadingScreen = false)
 	{
 		if (OnLoadingRequested != null)
-		{
 			OnLoadingRequested.Invoke(locationToLoad, showLoadingScreen);
-		}
 		else
 		{
 			Debug.LogWarning("A Scene loading was requested, but nobody picked it up. " +

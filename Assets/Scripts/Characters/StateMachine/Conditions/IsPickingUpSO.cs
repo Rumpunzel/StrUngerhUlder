@@ -22,7 +22,6 @@ public class IsPickingUpCondition : Condition
 			m_InteractionManager.currentInteraction.type != InteractionType.PickUp)
 			return false;
 		
-
 		// Consume it
 		m_InteractionManager.currentInteraction.type = InteractionType.None;
 		return true;

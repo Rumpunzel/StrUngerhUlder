@@ -34,7 +34,8 @@ public class FollowCamera : MonoBehaviour
 
     void Update()
     {
-        if (!m_FollowTransform) return;
+        if (!m_FollowTransform)
+            return;
 
         m_CameraAngle = Mathf.Lerp(m_CameraAngle, m_CameraTurnIndex * m_CameraTurnAngle + m_CameraAngleOffset, m_CameraTurnSmoothing);
         m_CameraZoom = Mathf.Clamp(m_CameraZoom, 1f / m_CameraMaxZoom, 1f / m_CameraMinZoom);    
@@ -59,12 +60,14 @@ public class FollowCamera : MonoBehaviour
     /*
     public void OnTurnRight(InputAction.CallbackContext value)
     {
-        if (value.started) m_CameraTurnIndex++;
+        if (value.started)
+            m_CameraTurnIndex++;
     }
 
     public void OnTurnLeft(InputAction.CallbackContext value)
     {
-        if (value.started) m_CameraTurnIndex--;
+        if (value.started)
+            m_CameraTurnIndex--;
     }
 
     public void OnZoom(InputAction.CallbackContext value)

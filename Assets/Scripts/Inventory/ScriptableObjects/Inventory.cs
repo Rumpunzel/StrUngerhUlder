@@ -81,9 +81,7 @@ public class Inventory : ScriptableObject
 		for (int i = 0; i < m_Items.Count; i++)
 		{
 			if (item == m_Items[i].Item)
-			{
 				return true;
-			}
 		}
 
 		return false;
@@ -96,9 +94,7 @@ public class Inventory : ScriptableObject
 			ItemStack currentItemStack = m_Items[i];
 
 			if (item == currentItemStack.Item)
-			{
 				return currentItemStack.Amount;
-			}
 		}
 
 		return 0;

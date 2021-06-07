@@ -36,9 +36,7 @@ public class SoundEmitter : MonoBehaviour
 		m_AudioSource.Play();
 
 		if (!hasToLoop)
-		{
 			StartCoroutine(FinishedPlaying(clip.length));
-		}
 	}
 
 	public void FadeMusicIn(AudioClip musicClip, AudioConfigurationSO settings, float duration, float startTime = 0f)

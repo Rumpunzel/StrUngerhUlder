@@ -96,6 +96,7 @@ namespace Strungerhulder.StateMachine.Editor
 					}
 				}
 				position.x += rect.width / 2;
+				
 				if (GUI.Button(position, "Cancel"))
 				{
 					m_Toggle = false;

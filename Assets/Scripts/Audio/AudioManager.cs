@@ -127,11 +127,13 @@ public class AudioManager : MonoBehaviour
         bool isFound = m_SoundEmitterVault.Get(audioCueKey, out SoundEmitter[] soundEmitters);
 
         if (isFound)
+		{
             for (int i = 0; i < soundEmitters.Length; i++)
             {
                 soundEmitters[i].Finish();
                 soundEmitters[i].onSoundFinishedPlaying += OnSoundEmitterFinishedPlaying;
             }
+		}
         else
         	Debug.LogWarning("Finishing an AudioCue was requested, but the AudioCue was not found.");
 

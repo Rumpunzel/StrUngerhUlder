@@ -19,9 +19,7 @@ public class UISettingFieldsFiller : MonoBehaviour
 				m_SettingfieldsList[i].gameObject.SetActive(true);
 			}
 			else
-			{
 				m_SettingfieldsList[i].gameObject.SetActive(false);
-			}
 		}
 	}
 	

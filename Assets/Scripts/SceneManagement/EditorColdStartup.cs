@@ -32,8 +32,10 @@ public class EditorColdStartup : MonoBehaviour
 	private void OnNotifyChannelLoaded()//AsyncOperationHandle<LoadEventChannelSO> obj)
 	{
 		if(m_ThisSceneSO != null)
+		{
             //obj.Result.RaiseEvent(m_ThisSceneSO);
 			m_NotifyColdStartupChannel.RaiseEvent(m_ThisSceneSO);
+		}
 		else
 		{
 			//Raise a fake scene ready event, so the player is spawned

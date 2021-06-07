@@ -69,6 +69,7 @@ namespace Strungerhulder.StateMachine.Editor
 					m_Editor.RemoveTransition(SerializedTransition);
 					return true;
 				}
+
 				buttonRect.x -= 35;
 
 				// Move transition down
@@ -79,6 +80,7 @@ namespace Strungerhulder.StateMachine.Editor
 						m_Editor.ReorderTransition(SerializedTransition, false);
 						return true;
 					}
+
 					buttonRect.x -= 35;
 				}
 
@@ -90,6 +92,7 @@ namespace Strungerhulder.StateMachine.Editor
 						m_Editor.ReorderTransition(SerializedTransition, true);
 						return true;
 					}
+					
 					buttonRect.x -= 35;
 				}
 

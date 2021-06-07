@@ -189,6 +189,7 @@ namespace Strungerhulder.StateMachine.Editor
 						}
 						Separator();
 					}
+
 					if (EditorGUI.EndChangeCheck())
 						serializedObject.ApplyModifiedProperties();
 				}
@@ -249,9 +250,7 @@ namespace Strungerhulder.StateMachine.Editor
 		{
 			SerializedTransition transition;
 			if (TryGetExistingTransition(source.FromState, source.ToState, out int fromIndex, out int toIndex))
-			{
 				transition = m_TransitionsByFromStates[fromIndex][toIndex].SerializedTransition;
-			}
 			else
 			{
 				int count = m_Transitions.arraySize;

@@ -45,9 +45,8 @@ public static class FileManager
 		try
 		{
 			if (File.Exists(newFullPath))
-			{
 				File.Delete(newFullPath);
-			}
+			
 			File.Move(fullPath, newFullPath);
 		}
 		catch (Exception e)

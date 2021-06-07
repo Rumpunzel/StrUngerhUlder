@@ -19,9 +19,7 @@ public class AudioCueEventChannelSO : EventChannelBaseSO
 		AudioCueKey audioCueKey = AudioCueKey.invalid;
 
 		if (onAudioCuePlayRequested != null)
-		{
 			audioCueKey = onAudioCuePlayRequested.Invoke(audioCue, audioConfiguration, positionInSpace);
-		}
 		else
 		{
 			Debug.LogWarning("An AudioCue play event was requested, but nobody picked it up. " +
@@ -37,9 +35,7 @@ public class AudioCueEventChannelSO : EventChannelBaseSO
 		bool requestSucceed = false;
 
 		if (onAudioCueStopRequested != null)
-		{
 			requestSucceed = onAudioCueStopRequested.Invoke(audioCueKey);
-		}
 		else
 		{
 			Debug.LogWarning("An AudioCue stop event was requested, but nobody picked it up. " +
@@ -55,9 +51,7 @@ public class AudioCueEventChannelSO : EventChannelBaseSO
 		bool requestSucceed = false;
 
 		if (onAudioCueStopRequested != null)
-		{
 			requestSucceed = onAudioCueFinishRequested.Invoke(audioCueKey);
-		}
 		else
 		{
 			Debug.LogWarning("An AudioCue finish event was requested, but nobody picked it up. " +

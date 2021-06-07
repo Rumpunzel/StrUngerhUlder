@@ -11,7 +11,9 @@ public class UIInteraction : MonoBehaviour
 	public void FillInteractionPanel(InteractionType interactionType)
 	{
 		if ((m_ListInteractions != null) && (m_InteractionItem != null))
+		{
 			if (m_ListInteractions.Exists(o => o.InteractionType == interactionType))
 				m_InteractionItem.FillInteractionPanel(m_ListInteractions.Find(o => o.InteractionType == interactionType));
+		}
 	}
 }

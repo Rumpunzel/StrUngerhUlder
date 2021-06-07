@@ -31,9 +31,8 @@ public class UIInventoryTabs : MonoBehaviour
 			if (i < typesList.Count)
 			{
 				if (i >= m_InstantiatedGameObjects.Count)
-				{
 					Debug.LogError("Maximum tabs reached");
-				}
+
 				bool isSelected = typesList[i] == selectedType;
 				//fill
 				m_InstantiatedGameObjects[i].SetTab(typesList[i], isSelected);
@@ -47,25 +46,18 @@ public class UIInventoryTabs : MonoBehaviour
 			}
 		}
 		if (isActiveAndEnabled) // check if the game object is active and enabled so that we could start the coroutine. 
-		{
 			StartCoroutine(waitBeforeDesactiveLayout());
-		}
 		else // if the game object is inactive, disabling the layout will happen on onEnable 
-		{
 			m_CanDisableLayout = true;
-		}
 	}
 
 	public void ChangeTabSelection(InventoryTabSO selectedType)
 	{
-
 		for (int i = 0; i < m_InstantiatedGameObjects.Count; i++)
 		{
-
 			bool isSelected = m_InstantiatedGameObjects[i].currentTabType == selectedType;
 			//fill
 			m_InstantiatedGameObjects[i].UpdateState(isSelected);
-
 		}
 	}
 

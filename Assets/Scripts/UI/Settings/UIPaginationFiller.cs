@@ -39,13 +39,9 @@ public class UIPaginationFiller : MonoBehaviour
 				}
 
 				if (i < paginationCount)
-				{
 					m_InstantiatedImages[i].gameObject.SetActive(true);
-				}
 				else
-				{
 					m_InstantiatedImages[i].gameObject.SetActive(false);
-				}
 			}
 
 			SetCurrentPagination(selectedPaginationIndex);
@@ -55,6 +51,7 @@ public class UIPaginationFiller : MonoBehaviour
 	public void SetCurrentPagination(int selectedPaginationIndex)
 	{
 		if (m_InstantiatedImages.Count > selectedPaginationIndex)
+		{
 			for (int i = 0; i < m_InstantiatedImages.Count; i++)
 			{
 				if (i == selectedPaginationIndex)
@@ -66,6 +63,7 @@ public class UIPaginationFiller : MonoBehaviour
 					m_InstantiatedImages[i].sprite = m_EmptyPagination;
 				}
 			}
+		}
 		else
 			Debug.LogError("Error in pagination number"); 
 	}

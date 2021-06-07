@@ -57,9 +57,7 @@ public class InventoryManager : MonoBehaviour
 		ItemStack itemToUpdate = new ItemStack();
 
 		if (m_CurrentInventory.Contains(item))
-		{
 			itemToUpdate = m_CurrentInventory.Items.Find(o => o.Item == item);
-		}
 
 		m_CurrentInventory.Remove(item);
 

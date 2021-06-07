@@ -36,8 +36,10 @@ public class UIInventoryActionButton : MonoBehaviour
 		else
 		{
 			if (m_InputReader != null)
+			{
 				if (m_HasEvent)
 					m_InputReader.inventoryActionButtonEvent -= ClickActionButton;
+			}
 		}
 	}
 
@@ -49,7 +51,9 @@ public class UIInventoryActionButton : MonoBehaviour
 	private void OnDisable()
 	{
 		if (m_InputReader != null)
+		{
 			if (m_HasEvent)
 				m_InputReader.inventoryActionButtonEvent -= ClickActionButton;
+		}
 	}
 }

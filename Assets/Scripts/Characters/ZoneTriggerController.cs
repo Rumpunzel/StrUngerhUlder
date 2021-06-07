@@ -21,16 +21,12 @@ public class ZoneTriggerController : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{	
 		if ((1 << other.gameObject.layer & m_Layers) != 0)
-		{
 			m_EnterZone.Invoke(true, other.gameObject);
-		}
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
 		if ((1 << other.gameObject.layer & m_Layers) != 0)
-		{
 			m_EnterZone.Invoke(false, other.gameObject);
-		}
 	}
 }

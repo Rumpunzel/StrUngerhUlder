@@ -215,13 +215,9 @@ public class UIManager : MonoBehaviour
 		m_InputReader.closeInventoryEvent += CloseInventoryScreen;
 
 		if (m_IsForCooking)
-		{
 			m_InventoryPanel.FillInventory(InventoryTabType.Recipe, true);
-		}
 		else
-		{
 			m_InventoryPanel.FillInventory();
-		}
 
 		m_InventoryPanel.gameObject.SetActive(true);
 
