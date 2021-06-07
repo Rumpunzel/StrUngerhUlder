@@ -1,16 +1,20 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using Strungerhulder.Editors;
 
-[CustomEditor(typeof(InputReader))]
-public class InputReaderEditor : Editor
+namespace Strungerhulder.Input
 {
-	public override void OnInspectorGUI()
-	{
-		DrawDefaultInspector();
+    [CustomEditor(typeof(InputReader))]
+    public class InputReaderEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
 
-		if (!Application.isPlaying)
-			return;
+            if (!Application.isPlaying)
+                return;
 
-		ScriptableObjectHelper.GenerateButtonsForEvents<InputReader>(target);
-	}
+            ScriptableObjectHelper.GenerateButtonsForEvents<InputReader>(target);
+        }
+    }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Events;
 using UnityEngine;
-using Strungerhulder.Interaction;
+using Strungerhulder.Interactions;
 
 namespace Strungerhulder.Events.ScriptableObjects
 {

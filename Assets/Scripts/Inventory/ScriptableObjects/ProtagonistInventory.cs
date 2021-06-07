@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Strungerhulder.Inventory.ScriptableObjects
+namespace Strungerhulder.Inventories.ScriptableObjects
 {
     // Created with collaboration from:
     // https://forum.unity.com/threads/inventory-system.980646/

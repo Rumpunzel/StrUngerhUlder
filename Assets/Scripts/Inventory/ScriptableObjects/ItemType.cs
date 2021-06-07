@@ -3,7 +3,7 @@ using UnityEngine.Localization;
 // Created with collaboration from:
 // https://forum.unity.com/threads/inventory-system.980646/
 
-namespace Strungerhulder.Inventory.ScriptableObjects
+namespace Strungerhulder.Inventories.ScriptableObjects
 {
     public enum ItemInventoryType
     {

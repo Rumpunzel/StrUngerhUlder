@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.Inventories.ScriptableObjects;
 
 namespace Strungerhulder.UI.Iventory
 {

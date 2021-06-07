@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Localization;
-using Strungerhulder.Interaction;
+using Strungerhulder.Interactions;
 
 namespace Strungerhulder.UI.ScriptableObjects
 {

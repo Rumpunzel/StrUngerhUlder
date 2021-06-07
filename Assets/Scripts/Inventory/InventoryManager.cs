@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.Inventories.ScriptableObjects;
 using Strungerhulder.SavingAndLoading;
 using Strungerhulder.Events.ScriptableObjects;
 
-namespace Strungerhulder.Inventory
+namespace Strungerhulder.Inventories
 {
     public class InventoryManager : MonoBehaviour
     {

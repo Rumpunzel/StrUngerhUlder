@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Localization.Components;
-using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.Inventories.ScriptableObjects;
 
 namespace Strungerhulder.UI.Iventory
 {

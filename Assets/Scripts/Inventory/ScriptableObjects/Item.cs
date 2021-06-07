@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using Strungerhulder.SavingAndLoading;
 
-namespace Strungerhulder.Inventory.ScriptableObjects
+namespace Strungerhulder.Inventories.ScriptableObjects
 {
     // Created with collaboration from:
     // https://forum.unity.com/threads/inventory-system.980646/

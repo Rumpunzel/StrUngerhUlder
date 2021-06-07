@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Strungerhulder.Interaction
+namespace Strungerhulder.Interactions
 {
     public class Interaction
     {

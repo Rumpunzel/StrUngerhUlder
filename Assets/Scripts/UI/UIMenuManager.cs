@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.SavingAndLoading;
+using Strungerhulder.Input;
 
 namespace Strungerhulder.UI
 {

@@ -1,10 +1,11 @@
 using UnityEngine;
 using Strungerhulder.Events.ScriptableObjects;
-using Strungerhulder.Inventory;
-using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.Inventories;
+using Strungerhulder.Inventories.ScriptableObjects;
 using Strungerhulder.Characters;
+using Strungerhulder.Input;
 
-namespace Strungerhulder.Interaction
+namespace Strungerhulder.Interactions
 {
     public enum InteractionType
     {

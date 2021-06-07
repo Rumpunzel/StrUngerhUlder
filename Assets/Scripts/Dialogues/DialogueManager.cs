@@ -4,6 +4,7 @@ using UnityEngine.Localization;
 using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.Gameplay.ScriptableObjects;
 using Strungerhulder.Dialogues.ScriptableObjects;
+using Strungerhulder.Input;
 
 namespace Strungerhulder.Dialogues
 {

@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using UnityEngine.Localization.Components;
 using UnityEngine.Events;
-using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.Inventories.ScriptableObjects;
+using Strungerhulder.Input;
 
 namespace Strungerhulder.UI.Iventory
 {

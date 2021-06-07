@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.Inventories.ScriptableObjects;
 
 namespace Strungerhulder.UI.Iventory
 {

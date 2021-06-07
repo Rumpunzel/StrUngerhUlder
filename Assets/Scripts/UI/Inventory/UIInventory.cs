@@ -3,8 +3,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 using Strungerhulder.Events.ScriptableObjects;
-using Strungerhulder.Inventory;
-using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.Inventories;
+using Strungerhulder.Inventories.ScriptableObjects;
+using Strungerhulder.Input;
 
 namespace Strungerhulder.UI.Iventory
 {

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Strungerhulder.Interaction;
+using Strungerhulder.Interactions;
 using Strungerhulder.StateMachines;
 using Strungerhulder.StateMachines.ScriptableObjects;
 

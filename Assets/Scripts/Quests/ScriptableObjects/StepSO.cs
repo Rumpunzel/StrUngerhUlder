@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.Inventories.ScriptableObjects;
 using Strungerhulder.Dialogues.ScriptableObjects;
 
 namespace Strungerhulder.Quests.ScriptableObjects

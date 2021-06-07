@@ -3,8 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Localization.Components;
 using UnityEngine.Events;
-using Strungerhulder.Inventory;
-using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.Inventories;
+using Strungerhulder.Inventories.ScriptableObjects;
 
 namespace Strungerhulder.UI.Iventory
 {

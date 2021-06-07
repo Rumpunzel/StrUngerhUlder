@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Strungerhulder.Input;
 
 namespace Strungerhulder.UI
 {

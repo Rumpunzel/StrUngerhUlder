@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.Localization.Components;
 using TMPro;
-using Strungerhulder.Inventory;
+using Strungerhulder.Inventories;
 
 namespace Strungerhulder.UI.Iventory
 {

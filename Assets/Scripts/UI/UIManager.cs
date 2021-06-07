@@ -2,9 +2,10 @@
 using Strungerhulder.UI.Iventory;
 using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.Gameplay.ScriptableObjects;
-using Strungerhulder.Interaction;
-using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.Interactions;
+using Strungerhulder.Inventories.ScriptableObjects;
 using Strungerhulder.SceneManagement.ScriptableObjects;
+using Strungerhulder.Input;
 
 namespace Strungerhulder.UI
 {

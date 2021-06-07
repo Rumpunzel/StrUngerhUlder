@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.Inventories.ScriptableObjects;
 
-namespace Strungerhulder.Inventory
+namespace Strungerhulder.Inventories
 {
     [Serializable]
     public class ItemStack

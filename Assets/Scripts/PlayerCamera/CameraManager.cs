@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Strungerhulder.Events.ScriptableObjects;
+using Strungerhulder.Input;
 
 namespace Strungerhulder.PlayerCamera
 {

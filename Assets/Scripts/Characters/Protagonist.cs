@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Strungerhulder.Input;
 
 namespace Strungerhulder.Characters
 {

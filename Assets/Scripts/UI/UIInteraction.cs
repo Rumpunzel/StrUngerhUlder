@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Strungerhulder.UI.ScriptableObjects;
-using Strungerhulder.Interaction;
+using Strungerhulder.Interactions;
 
 namespace Strungerhulder.UI
 {

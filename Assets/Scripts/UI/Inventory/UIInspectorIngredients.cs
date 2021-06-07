@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Strungerhulder.Inventory;
+using Strungerhulder.Inventories;
 
 namespace Strungerhulder.UI.Iventory
 {
