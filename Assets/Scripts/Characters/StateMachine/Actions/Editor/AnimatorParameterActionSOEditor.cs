@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 {
     [CustomEditor(typeof(AnimatorParameterActionSO)), CanEditMultipleObjects]
     public class AnimatorParameterActionSOEditor : CustomBaseEditor

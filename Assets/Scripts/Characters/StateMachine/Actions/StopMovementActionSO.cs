@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using Strungerhulder.Characters;
+using Strungerhulder.StateMachines;
+using Strungerhulder.StateMachines.ScriptableObjects;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 {
     /// <summary>
     /// An Action to clear a <see cref="Protagonist.movementVector"/> at the <see cref="StateAction.SpecificMoment"/> <see cref="StopMovementActionSO.Moment"/>

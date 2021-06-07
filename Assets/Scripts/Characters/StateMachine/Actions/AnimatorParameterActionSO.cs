@@ -1,8 +1,9 @@
-﻿using System;
-using UnityEngine;
-using Moment = Strungerhulder.StateMachine.StateAction.SpecificMoment;
+﻿using UnityEngine;
+using Moment = Strungerhulder.StateMachines.StateAction.SpecificMoment;
+using Strungerhulder.StateMachines;
+using Strungerhulder.StateMachines.ScriptableObjects;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 {
     /// <summary>
     /// Flexible StateActionSO for the StateMachine which allows to set any parameter on the Animator, in any moment of the state (OnStateEnter, OnStateExit, or each OnUpdate).

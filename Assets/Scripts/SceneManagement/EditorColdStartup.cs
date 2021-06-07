@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 using Strungerhulder.Events.ScriptableObjects;
+using Strungerhulder.SceneManagement.ScriptableObjects;
 
-namespace Strungerhulder
+namespace Strungerhulder.SceneManagement
 {
     /// <summary>
     /// Allows a "cold start" in the editor, when pressing Play and not passing from the Initialisation scene.

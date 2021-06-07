@@ -1,7 +1,9 @@
 using UnityEngine;
 using Strungerhulder.Characters;
+using Strungerhulder.StateMachines;
+using Strungerhulder.StateMachines.ScriptableObjects;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 {
     [CreateAssetMenu(menuName = "State Machines/Actions/Descend")]
     public class DescendActionSO : StateActionSO<DescendAction> { }

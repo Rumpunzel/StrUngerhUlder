@@ -4,8 +4,9 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 using Strungerhulder.Events.ScriptableObjects;
+using Strungerhulder.SceneManagement.ScriptableObjects;
 
-namespace Strungerhulder
+namespace Strungerhulder.SceneManagement
 {
     /// <summary>
     /// This class manages the scene loading and unloading.

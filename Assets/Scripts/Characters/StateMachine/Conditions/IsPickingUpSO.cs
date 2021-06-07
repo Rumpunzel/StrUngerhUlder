@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using Strungerhulder.Interaction;
+using Strungerhulder.StateMachines;
+using Strungerhulder.StateMachines.ScriptableObjects;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 {
     [CreateAssetMenu(menuName = "State Machines/Conditions/Is Picking Up")]
     public class IsPickingUpSO : StateConditionSO<IsPickingUpCondition> { }

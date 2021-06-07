@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using Strungerhulder.StateMachines;
+using Strungerhulder.StateMachines.ScriptableObjects;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "IsActuallyMovingToPointCondition", menuName = "State Machines/Conditions/Is Actually Moving To Point Condition")]
     public class IsActuallyMovingToPointConditionSO : StateConditionSO

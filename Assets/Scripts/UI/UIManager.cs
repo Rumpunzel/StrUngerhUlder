@@ -4,6 +4,7 @@ using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.Gameplay.ScriptableObjects;
 using Strungerhulder.Interaction;
 using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.SceneManagement.ScriptableObjects;
 
 namespace Strungerhulder.UI
 {

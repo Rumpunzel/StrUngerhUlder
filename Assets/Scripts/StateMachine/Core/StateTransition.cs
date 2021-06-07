@@ -1,4 +1,4 @@
-namespace Strungerhulder.StateMachine
+namespace Strungerhulder.StateMachines
 {
     public class StateTransition : IStateComponent
     {
@@ -47,7 +47,7 @@ namespace Strungerhulder.StateMachine
         private bool ShouldTransition()
         {
 #if UNITY_EDITOR
-			m_TargetState.m_StateMachine.m_Debugger.TransitionEvaluationBegin(m_TargetState.m_OriginSO.name);
+            m_TargetState.m_StateMachine.m_Debugger.TransitionEvaluationBegin(m_TargetState.m_OriginSO.name);
 #endif
 
             int count = m_ResultGroups.Length;
@@ -62,7 +62,7 @@ namespace Strungerhulder.StateMachine
                 ret = ret || m_Results[i];
 
 #if UNITY_EDITOR
-			m_TargetState.m_StateMachine.m_Debugger.TransitionEvaluationEnd(ret, m_TargetState.m_Actions);
+            m_TargetState.m_StateMachine.m_Debugger.TransitionEvaluationEnd(ret, m_TargetState.m_Actions);
 #endif
 
             return ret;

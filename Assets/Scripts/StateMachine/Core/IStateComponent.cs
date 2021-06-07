@@ -1,4 +1,4 @@
-namespace Strungerhulder.StateMachine
+namespace Strungerhulder.StateMachines
 {
     interface IStateComponent
     {

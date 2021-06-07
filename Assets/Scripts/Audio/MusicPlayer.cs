@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.Audio.ScriptableObjects;
+using Strungerhulder.SceneManagement.ScriptableObjects;
 
 namespace Strungerhulder.Audio
 {

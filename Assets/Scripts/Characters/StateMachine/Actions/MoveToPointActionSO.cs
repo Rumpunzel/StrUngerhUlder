@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 using Strungerhulder.Characters;
+using Strungerhulder.StateMachines;
+using Strungerhulder.StateMachines.ScriptableObjects;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "MoveToPoint", menuName = "State Machines/Actions/Move To Point")]
     public class MoveToPointActionSO : StateActionSO<MoveToPointAction>

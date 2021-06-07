@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Strungerhulder.SceneManagement.ScriptableObjects;
 
-namespace Strungerhulder
+namespace Strungerhulder.SceneManagement
 {
     public class LocationEntrance : MonoBehaviour
     {

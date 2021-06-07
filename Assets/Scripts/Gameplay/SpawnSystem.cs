@@ -3,6 +3,8 @@ using System.Linq;
 using UnityEngine;
 using Strungerhulder.Characters;
 using Strungerhulder.Events.ScriptableObjects;
+using Strungerhulder.SceneManagement;
+using Strungerhulder.SceneManagement.ScriptableObjects;
 
 namespace Strungerhulder.Gameplay
 {

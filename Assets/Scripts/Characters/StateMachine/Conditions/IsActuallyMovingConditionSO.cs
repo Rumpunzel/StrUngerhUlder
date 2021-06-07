@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using Strungerhulder.StateMachines;
+using Strungerhulder.StateMachines.ScriptableObjects;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "IsActuallyMovingCondition", menuName = "State Machines/Conditions/Is Actually Moving Condition")]
     public class IsActuallyMovingConditionSO : StateConditionSO

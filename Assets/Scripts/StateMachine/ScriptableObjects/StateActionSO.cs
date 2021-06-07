@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.StateMachines.ScriptableObjects
 {
     public abstract class StateActionSO : ScriptableObject
     {
@@ -17,10 +17,10 @@ namespace Strungerhulder.StateMachine.ScriptableObjects
             createdInstances.Add(this, action);
             action.m_OriginSO = this;
             action.Awake(stateMachine);
-            
+
             return action;
         }
-        
+
         protected abstract StateAction CreateAction();
     }
 

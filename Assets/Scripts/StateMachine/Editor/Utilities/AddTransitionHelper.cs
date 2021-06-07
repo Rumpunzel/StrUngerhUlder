@@ -2,176 +2,176 @@
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-using Strungerhulder.StateMachine.ScriptableObjects;
+using Strungerhulder.StateMachines.ScriptableObjects;
 using static UnityEditor.EditorGUI;
 
-namespace Strungerhulder.StateMachine.Editor
+namespace Strungerhulder.StateMachines.Editor
 {
-	internal class AddTransitionHelper : IDisposable
-	{
-		internal SerializedTransition SerializedTransition { get; }
-		private readonly SerializedObject m_Transition;
-		private readonly ReorderableList m_List;
-		private readonly TransitionTableEditor m_Editor;
-		private bool m_Toggle = false;
+    internal class AddTransitionHelper : IDisposable
+    {
+        internal SerializedTransition SerializedTransition { get; }
+        private readonly SerializedObject m_Transition;
+        private readonly ReorderableList m_List;
+        private readonly TransitionTableEditor m_Editor;
+        private bool m_Toggle = false;
 
-		internal AddTransitionHelper(TransitionTableEditor editor)
-		{
-			m_Editor = editor;
-			m_Transition = new SerializedObject(ScriptableObject.CreateInstance<TransitionItemSO>());
-			SerializedTransition = new SerializedTransition(m_Transition.FindProperty("Item"));
-			m_List = new ReorderableList(m_Transition, SerializedTransition.Conditions);
-			SetupConditionsList(m_List);
-		}
+        internal AddTransitionHelper(TransitionTableEditor editor)
+        {
+            m_Editor = editor;
+            m_Transition = new SerializedObject(ScriptableObject.CreateInstance<TransitionItemSO>());
+            SerializedTransition = new SerializedTransition(m_Transition.FindProperty("Item"));
+            m_List = new ReorderableList(m_Transition, SerializedTransition.Conditions);
+            SetupConditionsList(m_List);
+        }
 
-		internal void Display(Rect position)
-		{
-			position.x += 8;
-			position.width -= 16;
-			var rect = position;
-			float listHeight = m_List.GetHeight();
-			float singleLineHeight = EditorGUIUtility.singleLineHeight;
+        internal void Display(Rect position)
+        {
+            position.x += 8;
+            position.width -= 16;
+            var rect = position;
+            float listHeight = m_List.GetHeight();
+            float singleLineHeight = EditorGUIUtility.singleLineHeight;
 
-			// Display add button only if not already adding a transition
-			if (!m_Toggle)
-			{
-				position.height = singleLineHeight;
+            // Display add button only if not already adding a transition
+            if (!m_Toggle)
+            {
+                position.height = singleLineHeight;
 
-				// Reserve space
-				GUILayoutUtility.GetRect(position.width, position.height);
+                // Reserve space
+                GUILayoutUtility.GetRect(position.width, position.height);
 
-				if (GUI.Button(position, "Add Transition"))
-				{
-					m_Toggle = true;
-					SerializedTransition.ClearProperties();
-				}
+                if (GUI.Button(position, "Add Transition"))
+                {
+                    m_Toggle = true;
+                    SerializedTransition.ClearProperties();
+                }
 
-				return;
-			}
+                return;
+            }
 
-			// Background
-			{
-				position.height = listHeight + singleLineHeight * 4;
-				DrawRect(position, ContentStyle.LightGray);
-			}
+            // Background
+            {
+                position.height = listHeight + singleLineHeight * 4;
+                DrawRect(position, ContentStyle.LightGray);
+            }
 
-			// Reserve space
-			GUILayoutUtility.GetRect(position.width, position.height);
+            // Reserve space
+            GUILayoutUtility.GetRect(position.width, position.height);
 
-			// State Fields
-			{
-				position.y += 10;
-				position.x += 20;
-				StatePropField(position, "From", SerializedTransition.FromState);
-				position.x = rect.width / 2 + 20;
-				StatePropField(position, "To", SerializedTransition.ToState);
-			}
+            // State Fields
+            {
+                position.y += 10;
+                position.x += 20;
+                StatePropField(position, "From", SerializedTransition.FromState);
+                position.x = rect.width / 2 + 20;
+                StatePropField(position, "To", SerializedTransition.ToState);
+            }
 
-			// Conditions List
-			{
-				position.y += 30;
-				position.x = rect.x + 5;
-				position.height = listHeight;
-				position.width -= 10;
-				m_List.DoList(position);
-			}
+            // Conditions List
+            {
+                position.y += 30;
+                position.x = rect.x + 5;
+                position.height = listHeight;
+                position.width -= 10;
+                m_List.DoList(position);
+            }
 
-			// Add and cancel buttons
-			{
-				position.y += position.height + 5;
-				position.height = singleLineHeight;
-				position.width = rect.width / 2 - 20;
-				if (GUI.Button(position, "Add Transition"))
-				{
-					if (SerializedTransition.FromState.objectReferenceValue == null)
-						Debug.LogException(new ArgumentNullException("FromState"));
-					else if (SerializedTransition.ToState.objectReferenceValue == null)
-						Debug.LogException(new ArgumentNullException("ToState"));
-					else if (SerializedTransition.FromState.objectReferenceValue == SerializedTransition.ToState.objectReferenceValue)
-						Debug.LogException(new InvalidOperationException("FromState and ToState are the same."));
-					else
-					{
-						m_Editor.AddTransition(SerializedTransition);
-						m_Toggle = false;
-					}
-				}
-				position.x += rect.width / 2;
-				
-				if (GUI.Button(position, "Cancel"))
-				{
-					m_Toggle = false;
-				}
-			}
+            // Add and cancel buttons
+            {
+                position.y += position.height + 5;
+                position.height = singleLineHeight;
+                position.width = rect.width / 2 - 20;
+                if (GUI.Button(position, "Add Transition"))
+                {
+                    if (SerializedTransition.FromState.objectReferenceValue == null)
+                        Debug.LogException(new ArgumentNullException("FromState"));
+                    else if (SerializedTransition.ToState.objectReferenceValue == null)
+                        Debug.LogException(new ArgumentNullException("ToState"));
+                    else if (SerializedTransition.FromState.objectReferenceValue == SerializedTransition.ToState.objectReferenceValue)
+                        Debug.LogException(new InvalidOperationException("FromState and ToState are the same."));
+                    else
+                    {
+                        m_Editor.AddTransition(SerializedTransition);
+                        m_Toggle = false;
+                    }
+                }
+                position.x += rect.width / 2;
 
-			void StatePropField(Rect pos, string label, SerializedProperty prop)
-			{
-				pos.height = singleLineHeight;
-				LabelField(pos, label);
-				pos.x += 40;
-				pos.width /= 4;
-				PropertyField(pos, prop, GUIContent.none);
-			}
-		}
+                if (GUI.Button(position, "Cancel"))
+                {
+                    m_Toggle = false;
+                }
+            }
 
-		public void Dispose()
-		{
-			UnityEngine.Object.DestroyImmediate(m_Transition.targetObject);
-			m_Transition.Dispose();
-			GC.SuppressFinalize(this);
-		}
+            void StatePropField(Rect pos, string label, SerializedProperty prop)
+            {
+                pos.height = singleLineHeight;
+                LabelField(pos, label);
+                pos.x += 40;
+                pos.width /= 4;
+                PropertyField(pos, prop, GUIContent.none);
+            }
+        }
 
-		private static void SetupConditionsList(ReorderableList reorderableList)
-		{
-			reorderableList.elementHeight *= 2.3f;
-			reorderableList.drawHeaderCallback += rect => GUI.Label(rect, "Conditions");
-			reorderableList.onAddCallback += list =>
-			{
-				int count = list.count;
-				list.serializedProperty.InsertArrayElementAtIndex(count);
-				var prop = list.serializedProperty.GetArrayElementAtIndex(count);
-				prop.FindPropertyRelative("Condition").objectReferenceValue = null;
-				prop.FindPropertyRelative("ExpectedResult").enumValueIndex = 0;
-				prop.FindPropertyRelative("Operator").enumValueIndex = 0;
-			};
+        public void Dispose()
+        {
+            UnityEngine.Object.DestroyImmediate(m_Transition.targetObject);
+            m_Transition.Dispose();
+            GC.SuppressFinalize(this);
+        }
 
-			reorderableList.drawElementCallback += (Rect rect, int index, bool isActive, bool isFocused) =>
-			{
-				var prop = reorderableList.serializedProperty.GetArrayElementAtIndex(index);
-				rect = new Rect(rect.x, rect.y + 2.5f, rect.width, EditorGUIUtility.singleLineHeight);
-				var condition = prop.FindPropertyRelative("Condition");
-				if (condition.objectReferenceValue != null)
-				{
-					string label = condition.objectReferenceValue.name;
-					GUI.Label(rect, "If");
-					GUI.Label(new Rect(rect.x + 20, rect.y, rect.width, rect.height), label, EditorStyles.boldLabel);
-					EditorGUI.PropertyField(new Rect(rect.x + rect.width - 180, rect.y, 20, rect.height), condition, GUIContent.none);
-				}
-				else
-				{
-					EditorGUI.PropertyField(new Rect(rect.x, rect.y, 150, rect.height), condition, GUIContent.none);
-				}
-				EditorGUI.LabelField(new Rect(rect.x + rect.width - 120, rect.y, 20, rect.height), "Is");
-				EditorGUI.PropertyField(new Rect(rect.x + rect.width - 60, rect.y, 60, rect.height), prop.FindPropertyRelative("ExpectedResult"), GUIContent.none);
-				EditorGUI.PropertyField(new Rect(rect.x + 20, rect.y + EditorGUIUtility.singleLineHeight + 5, 60, rect.height), prop.FindPropertyRelative("Operator"), GUIContent.none);
-			};
+        private static void SetupConditionsList(ReorderableList reorderableList)
+        {
+            reorderableList.elementHeight *= 2.3f;
+            reorderableList.drawHeaderCallback += rect => GUI.Label(rect, "Conditions");
+            reorderableList.onAddCallback += list =>
+            {
+                int count = list.count;
+                list.serializedProperty.InsertArrayElementAtIndex(count);
+                var prop = list.serializedProperty.GetArrayElementAtIndex(count);
+                prop.FindPropertyRelative("Condition").objectReferenceValue = null;
+                prop.FindPropertyRelative("ExpectedResult").enumValueIndex = 0;
+                prop.FindPropertyRelative("Operator").enumValueIndex = 0;
+            };
 
-			reorderableList.onChangedCallback += list => reorderableList.serializedProperty.serializedObject.ApplyModifiedProperties();
-			reorderableList.drawElementBackgroundCallback += (Rect rect, int index, bool isActive, bool isFocused) =>
-			{
-				if (isFocused)
-					EditorGUI.DrawRect(rect, ContentStyle.Focused);
+            reorderableList.drawElementCallback += (Rect rect, int index, bool isActive, bool isFocused) =>
+            {
+                var prop = reorderableList.serializedProperty.GetArrayElementAtIndex(index);
+                rect = new Rect(rect.x, rect.y + 2.5f, rect.width, EditorGUIUtility.singleLineHeight);
+                var condition = prop.FindPropertyRelative("Condition");
+                if (condition.objectReferenceValue != null)
+                {
+                    string label = condition.objectReferenceValue.name;
+                    GUI.Label(rect, "If");
+                    GUI.Label(new Rect(rect.x + 20, rect.y, rect.width, rect.height), label, EditorStyles.boldLabel);
+                    EditorGUI.PropertyField(new Rect(rect.x + rect.width - 180, rect.y, 20, rect.height), condition, GUIContent.none);
+                }
+                else
+                {
+                    EditorGUI.PropertyField(new Rect(rect.x, rect.y, 150, rect.height), condition, GUIContent.none);
+                }
+                EditorGUI.LabelField(new Rect(rect.x + rect.width - 120, rect.y, 20, rect.height), "Is");
+                EditorGUI.PropertyField(new Rect(rect.x + rect.width - 60, rect.y, 60, rect.height), prop.FindPropertyRelative("ExpectedResult"), GUIContent.none);
+                EditorGUI.PropertyField(new Rect(rect.x + 20, rect.y + EditorGUIUtility.singleLineHeight + 5, 60, rect.height), prop.FindPropertyRelative("Operator"), GUIContent.none);
+            };
 
-				if (index % 2 != 0)
-					EditorGUI.DrawRect(rect, ContentStyle.ZebraDark);
-				else
-					EditorGUI.DrawRect(rect, ContentStyle.ZebraLight);
-			};
-		}
+            reorderableList.onChangedCallback += list => reorderableList.serializedProperty.serializedObject.ApplyModifiedProperties();
+            reorderableList.drawElementBackgroundCallback += (Rect rect, int index, bool isActive, bool isFocused) =>
+            {
+                if (isFocused)
+                    EditorGUI.DrawRect(rect, ContentStyle.Focused);
 
-		// SO to serialize a TransitionItem
-		internal class TransitionItemSO : ScriptableObject
-		{
-			public TransitionTableSO.TransitionItem Item = default;
-		}
-	}
+                if (index % 2 != 0)
+                    EditorGUI.DrawRect(rect, ContentStyle.ZebraDark);
+                else
+                    EditorGUI.DrawRect(rect, ContentStyle.ZebraLight);
+            };
+        }
+
+        // SO to serialize a TransitionItem
+        internal class TransitionItemSO : ScriptableObject
+        {
+            public TransitionTableSO.TransitionItem Item = default;
+        }
+    }
 }

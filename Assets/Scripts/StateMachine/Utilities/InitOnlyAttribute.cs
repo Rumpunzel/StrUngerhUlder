@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Strungerhulder.StateMachine
+namespace Strungerhulder.StateMachines
 {
-	[AttributeUsage(AttributeTargets.Field)]
-	public class InitOnlyAttribute : PropertyAttribute { }
+    [AttributeUsage(AttributeTargets.Field)]
+    public class InitOnlyAttribute : PropertyAttribute { }
 }

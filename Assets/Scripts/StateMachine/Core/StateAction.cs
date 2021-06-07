@@ -1,6 +1,6 @@
-using Strungerhulder.StateMachine.ScriptableObjects;
+using Strungerhulder.StateMachines.ScriptableObjects;
 
-namespace Strungerhulder.StateMachine
+namespace Strungerhulder.StateMachines
 {
     /// <summary>
     /// An object representing an action.

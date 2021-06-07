@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.StateMachines.ScriptableObjects
 {
 	[CreateAssetMenu(fileName = "#RUNTIMENAME#", menuName = "State Machines/Actions/#RUNTIMENAME_WITH_SPACES#")]
 	public class #SCRIPTNAME# : StateActionSO

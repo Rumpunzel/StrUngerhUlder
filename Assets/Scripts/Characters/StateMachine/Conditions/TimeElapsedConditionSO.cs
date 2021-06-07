@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using Strungerhulder.StateMachines;
+using Strungerhulder.StateMachines.ScriptableObjects;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 {
     [CreateAssetMenu(menuName = "State Machines/Conditions/Time elapsed")]
     public class TimeElapsedConditionSO : StateConditionSO<TimeElapsedCondition>

@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Strungerhulder.Characters;
+using Strungerhulder.StateMachines;
+using Strungerhulder.StateMachines.ScriptableObjects;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "ApplyDestinationPointAction", menuName = "State Machines/Actions/Apply Destination Point")]
     public class ApplyDestinationPointActionSO : StateActionSO<ApplyDestinationPointAction> { }

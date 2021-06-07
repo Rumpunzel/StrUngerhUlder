@@ -5,8 +5,9 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.SavingAndLoading;
+using Strungerhulder.SceneManagement.ScriptableObjects;
 
-namespace Strungerhulder
+namespace Strungerhulder.SceneManagement
 {
     /// <summary>
     /// This class contains the function to call when play button is pressed

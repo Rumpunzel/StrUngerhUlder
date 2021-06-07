@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Strungerhulder.Events.ScriptableObjects;
 
-namespace Strungerhulder
+namespace Strungerhulder.SceneManagement
 {
     public class LoadingScreenManager : MonoBehaviour
     {

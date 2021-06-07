@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Strungerhulder.StateMachine.ScriptableObjects
+namespace Strungerhulder.StateMachines.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "New Transition Table", menuName = "State Machines/Transition Table")]
     public class TransitionTableSO : ScriptableObject
@@ -97,5 +97,5 @@ namespace Strungerhulder.StateMachine.ScriptableObjects
 
         public enum Result { True, False }
         public enum Operator { And, Or }
-    } 
+    }
 }

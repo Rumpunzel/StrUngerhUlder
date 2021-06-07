@@ -4,6 +4,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.Inventory.ScriptableObjects;
+using Strungerhulder.SceneManagement.ScriptableObjects;
 
 namespace Strungerhulder.SavingAndLoading
 {
