@@ -33,13 +33,13 @@ public class InitializationLoader : MonoBehaviour
 
 	private void LoadMainMenu()//AsyncOperationHandle<LoadEventChannelSO> obj)
 	{
-		print("Initializer");
+		/*print("Initializer");
 		print(m_MenuLoadChannel.GetHashCode());
         print(m_MenuLoadChannel.GetInstanceID());
         print(m_MenuLoadChannel.ToString());
-		print(m_MenuLoadChannel.OnLoadingRequested);
+		print(m_MenuLoadChannel.OnLoadingRequested);*/
         m_MenuLoadChannel.RaiseEvent(m_MenuToLoad);
-        print(m_MenuLoadChannel.OnLoadingRequested);
+        //print(m_MenuLoadChannel.OnLoadingRequested);
 		SceneManager.UnloadSceneAsync(0); // Main is the only scene in BuildSettings, thus it has index 0
 	}
 }

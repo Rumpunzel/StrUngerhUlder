@@ -17,7 +17,7 @@ public class SpawnSystem : MonoBehaviour
 	private Transform[] m_SpawnLocations;
 
 	[Header("Scene Ready Event")]
-	[SerializeField] private VoidEventChannelSO m_OnSceneReady = default; //Raised when the scene is loaded and set active
+	[SerializeField] private VoidEventChannelSO m_OnSceneReady = default; // Raised when the scene is loaded and set active
 
 	
 	private void OnEnable()
@@ -41,10 +41,7 @@ public class SpawnSystem : MonoBehaviour
 		Spawn(FindSpawnIndex(m_PathTaken?.Path ?? null));
 	}
 
-	private void Reset()
-	{
-		AutoFill();
-	}
+	private void Reset() => AutoFill();
 
 	/// <summary>
 	/// This function tries to autofill some of the parameters of the component, so it's easy to drop in a new scene

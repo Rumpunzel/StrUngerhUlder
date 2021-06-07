@@ -93,4 +93,4 @@ MonoBehaviour:
   m_PlayerTransformAnchor: {fileID: 11400000, guid: 65b1ab84f9b10034781d999c40adce4d, type: 2}
   m_PlayerInstantiatedChannel: {fileID: 11400000, guid: cb361e21ea4ec1e4f90c8aa92bf747a3, type: 2}
   m_PathTaken: {fileID: 11400000, guid: 62acbf9f043186c4f85be891a1d4c5a3, type: 2}
-  m_OnSceneReady: {fileID: 11400000, guid: d72cb6331dbd3c74ebe7708d18f88e22, type: 2}
+  m_OnSceneReady: {fileID: 11400000, guid: 9b6dab412674c1c40ae5007ca60bbd80, type: 2}

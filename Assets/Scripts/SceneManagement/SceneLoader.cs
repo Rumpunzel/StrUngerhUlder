@@ -36,14 +36,14 @@ public class SceneLoader : MonoBehaviour
 
 	private void OnEnable()
 	{
-		print("Scene Loader");
+		/*print("Scene Loader");
         print(m_LoadMenu.GetHashCode());
         print(m_LoadMenu.GetInstanceID());
         print(m_LoadMenu.ToString());
-		print(m_LoadMenu.OnLoadingRequested);
+		print(m_LoadMenu.OnLoadingRequested);*/
 		m_LoadLocation.OnLoadingRequested += LoadLocation;
 		m_LoadMenu.OnLoadingRequested += LoadMenu;
-		print(m_LoadMenu.OnLoadingRequested);
+        //print(m_LoadMenu.OnLoadingRequested);
 #if UNITY_EDITOR
 		m_ColdStartupLocation.OnLoadingRequested += LocationColdStartup;
 #endif

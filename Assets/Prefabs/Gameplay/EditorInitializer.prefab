@@ -45,9 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ThisSceneSO: {fileID: 0}
   m_PersistentManagersSO: {fileID: 11400000, guid: ea136aec5c87f8d46851ce3d90aae804, type: 2}
-  m_NotifyColdStartupChannel:
-    m_AssetGUID: df981f28898141547be92e64780f2835
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  m_NotifyColdStartupChannel: {fileID: 11400000, guid: df981f28898141547be92e64780f2835, type: 2}
   m_OnSceneReadyChannel: {fileID: 11400000, guid: 9b6dab412674c1c40ae5007ca60bbd80, type: 2}

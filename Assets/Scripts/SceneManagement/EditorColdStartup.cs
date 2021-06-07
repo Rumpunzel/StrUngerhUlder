@@ -12,7 +12,8 @@ public class EditorColdStartup : MonoBehaviour
 #if UNITY_EDITOR
 	[SerializeField] private GameSceneSO m_ThisSceneSO = default;
 	[SerializeField] private GameSceneSO m_PersistentManagersSO = default;
-	[SerializeField] private AssetReference m_NotifyColdStartupChannel = default;
+	//[SerializeField] private AssetReference m_NotifyColdStartupChannelAsset = default;
+    [SerializeField] private LoadEventChannelSO m_NotifyColdStartupChannel = default;
 	[SerializeField] private VoidEventChannelSO m_OnSceneReadyChannel = default;
 
 
@@ -24,13 +25,15 @@ public class EditorColdStartup : MonoBehaviour
 
 	private void LoadEventChannel(AsyncOperationHandle<SceneInstance> obj)
 	{
-		m_NotifyColdStartupChannel.LoadAssetAsync<LoadEventChannelSO>().Completed += OnNotifyChannelLoaded;
+        //m_NotifyColdStartupChannelAsset.LoadAssetAsync<LoadEventChannelSO>().Completed += OnNotifyChannelLoaded;
+        OnNotifyChannelLoaded();
 	}
 
-	private void OnNotifyChannelLoaded(AsyncOperationHandle<LoadEventChannelSO> obj)
+	private void OnNotifyChannelLoaded()//AsyncOperationHandle<LoadEventChannelSO> obj)
 	{
 		if(m_ThisSceneSO != null)
-			obj.Result.RaiseEvent(m_ThisSceneSO);
+            //obj.Result.RaiseEvent(m_ThisSceneSO);
+			m_NotifyColdStartupChannel.RaiseEvent(m_ThisSceneSO);
 		else
 		{
 			//Raise a fake scene ready event, so the player is spawned
