@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using Strungerhulder.StateMachine;
-using Strungerhulder.StateMachine.ScriptableObjects;
 
 namespace Strungerhulder.StateMachine.ScriptableObjects
 {

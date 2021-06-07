@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
-using Strungerhulder.StateMachine;
-using Strungerhulder.StateMachine.ScriptableObjects;
 
-[CreateAssetMenu(menuName = "State Machines/Conditions/Is Character Controller Grounded Condition")]
-public class IsCharacterControllerGroundedConditionSO : StateConditionSO<IsCharacterControllerGroundedCondition> { }
-
-public class IsCharacterControllerGroundedCondition : Condition
+namespace Strungerhulder.StateMachine.ScriptableObjects
 {
-    private CharacterController m_CharacterController;
+    [CreateAssetMenu(menuName = "State Machines/Conditions/Is Character Controller Grounded Condition")]
+    public class IsCharacterControllerGroundedConditionSO : StateConditionSO<IsCharacterControllerGroundedCondition> { }
 
-    public override void Awake(StateMachine stateMachine)
+    public class IsCharacterControllerGroundedCondition : Condition
     {
-        m_CharacterController = stateMachine.GetComponent<CharacterController>();
-    }
+        private CharacterController m_CharacterController;
 
-    protected override bool Statement() => m_CharacterController.isGrounded;
+        public override void Awake(StateMachine stateMachine)
+        {
+            m_CharacterController = stateMachine.GetComponent<CharacterController>();
+        }
+
+        protected override bool Statement() => m_CharacterController.isGrounded;
+    }
 }

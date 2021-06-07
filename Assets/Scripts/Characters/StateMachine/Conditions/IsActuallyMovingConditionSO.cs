@@ -1,33 +1,34 @@
 ﻿using UnityEngine;
-using Strungerhulder.StateMachine;
-using Strungerhulder.StateMachine.ScriptableObjects;
 
-[CreateAssetMenu(fileName = "IsActuallyMovingCondition", menuName = "State Machines/Conditions/Is Actually Moving Condition")]
-public class IsActuallyMovingConditionSO : StateConditionSO
+namespace Strungerhulder.StateMachine.ScriptableObjects
 {
-    [SerializeField] private float m_Threshold = 0.02f;
-
-	protected override Condition CreateCondition() => new IsActuallyMovingCondition(m_Threshold);
-}
-
-public class IsActuallyMovingCondition : Condition
-{
-    private float m_Threshold;
-    private CharacterController m_CharacterController;
-
-
-    public IsActuallyMovingCondition(float threshold)
+    [CreateAssetMenu(fileName = "IsActuallyMovingCondition", menuName = "State Machines/Conditions/Is Actually Moving Condition")]
+    public class IsActuallyMovingConditionSO : StateConditionSO
     {
-        m_Threshold = threshold;
-    }
-    
-    public override void Awake(StateMachine stateMachine)
-    {
-        m_CharacterController = stateMachine.GetComponent<CharacterController>();
+        [SerializeField] private float m_Threshold = 0.02f;
+
+        protected override Condition CreateCondition() => new IsActuallyMovingCondition(m_Threshold);
     }
 
-    protected override bool Statement()
+    public class IsActuallyMovingCondition : Condition
     {
-        return m_CharacterController.velocity.sqrMagnitude > m_Threshold * m_Threshold;
+        private float m_Threshold;
+        private CharacterController m_CharacterController;
+
+
+        public IsActuallyMovingCondition(float threshold)
+        {
+            m_Threshold = threshold;
+        }
+
+        public override void Awake(StateMachine stateMachine)
+        {
+            m_CharacterController = stateMachine.GetComponent<CharacterController>();
+        }
+
+        protected override bool Statement()
+        {
+            return m_CharacterController.velocity.sqrMagnitude > m_Threshold * m_Threshold;
+        }
     }
 }

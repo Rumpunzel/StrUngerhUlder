@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
-using Strungerhulder.StateMachine;
-using Strungerhulder.StateMachine.ScriptableObjects;
 
-[CreateAssetMenu(menuName = "State Machines/Conditions/Time elapsed random")]
-public class TimeElapsedRandomConditionSO : StateConditionSO<TimeElapsedRandomCondition>
+namespace Strungerhulder.StateMachine.ScriptableObjects
 {
-    public float minTimerLength = .5f;
-    public float maxTimerLength = .5f;
-}
-
-public class TimeElapsedRandomCondition : Condition
-{
-    private float m_StartTime;
-    private float m_TimerLength = .5f;
-    protected new TimeElapsedRandomConditionSO OriginSO => (TimeElapsedRandomConditionSO)base.OriginSO; // The SO this Condition spawned from
-
-    public override void OnStateEnter()
+    [CreateAssetMenu(menuName = "State Machines/Conditions/Time elapsed random")]
+    public class TimeElapsedRandomConditionSO : StateConditionSO<TimeElapsedRandomCondition>
     {
-        m_StartTime = Time.time;
-        m_TimerLength = Random.Range(OriginSO.minTimerLength, OriginSO.maxTimerLength);
+        public float minTimerLength = .5f;
+        public float maxTimerLength = .5f;
     }
 
-    protected override bool Statement() => Time.time >= m_StartTime + m_TimerLength;
+    public class TimeElapsedRandomCondition : Condition
+    {
+        private float m_StartTime;
+        private float m_TimerLength = .5f;
+        protected new TimeElapsedRandomConditionSO OriginSO => (TimeElapsedRandomConditionSO)base.OriginSO; // The SO this Condition spawned from
+
+        public override void OnStateEnter()
+        {
+            m_StartTime = Time.time;
+            m_TimerLength = Random.Range(OriginSO.minTimerLength, OriginSO.maxTimerLength);
+        }
+
+        protected override bool Statement() => Time.time >= m_StartTime + m_TimerLength;
+    }
 }

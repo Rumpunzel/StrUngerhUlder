@@ -1,29 +1,30 @@
 ﻿using UnityEngine;
-using Strungerhulder.StateMachine;
-using Strungerhulder.StateMachine.ScriptableObjects;
 
-[CreateAssetMenu(menuName = "State Machines/Conditions/Is Picking Up")]
-public class IsPickingUpSO : StateConditionSO<IsPickingUpCondition> { }
-
-public class IsPickingUpCondition : Condition
+namespace Strungerhulder.StateMachine.ScriptableObjects
 {
-	//Component references
-	private InteractionManager m_InteractionManager;
+    [CreateAssetMenu(menuName = "State Machines/Conditions/Is Picking Up")]
+    public class IsPickingUpSO : StateConditionSO<IsPickingUpCondition> { }
+
+    public class IsPickingUpCondition : Condition
+    {
+        //Component references
+        private InteractionManager m_InteractionManager;
 
 
-    public override void Awake(StateMachine stateMachine)
-	{
-		m_InteractionManager = stateMachine.GetComponent<InteractionManager>();
-	}
+        public override void Awake(StateMachine stateMachine)
+        {
+            m_InteractionManager = stateMachine.GetComponent<InteractionManager>();
+        }
 
-	protected override bool Statement()
-	{
-		if (m_InteractionManager.currentInteraction == null ||
-			m_InteractionManager.currentInteraction.type != InteractionType.PickUp)
-			return false;
-		
-		// Consume it
-		m_InteractionManager.currentInteraction.type = InteractionType.None;
-		return true;
-	}
+        protected override bool Statement()
+        {
+            if (m_InteractionManager.currentInteraction == null ||
+                m_InteractionManager.currentInteraction.type != InteractionType.PickUp)
+                return false;
+
+            // Consume it
+            m_InteractionManager.currentInteraction.type = InteractionType.None;
+            return true;
+        }
+    }
 }

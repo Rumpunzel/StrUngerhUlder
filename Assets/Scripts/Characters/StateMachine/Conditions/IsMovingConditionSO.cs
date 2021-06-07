@@ -1,29 +1,30 @@
 ﻿using UnityEngine;
-using Strungerhulder.StateMachine;
-using Strungerhulder.StateMachine.ScriptableObjects;
 
-[CreateAssetMenu(menuName = "State Machines/Conditions/Started Moving")]
-public class IsMovingConditionSO : StateConditionSO<IsMovingCondition>
+namespace Strungerhulder.StateMachine.ScriptableObjects
 {
-    public float threshold = 0.02f;
-}
-
-public class IsMovingCondition : Condition
-{
-    private Protagonist m_ProtagonistScript;
-    protected new IsMovingConditionSO OriginSO => (IsMovingConditionSO)base.OriginSO; // The SO this Condition spawned from
-
-
-    public override void Awake(StateMachine stateMachine)
+    [CreateAssetMenu(menuName = "State Machines/Conditions/Started Moving")]
+    public class IsMovingConditionSO : StateConditionSO<IsMovingCondition>
     {
-        m_ProtagonistScript = stateMachine.GetComponent<Protagonist>();
+        public float threshold = 0.02f;
     }
 
-    protected override bool Statement()
+    public class IsMovingCondition : Condition
     {
-        Vector3 movementVector = m_ProtagonistScript.movementInput;
-        movementVector.y = 0f;
+        private Protagonist m_ProtagonistScript;
+        protected new IsMovingConditionSO OriginSO => (IsMovingConditionSO)base.OriginSO; // The SO this Condition spawned from
 
-        return movementVector.sqrMagnitude > OriginSO.threshold;
+
+        public override void Awake(StateMachine stateMachine)
+        {
+            m_ProtagonistScript = stateMachine.GetComponent<Protagonist>();
+        }
+
+        protected override bool Statement()
+        {
+            Vector3 movementVector = m_ProtagonistScript.movementInput;
+            movementVector.y = 0f;
+
+            return movementVector.sqrMagnitude > OriginSO.threshold;
+        }
     }
 }

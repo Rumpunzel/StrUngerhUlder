@@ -1,44 +1,45 @@
 using UnityEngine;
-using Strungerhulder.StateMachine;
-using Strungerhulder.StateMachine.ScriptableObjects;
 
-[CreateAssetMenu(menuName = "State Machines/Conditions/Has Hit the Head")]
-public class HasHitHeadConditionSO : StateConditionSO<HasHitHeadCondition> { }
-
-public class HasHitHeadCondition : Condition
+namespace Strungerhulder.StateMachine.ScriptableObjects
 {
-	//Component references
-	private Protagonist m_ProtagonistScript;
-	private CharacterController m_CharacterController;
-	private Transform m_Transform;
+    [CreateAssetMenu(menuName = "State Machines/Conditions/Has Hit the Head")]
+    public class HasHitHeadConditionSO : StateConditionSO<HasHitHeadCondition> { }
 
-	public override void Awake(StateMachine stateMachine)
-	{
-		m_Transform = stateMachine.GetComponent<Transform>();
-		m_ProtagonistScript = stateMachine.GetComponent<Protagonist>();
-		m_CharacterController = stateMachine.GetComponent<CharacterController>();
-	}
+    public class HasHitHeadCondition : Condition
+    {
+        //Component references
+        private Protagonist m_ProtagonistScript;
+        private CharacterController m_CharacterController;
+        private Transform m_Transform;
 
-	protected override bool Statement()
-	{
-		bool isMovingUpwards = m_ProtagonistScript.movementVector.y > 0f;
+        public override void Awake(StateMachine stateMachine)
+        {
+            m_Transform = stateMachine.GetComponent<Transform>();
+            m_ProtagonistScript = stateMachine.GetComponent<Protagonist>();
+            m_CharacterController = stateMachine.GetComponent<CharacterController>();
+        }
 
-		if (isMovingUpwards)
-		{
-			// Making sure the collision is near the top of the head
-			float permittedDistance = m_CharacterController.radius / 2f;
-			float topPositionY = m_Transform.position.y + m_CharacterController.height;
-			float distance = Mathf.Abs(m_ProtagonistScript.lastHit.point.y - topPositionY);
-			
-			if (distance <= permittedDistance)
-			{
-				m_ProtagonistScript.jumpInput = false;
-				m_ProtagonistScript.movementVector.y = 0f;
+        protected override bool Statement()
+        {
+            bool isMovingUpwards = m_ProtagonistScript.movementVector.y > 0f;
 
-				return true;
-			}
-		}
+            if (isMovingUpwards)
+            {
+                // Making sure the collision is near the top of the head
+                float permittedDistance = m_CharacterController.radius / 2f;
+                float topPositionY = m_Transform.position.y + m_CharacterController.height;
+                float distance = Mathf.Abs(m_ProtagonistScript.lastHit.point.y - topPositionY);
 
-		return false;
-	}
+                if (distance <= permittedDistance)
+                {
+                    m_ProtagonistScript.jumpInput = false;
+                    m_ProtagonistScript.movementVector.y = 0f;
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
 }
