@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Strungerhulder.StateMachine;
 using Strungerhulder.StateMachine.ScriptableObjects;
+using System;
 
 /// <summary>
 /// This Action handles horizontal movement while in the air, keeping momentum, simulating air resistance, and accelerating towards the desired speed.
@@ -33,7 +34,7 @@ public class AerialMovementAction : StateAction
 		Vector3 input = m_Protagonist.movementInput;
 
 		SetVelocityPerAxis(ref velocity.x, input.x, OriginSO.acceleration, OriginSO.speed);
-		SetVelocityPerAxis(ref velocity.z, input.z, OriginSO.acceleration, OriginSO.acceleration);
+		SetVelocityPerAxis(ref velocity.z, input.z, OriginSO.acceleration, OriginSO.speed);
 
 		m_Protagonist.movementVector = velocity;
 	}
@@ -43,9 +44,7 @@ public class AerialMovementAction : StateAction
 		if (axisInput == 0f)
 		{
 			if (currentAxisSpeed != 0f)
-			{
 				ApplyAirResistance(ref currentAxisSpeed);
-			}
 		}
 		else
 		{
@@ -70,6 +69,7 @@ public class AerialMovementAction : StateAction
 		float sign = Mathf.Sign(value);
 
 		value -= sign * Protagonist.AIR_RESISTANCE * Time.deltaTime;
+
 		if (Mathf.Sign(value) != sign)
 			value = 0;
 	}
