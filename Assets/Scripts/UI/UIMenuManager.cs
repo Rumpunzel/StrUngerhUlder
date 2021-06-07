@@ -3,6 +3,7 @@ using UnityEngine;
 using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.SavingAndLoading;
 using Strungerhulder.Input;
+using Strungerhulder.UI.Settings;
 
 namespace Strungerhulder.UI
 {

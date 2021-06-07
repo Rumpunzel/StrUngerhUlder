@@ -4,7 +4,7 @@ using Strungerhulder.Events.ScriptableObjects;
 using Strungerhulder.Dialogues.ScriptableObjects;
 using Strungerhulder.Menues;
 
-namespace Strungerhulder.UI.Dialogue
+namespace Strungerhulder.UI.Dialogues
 {
     public class UIDialogueChoiceFiller : MonoBehaviour
     {

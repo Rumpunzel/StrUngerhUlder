@@ -2,7 +2,7 @@
 using UnityEngine;
 using Strungerhulder.Dialogues.ScriptableObjects;
 
-namespace Strungerhulder.UI.Dialogue
+namespace Strungerhulder.UI.Dialogues
 {
     public class UIDialogueChoicesManager : MonoBehaviour
     {

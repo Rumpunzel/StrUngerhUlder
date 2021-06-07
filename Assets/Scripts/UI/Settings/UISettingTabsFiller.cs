@@ -2,24 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UISettingTabsFiller : MonoBehaviour
+namespace Strungerhulder.UI.Settings
 {
-    [SerializeField] private UISettingTabFiller [] m_SettingTabsList = default;
+    public class UISettingTabsFiller : MonoBehaviour
+    {
+        [SerializeField] private UISettingTabFiller[] m_SettingTabsList = default;
 
 
-    public void FillTabs(List<SettingTab> settingTabs)
-	{
-		for (int i = 0; i < settingTabs.Count; i++)
-		{
-			m_SettingTabsList[i].SetTab(settingTabs[i], i == 0);
-		}
-	}
+        public void FillTabs(List<SettingTab> settingTabs)
+        {
+            for (int i = 0; i < settingTabs.Count; i++)
+            {
+                m_SettingTabsList[i].SetTab(settingTabs[i], i == 0);
+            }
+        }
 
-	public void SelectTab(SettingTabType tabType)
-	{
-		for (int i = 0; i < m_SettingTabsList.Length; i++)
-		{
-			m_SettingTabsList[i].SetTab(tabType);
-		}
-	}
+        public void SelectTab(SettingTabType tabType)
+        {
+            for (int i = 0; i < m_SettingTabsList.Length; i++)
+            {
+                m_SettingTabsList[i].SetTab(tabType);
+            }
+        }
+    }
 }
