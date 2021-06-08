@@ -24,8 +24,8 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         {
             float moveSpeed = m_Protagonist.targetSpeed * m_MovementStats.moveSpeed;
 
-            m_Protagonist.movementVector.x = m_Protagonist.movementInput.x * moveSpeed;
-            m_Protagonist.movementVector.z = m_Protagonist.movementInput.z * moveSpeed;
+            m_Protagonist.horizontalMovementVector.x = m_Protagonist.movementInput.x * moveSpeed;
+            m_Protagonist.horizontalMovementVector.y = m_Protagonist.movementInput.z * moveSpeed;
         }
     }
 }

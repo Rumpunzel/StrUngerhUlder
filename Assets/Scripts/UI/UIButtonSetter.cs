@@ -8,7 +8,7 @@ namespace Strungerhulder.UI
 {
     public class UIButtonSetter : MonoBehaviour
     {
-        public UnityAction clicked = default;
+        public UnityAction Clicked = default;
 
         [SerializeField] private LocalizeStringEvent m_ButtonText = default;
         [SerializeField] private MultiInputButton m_Button = default;
@@ -47,7 +47,7 @@ namespace Strungerhulder.UI
                 SelectButton();
         }
 
-        public void Click() => clicked.Invoke();
+        public void Click() => Clicked.Invoke();
 
 
         private void SelectButton() => m_Button.Select();

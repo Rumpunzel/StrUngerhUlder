@@ -48,7 +48,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         {
             float normalisedSpeed = m_NavAgent.enabled ?
                 m_NavAgent.velocity.magnitude / m_MovementStats.moveSpeed :
-                m_Protagonist.movementVector.magnitude / m_MovementStats.moveSpeed;
+                m_Protagonist.horizontalMovementVector.magnitude / m_MovementStats.moveSpeed;
 
             m_Animator.SetFloat(m_ParameterHash, normalisedSpeed);
         }

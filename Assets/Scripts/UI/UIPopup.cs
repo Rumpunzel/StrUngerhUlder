@@ -39,8 +39,8 @@ namespace Strungerhulder.UI
 
         private void OnDisable()
         {
-            m_PopupButton2.clicked -= CancelButtonClicked;
-            m_PopupButton1.clicked -= ConfirmButtonClicked;
+            m_PopupButton2.Clicked -= CancelButtonClicked;
+            m_PopupButton1.Clicked -= ConfirmButtonClicked;
             m_InputReader.MenuCloseEvent -= ClosePopupButtonClicked;
         }
 
@@ -86,15 +86,15 @@ namespace Strungerhulder.UI
                 m_PopupButton1.gameObject.SetActive(true);
                 m_PopupButton2.gameObject.SetActive(true);
 
-                m_PopupButton2.clicked += CancelButtonClicked;
-                m_PopupButton1.clicked += ConfirmButtonClicked;
+                m_PopupButton2.Clicked += CancelButtonClicked;
+                m_PopupButton1.Clicked += ConfirmButtonClicked;
             }
             else // needs only one button : Is an information 
             {
                 m_PopupButton1.gameObject.SetActive(true);
                 m_PopupButton2.gameObject.SetActive(false);
 
-                m_PopupButton1.clicked += ConfirmButtonClicked;
+                m_PopupButton1.Clicked += ConfirmButtonClicked;
             }
 
             m_ButtonClose.gameObject.SetActive(hasExitButton);

@@ -24,7 +24,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 
         public override void OnStateEnter()
         {
-            m_VerticalMovement = m_Protagonist.movementVector.y;
+            m_VerticalMovement = m_Protagonist.verticalMovement;
 
             //Prevents a double jump if the player keeps holding the jump button
             //Basically it "consumes" the input
@@ -37,8 +37,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 
             //Cap the maximum so the player doesn't reach incredible speeds when freefalling from high positions
             m_VerticalMovement = m_MovementStats.ValidateVerticalSpeed(m_VerticalMovement);
-
-            m_Protagonist.movementVector.y = m_VerticalMovement;
+            m_Protagonist.verticalMovement = m_VerticalMovement;
         }
     }
 }

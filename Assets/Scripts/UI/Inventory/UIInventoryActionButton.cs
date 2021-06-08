@@ -9,7 +9,7 @@ namespace Strungerhulder.UI.Iventory
 {
     public class UIInventoryActionButton : MonoBehaviour
     {
-        public UnityAction clicked;
+        public UnityAction Clicked;
 
         [SerializeField] private LocalizeStringEvent m_ButtonActionText = default;
         [SerializeField] private Button m_ButtonAction = default;
@@ -23,10 +23,10 @@ namespace Strungerhulder.UI.Iventory
         {
             m_ButtonAction.interactable = isInteractable;
             m_ButtonActionText.StringReference = itemType.ActionName;
-            //bool isKeyboard = !(Input.GetJoystickNames() != null && Input.GetJoystickNames().Length > 0);
 
             bool isKeyboard = true;
             m_ButtonPromptSetter.SetButtonPrompt(isKeyboard);
+
             if (isInteractable)
             {
                 if (m_InputReader != null)
@@ -45,7 +45,7 @@ namespace Strungerhulder.UI.Iventory
             }
         }
 
-        public void ClickActionButton() => clicked.Invoke();
+        public void ClickActionButton() => Clicked.Invoke();
 
         private void OnDisable()
         {

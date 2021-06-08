@@ -21,18 +21,18 @@ namespace Strungerhulder.UI
         {
             _ResumeButton.SetButton(true);
             m_InputReader.MenuCloseEvent += Resume;
-            _ResumeButton.clicked += Resume;
-            m_SettingsButton.clicked += OpenSettingsScreen;
-            m_BackToMenuButton.clicked += BackToMainMenuConfirmation;
+            _ResumeButton.Clicked += Resume;
+            m_SettingsButton.Clicked += OpenSettingsScreen;
+            m_BackToMenuButton.Clicked += BackToMainMenuConfirmation;
         }
 
         private void OnDisable()
         {
             m_InputReader.MenuCloseEvent -= Resume;
 
-            _ResumeButton.clicked -= Resume;
-            m_SettingsButton.clicked -= OpenSettingsScreen;
-            m_BackToMenuButton.clicked -= BackToMainMenuConfirmation;
+            _ResumeButton.Clicked -= Resume;
+            m_SettingsButton.Clicked -= OpenSettingsScreen;
+            m_BackToMenuButton.Clicked -= BackToMainMenuConfirmation;
         }
 
 

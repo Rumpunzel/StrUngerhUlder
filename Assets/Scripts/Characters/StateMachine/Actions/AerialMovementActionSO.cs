@@ -28,14 +28,17 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 
         public override void OnUpdate()
         {
-            Vector3 velocity = m_Protagonist.movementVector;
-            Vector3 input = m_Protagonist.GetAdjustedMovement() * m_Protagonist.targetSpeed;
-            float moveSpeed = m_MovementStats.moveSpeed * m_MovementStats.aerialModifier;
+            //Vector3 velocity = m_Protagonist.movementVector;
+            //Vector3 input = m_Protagonist.GetAdjustedMovement() * m_Protagonist.targetSpeed;
+            float moveSpeed = m_Protagonist.targetSpeed * m_MovementStats.moveSpeed * m_MovementStats.aerialModifier;
 
-            SetVelocityPerAxis(ref velocity.x, input.x, m_MovementStats.aerialAcceleration, moveSpeed);
+            m_Protagonist.horizontalMovementVector.x = m_Protagonist.movementInput.x * moveSpeed;
+            m_Protagonist.horizontalMovementVector.y = m_Protagonist.movementInput.z * moveSpeed;
+
+            /*SetVelocityPerAxis(ref velocity.x, input.x, m_MovementStats.aerialAcceleration, moveSpeed);
             SetVelocityPerAxis(ref velocity.z, input.z, m_MovementStats.aerialAcceleration, moveSpeed);
 
-            m_Protagonist.movementVector = velocity;
+            m_Protagonist.movementVector = velocity;*/
         }
 
 
@@ -46,9 +49,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
             targetSpeed *= absInput;
 
             if (signVel != signInput || absVel < targetSpeed)
-            {
                 currentAxisSpeed += axisInput * acceleration * Time.deltaTime;
-            }
 
             //currentAxisSpeed = Mathf.Clamp(currentAxisSpeed, -targetSpeed, targetSpeed);
 

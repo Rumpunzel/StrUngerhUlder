@@ -117,7 +117,7 @@ namespace Strungerhulder.UI.Iventory
         private void OnEnable()
         {
             //Check if the event exists to avoid errors
-            m_ActionButton.clicked += OnActionButtonClicked;
+            m_ActionButton.Clicked += OnActionButtonClicked;
             m_TabsPanel.tabChanged += OnChangeTab;
 
             m_OnInteractionEndedEvent.onEventRaised += InteractionEnded;
@@ -132,7 +132,7 @@ namespace Strungerhulder.UI.Iventory
 
         private void OnDisable()
         {
-            m_ActionButton.clicked -= OnActionButtonClicked;
+            m_ActionButton.Clicked -= OnActionButtonClicked;
             m_TabsPanel.tabChanged -= OnChangeTab;
 
             foreach (UIInventoryItem item in m_AvailableItemSlots)

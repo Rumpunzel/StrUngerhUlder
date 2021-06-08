@@ -2,6 +2,7 @@
 using UnityEngine;
 using Strungerhulder.Input;
 using Strungerhulder.RuntimeAnchors;
+using Strungerhulder.Charaters.StateMachines.ScriptableObjects;
 
 namespace Strungerhulder.Characters
 {
@@ -20,12 +21,13 @@ namespace Strungerhulder.Characters
         // These fields are read and manipulated by the StateMachine actions
         #region StateMachine Fields
         [Space]
-        public Strungerhulder.Charaters.StateMachines.ScriptableObjects.CharacterMovementStatsSO movementStats = default;
+        public CharacterMovementStatsSO movementStats = default;
 
         [NonSerialized] public bool movingToDestination = false; // Set after a destination input
 
         [NonSerialized] public Vector3 movementInput; // Initial input coming from the Protagonist script
-        [NonSerialized] public Vector3 movementVector; // Final movement vector, manipulated by the StateMachine actions
+        [NonSerialized] public Vector2 horizontalMovementVector; // Final movement vector, manipulated by the StateMachine actions
+        [NonSerialized] public float verticalMovement;
 
         [NonSerialized] public Vector3 destinationInput; // Initial click input coming from the Protagonist script
         [NonSerialized] public Vector3 destinationPoint; // Final destination point, manipulated by the StateMachine actions
@@ -41,7 +43,6 @@ namespace Strungerhulder.Characters
 
 
         private bool m_GettingPointFromMouse;
-
         private Vector2 m_InputVector;
         private float m_PreviousSpeed;
 

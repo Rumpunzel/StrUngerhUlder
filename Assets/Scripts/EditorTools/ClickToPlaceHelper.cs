@@ -9,7 +9,7 @@ namespace Strungerhulder.EditorTools
     [AddComponentMenu("Strungerhulder/Tools/Click to Place")]
     public class ClickToPlaceHelper : MonoBehaviour
     {
-        [Tooltip("Vertical offset above the clicked point. Useful to avoid spawn points to be directly ON the geometry which might cause issues.")]
+        [Tooltip("Vertical offset above the Clicked point. Useful to avoid spawn points to be directly ON the geometry which might cause issues.")]
         [SerializeField] private float m_VerticalOffset = 0.1f;
 
         private Vector3 m_TargetPosition;

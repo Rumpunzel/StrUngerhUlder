@@ -26,12 +26,19 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 
         public override void OnUpdate()
         {
-            m_CharacterController.Move(m_Protagonist.movementVector * Time.deltaTime);
+            Vector2 horizontalMovement = m_Protagonist.horizontalMovementVector;
+            Vector3 newMovementVector = new Vector3(
+                horizontalMovement.x,
+                m_Protagonist.verticalMovement,
+                horizontalMovement.y
+            );
+
+            m_CharacterController.Move(newMovementVector * Time.deltaTime);
             //m_Protagonist.movementVector = m_CharacterController.velocity;
 
-            if (!(m_Protagonist.movementVector.x == 0f && m_Protagonist.movementVector.z == 0f))
+            if (horizontalMovement != Vector2.zero)
             {
-                Quaternion toRotation = Quaternion.LookRotation(new Vector3(m_Protagonist.movementVector.x, 0f, m_Protagonist.movementVector.z), Vector3.up);
+                Quaternion toRotation = Quaternion.LookRotation(new Vector3(horizontalMovement.x, 0f, horizontalMovement.y), Vector3.up);
                 m_Protagonist.transform.rotation = Quaternion.RotateTowards(m_Protagonist.transform.rotation, toRotation, m_MovementStats.turnRate * Time.deltaTime);
             }
         }

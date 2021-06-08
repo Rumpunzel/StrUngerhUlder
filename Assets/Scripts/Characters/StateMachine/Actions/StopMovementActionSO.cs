@@ -50,7 +50,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         private void NullMovement()
         {
             m_Protagonist.destinationInput = m_Protagonist.transform.position;
-            m_Protagonist.movementVector = Vector3.zero;
+            m_Protagonist.horizontalMovementVector = Vector2.zero;
         }
     }
 }

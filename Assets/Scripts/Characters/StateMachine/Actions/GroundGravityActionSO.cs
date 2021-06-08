@@ -17,7 +17,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         //Component references
         private Protagonist m_Protagonist;
 
-        private new GroundGravityActionSO m_OriginSO => (GroundGravityActionSO)base.OriginSO; // The SO this StateAction spawned from
+        private new GroundGravityActionSO OriginSO => (GroundGravityActionSO)base.OriginSO; // The SO this StateAction spawned from
 
         public override void Awake(StateMachine stateMachine)
         {
@@ -26,7 +26,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 
         public override void OnUpdate()
         {
-            m_Protagonist.movementVector.y = m_OriginSO.verticalPull;
+            m_Protagonist.verticalMovement = OriginSO.verticalPull;
         }
     }
 }

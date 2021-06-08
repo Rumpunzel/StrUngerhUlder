@@ -31,8 +31,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         public override void OnUpdate()
         {
             m_VerticalMovement += Physics.gravity.y * m_MovementStats.gravityAscendMultiplier * Time.deltaTime;
-
-            m_Protagonist.movementVector.y = m_VerticalMovement;
+            m_Protagonist.verticalMovement = m_VerticalMovement;
         }
     }
 }
