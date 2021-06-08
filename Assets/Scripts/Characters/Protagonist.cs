@@ -28,17 +28,33 @@ namespace Strungerhulder.Characters
         [SerializeField] private LayerMask m_WorldLayer;
 
 
-        //These fields are read and manipulated by the StateMachine actions
+        // These fields are read and manipulated by the StateMachine actions
         #region StateMachine Fields
-        [NonSerialized] public bool movingToDestination = false; //Set after a destination input
+        [NonSerialized] public bool movingToDestination = false; // Set after a destination input
 
-        [NonSerialized] public Vector3 movementInput; //Initial input coming from the Protagonist script
-        [NonSerialized] public Vector3 movementVector; //Final movement vector, manipulated by the StateMachine actions
+        [NonSerialized] public Vector3 movementInput; // Initial input coming from the Protagonist script
+        [NonSerialized] public Vector3 movementVector; // Final movement vector, manipulated by the StateMachine actions
 
-        [NonSerialized] public Vector3 destinationInput; //Initial click input coming from the Protagonist script
-        [NonSerialized] public Vector3 destinationPoint; //Final destination point, manipulated by the StateMachine actions
+        [NonSerialized] public Vector3 destinationInput; // Initial click input coming from the Protagonist script
+        [NonSerialized] public Vector3 destinationPoint; // Final destination point, manipulated by the StateMachine actions
+
+        [Space]
+        [Tooltip("The initial upwards push when pressing jump. This is injected into verticalMovement, and gradually cancelled by gravity")]
+        public float jumpHeight = 1.5f;
+        [Tooltip("Desired horizontal movement speed while in the air")]
+        public float jumpAdditioanlSpeed = 16f;
+        [Tooltip("The acceleration applied to reach the desired speed")]
+        public float jumpAcceleration = 100f;
 
         [NonSerialized] public bool isRunning; // Used when using the keyboard to run, brings the normalised speed to 1
+
+        public float moveSpeed
+        {
+            get { return m_MoveSpeed * (isRunning ? m_RunningModifier : 1f); }
+            set { m_MoveSpeed = value; }
+        }
+        [Space]
+        public float moveAcceleration = 4f;
 
         [NonSerialized] public bool jumpInput;
 
@@ -49,16 +65,24 @@ namespace Strungerhulder.Characters
         #endregion
 
 
+        [Tooltip("Horizontal XZ plane speed multiplier")]
+        [SerializeField] private float m_MoveSpeed = 12f;
+        [SerializeField] private float m_RunningModifier = 1.5f;
+
+
         private bool m_GettingPointFromMouse;
+
+        private Vector3 m_MovementInput;
+        private Vector3 m_MovementVector;
+
+        private Vector3 m_DestinationInput;
+        private Vector3 m_DestinationPoint;
 
         private Vector2 m_InputVector;
         private float m_PreviousSpeed;
 
 
-        private void OnControllerColliderHit(ControllerColliderHit hit)
-        {
-            lastHit = hit;
-        }
+        private void OnControllerColliderHit(ControllerColliderHit hit) => lastHit = hit;
 
         //Adds listeners for events being triggered in the InputReader script
         private void OnEnable()
@@ -135,7 +159,7 @@ namespace Strungerhulder.Characters
             //Accelerate/decelerate
             targetSpeed = Mathf.Clamp01(m_InputVector.magnitude);
 
-            if (targetSpeed > 0f)
+            /*if (targetSpeed > 0f)
             {
                 // This is used to set the speed to the maximum if holding the Shift key,
                 // to allow keyboard players to "run"
@@ -144,9 +168,9 @@ namespace Strungerhulder.Characters
 
                 if (attackInput)
                     targetSpeed = .05f;
-            }
+            }*/
 
-            targetSpeed = Mathf.Lerp(m_PreviousSpeed, targetSpeed, Time.deltaTime * 4f);
+            targetSpeed = Mathf.Lerp(m_PreviousSpeed, targetSpeed, Time.deltaTime * moveAcceleration);
 
             movementInput = adjustedMovement.normalized * targetSpeed;
 

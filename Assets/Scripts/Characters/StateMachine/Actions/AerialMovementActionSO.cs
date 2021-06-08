@@ -11,19 +11,12 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
     [CreateAssetMenu(fileName = "AerialMovement", menuName = "State Machines/Actions/Aerial Movement")]
     public class AerialMovementActionSO : StateActionSO
     {
-        [Tooltip("Desired horizontal movement speed while in the air")]
-        [Range(0.1f, 100f)] public float speed = 10f;
-
-        [Tooltip("The acceleration applied to reach the desired speed")]
-        [Range(0.1f, 100f)] public float acceleration = 20f;
-
         protected override StateAction CreateAction() => new AerialMovementAction();
     }
 
     public class AerialMovementAction : StateAction
     {
         private Protagonist m_Protagonist;
-        protected new AerialMovementActionSO OriginSO => (AerialMovementActionSO)base.OriginSO;
 
         public override void Awake(StateMachine stateMachine)
         {
@@ -35,8 +28,8 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
             Vector3 velocity = m_Protagonist.movementVector;
             Vector3 input = m_Protagonist.movementInput;
 
-            SetVelocityPerAxis(ref velocity.x, input.x, OriginSO.acceleration, OriginSO.speed);
-            SetVelocityPerAxis(ref velocity.z, input.z, OriginSO.acceleration, OriginSO.speed);
+            SetVelocityPerAxis(ref velocity.x, input.x, m_Protagonist.moveAcceleration, m_Protagonist.moveSpeed);
+            SetVelocityPerAxis(ref velocity.z, input.z, m_Protagonist.moveAcceleration, m_Protagonist.moveSpeed);
 
             m_Protagonist.movementVector = velocity;
         }

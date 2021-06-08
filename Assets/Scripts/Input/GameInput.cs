@@ -394,6 +394,17 @@ public class @GameInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d34898e8-95a8-441b-8ced-cca8b8190fde"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardOrGamepad"",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ad9a6e95-aded-495d-8b6b-c70aade61126"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",

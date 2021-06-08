@@ -94,6 +94,12 @@ MonoBehaviour:
   m_WorldLayer:
     serializedVersion: 2
     m_Bits: 8
+  jumpHeight: 1.5
+  jumpAdditioanlSpeed: 10
+  jumpAcceleration: 40
+  moveAcceleration: 4
+  m_MoveSpeed: 12
+  m_RunningModifier: 1.5
 --- !u!114 &2052951113435455110
 MonoBehaviour:
   m_ObjectHideFlags: 0

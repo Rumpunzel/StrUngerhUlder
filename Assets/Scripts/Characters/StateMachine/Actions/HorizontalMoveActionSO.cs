@@ -6,17 +6,12 @@ using Strungerhulder.StateMachines.ScriptableObjects;
 namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "HorizontalMove", menuName = "State Machines/Actions/Horizontal Move")]
-    public class HorizontalMoveActionSO : StateActionSO<HorizontalMoveAction>
-    {
-        [Tooltip("Horizontal XZ plane speed multiplier")]
-        public float speed = 8f;
-    }
+    public class HorizontalMoveActionSO : StateActionSO<HorizontalMoveAction> { }
 
     public class HorizontalMoveAction : StateAction
     {
-        //Component references
         private Protagonist m_Protagonist;
-        private new HorizontalMoveActionSO m_OriginSO => (HorizontalMoveActionSO)base.OriginSO; // The SO this StateAction spawned from
+
 
         public override void Awake(StateMachine stateMachine)
         {
@@ -25,8 +20,8 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 
         public override void OnUpdate()
         {
-            m_Protagonist.movementVector.x = m_Protagonist.movementInput.x * m_OriginSO.speed;
-            m_Protagonist.movementVector.z = m_Protagonist.movementInput.z * m_OriginSO.speed;
+            m_Protagonist.movementVector.x = m_Protagonist.movementInput.x * m_Protagonist.moveSpeed;
+            m_Protagonist.movementVector.z = m_Protagonist.movementInput.z * m_Protagonist.moveSpeed;
         }
     }
 }
