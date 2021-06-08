@@ -22,6 +22,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         private Protagonist m_Protagonist;
         private new StopMovementActionSO OriginSO => (StopMovementActionSO)base.OriginSO;
 
+
         public override void Awake(StateMachine stateMachine)
         {
             m_Protagonist = stateMachine.GetComponent<Protagonist>();

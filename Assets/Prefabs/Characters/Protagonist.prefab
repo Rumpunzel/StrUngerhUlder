@@ -89,17 +89,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4705082ac131aa4f922e8cb97c9344a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameplayCameraTransform: {fileID: 11400000, guid: 8c24202029e259941afcfc7f68d3a014, type: 2}
+  m_GameplayCameraTransform: {fileID: 11400000, guid: 8c24202029e259941afcfc7f68d3a014, type: 2}
   m_InputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
   m_WorldLayer:
     serializedVersion: 2
     m_Bits: 8
-  jumpHeight: 1.5
-  jumpAdditioanlSpeed: 10
-  jumpAcceleration: 40
-  moveAcceleration: 4
-  m_MoveSpeed: 12
-  m_RunningModifier: 1.5
+  movementStats: {fileID: 11400000, guid: 2124afc7ae7e15a4cbd90a9dd4095cc6, type: 2}
 --- !u!114 &2052951113435455110
 MonoBehaviour:
   m_ObjectHideFlags: 0

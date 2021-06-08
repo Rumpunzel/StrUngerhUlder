@@ -11,17 +11,21 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
     public class HorizontalMoveAction : StateAction
     {
         private Protagonist m_Protagonist;
+        private CharacterMovementStatsSO m_MovementStats;
 
 
         public override void Awake(StateMachine stateMachine)
         {
             m_Protagonist = stateMachine.GetComponent<Protagonist>();
+            m_MovementStats = m_Protagonist.movementStats;
         }
 
         public override void OnUpdate()
         {
-            m_Protagonist.movementVector.x = m_Protagonist.movementInput.x * m_Protagonist.moveSpeed;
-            m_Protagonist.movementVector.z = m_Protagonist.movementInput.z * m_Protagonist.moveSpeed;
+            float moveSpeed = m_MovementStats.CalculateHorizontalSpeed(m_Protagonist.isRunning);
+
+            m_Protagonist.movementVector.x = m_Protagonist.movementInput.x * moveSpeed;
+            m_Protagonist.movementVector.z = m_Protagonist.movementInput.z * moveSpeed;
         }
     }
 }

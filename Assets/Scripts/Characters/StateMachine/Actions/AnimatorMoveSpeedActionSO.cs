@@ -24,6 +24,8 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         private Protagonist m_Protagonist;
         private NavMeshAgent m_NavAgent;
 
+        private CharacterMovementStatsSO m_MovementStats;
+
         private new AnimatorParameterActionSO m_OriginSO => (AnimatorParameterActionSO)base.OriginSO; // The SO this StateAction spawned from
         private int m_ParameterHash;
 
@@ -38,12 +40,14 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
             m_Animator = stateMachine.GetComponent<Animator>();
             m_Protagonist = stateMachine.GetComponent<Protagonist>();
             m_NavAgent = stateMachine.GetComponent<NavMeshAgent>();
+
+            m_MovementStats = m_Protagonist.movementStats;
         }
 
         public override void OnUpdate()
         {
             float normalisedSpeed = m_NavAgent.enabled ?
-                m_NavAgent.velocity.magnitude / (m_NavAgent.speed * 2f) :
+                m_NavAgent.velocity.magnitude / m_MovementStats.moveSpeed :
                 m_Protagonist.movementInput.magnitude;
 
             m_Animator.SetFloat(m_ParameterHash, normalisedSpeed);

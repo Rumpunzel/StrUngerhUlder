@@ -14,10 +14,14 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         private Protagonist m_Protagonist;
         private CharacterController m_CharacterController;
 
+        private CharacterMovementStatsSO m_MovementStats;
+
         public override void Awake(StateMachine stateMachine)
         {
             m_Protagonist = stateMachine.GetComponent<Protagonist>();
             m_CharacterController = stateMachine.GetComponent<CharacterController>();
+
+            m_MovementStats = m_Protagonist.movementStats;
         }
 
         public override void OnUpdate()
@@ -28,7 +32,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
             if (!(m_Protagonist.movementVector.x == 0f && m_Protagonist.movementVector.z == 0f))
             {
                 Quaternion toRotation = Quaternion.LookRotation(new Vector3(m_Protagonist.movementVector.x, 0f, m_Protagonist.movementVector.z), Vector3.up);
-                m_Protagonist.transform.rotation = Quaternion.RotateTowards(m_Protagonist.transform.rotation, toRotation, Protagonist.TURN_RATE * Time.deltaTime);
+                m_Protagonist.transform.rotation = Quaternion.RotateTowards(m_Protagonist.transform.rotation, toRotation, m_MovementStats.turnRate * Time.deltaTime);
             }
         }
     }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d712c9d4bb01504aa4d794ec305fcbf, type: 3}
+  m_Name: ProtagonistMovementStats
+  m_EditorClassIdentifier: 
+  m_MoveSpeed: 12
+  m_MoveAcceleration: 4
+  m_RunningModifier: 1.5
+  m_JumpHeight: 1.5
+  m_JumpAdditioanlSpeed: 16
+  m_JumpAcceleration: 100
+  m_gravityMultiplier: 2.2
+  m_MaxFallSpeed: 50
+  m_MaxRiseSpeed: 100
+  m_AirResistance: 5
+  m_TurnRate: 500

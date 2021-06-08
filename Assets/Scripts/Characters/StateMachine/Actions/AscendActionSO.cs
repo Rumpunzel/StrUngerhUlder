@@ -12,23 +12,25 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
     {
         //Component references
         private Protagonist m_Protagonist;
+        private CharacterMovementStatsSO m_MovementStats;
+
         private float m_VerticalMovement;
 
 
         public override void Awake(StateMachine stateMachine)
         {
             m_Protagonist = stateMachine.GetComponent<Protagonist>();
+            m_MovementStats = m_Protagonist.movementStats;
         }
 
         public override void OnStateEnter()
         {
-            m_VerticalMovement = Mathf.Sqrt(m_Protagonist.jumpHeight * -3.0f * Physics.gravity.y);
+            m_VerticalMovement = Mathf.Sqrt(m_MovementStats.jumpHeight * -3.0f * Physics.gravity.y * m_MovementStats.gravityAscendMultiplier);
         }
 
         public override void OnUpdate()
         {
-            m_VerticalMovement += Physics.gravity.y * Time.deltaTime;
-            //Note that even if it's added, the above value is negative due to Physics.gravity.y
+            m_VerticalMovement += Physics.gravity.y * m_MovementStats.gravityAscendMultiplier * Time.deltaTime;
 
             m_Protagonist.movementVector.y = m_VerticalMovement;
         }

@@ -10,18 +10,7 @@ namespace Strungerhulder.Characters
     /// </summary>
     public class Protagonist : MonoBehaviour
     {
-        #region Constants
-        public const float GRAVITY_MULTIPLIER = 2.2f;
-        public const float MAX_FALL_SPEED = -50f;
-        public const float MAX_RISE_SPEED = 100f;
-        //public const float GRAVITY_COMEBACK_MULTIPLIER = .03f;
-        //public const float GRAVITY_DIVIDER = .9f;
-        public const float AIR_RESISTANCE = 5f;
-        public const float TURN_RATE = 500f;
-        #endregion
-
-        public TransformAnchor gameplayCameraTransform;
-
+        [SerializeField] private TransformAnchor m_GameplayCameraTransform;
         [SerializeField] private InputReader m_InputReader = default;
 
         [Space]
@@ -30,6 +19,9 @@ namespace Strungerhulder.Characters
 
         // These fields are read and manipulated by the StateMachine actions
         #region StateMachine Fields
+        [Space]
+        public Strungerhulder.Charaters.StateMachines.ScriptableObjects.CharacterMovementStatsSO movementStats = default;
+
         [NonSerialized] public bool movingToDestination = false; // Set after a destination input
 
         [NonSerialized] public Vector3 movementInput; // Initial input coming from the Protagonist script
@@ -38,23 +30,7 @@ namespace Strungerhulder.Characters
         [NonSerialized] public Vector3 destinationInput; // Initial click input coming from the Protagonist script
         [NonSerialized] public Vector3 destinationPoint; // Final destination point, manipulated by the StateMachine actions
 
-        [Space]
-        [Tooltip("The initial upwards push when pressing jump. This is injected into verticalMovement, and gradually cancelled by gravity")]
-        public float jumpHeight = 1.5f;
-        [Tooltip("Desired horizontal movement speed while in the air")]
-        public float jumpAdditioanlSpeed = 16f;
-        [Tooltip("The acceleration applied to reach the desired speed")]
-        public float jumpAcceleration = 100f;
-
         [NonSerialized] public bool isRunning; // Used when using the keyboard to run, brings the normalised speed to 1
-
-        public float moveSpeed
-        {
-            get { return m_MoveSpeed * (isRunning ? m_RunningModifier : 1f); }
-            set { m_MoveSpeed = value; }
-        }
-        [Space]
-        public float moveAcceleration = 4f;
 
         [NonSerialized] public bool jumpInput;
 
@@ -63,11 +39,6 @@ namespace Strungerhulder.Characters
 
         [NonSerialized] public ControllerColliderHit lastHit;
         #endregion
-
-
-        [Tooltip("Horizontal XZ plane speed multiplier")]
-        [SerializeField] private float m_MoveSpeed = 12f;
-        [SerializeField] private float m_RunningModifier = 1.5f;
 
 
         private bool m_GettingPointFromMouse;
@@ -80,6 +51,7 @@ namespace Strungerhulder.Characters
 
         private Vector2 m_InputVector;
         private float m_PreviousSpeed;
+
 
 
         private void OnControllerColliderHit(ControllerColliderHit hit) => lastHit = hit;
@@ -131,22 +103,20 @@ namespace Strungerhulder.Characters
         }
 
 
-        private void RecalculateMovement()
+        public Vector3 GetAdjustedMovement()
         {
-            float targetSpeed = 0f;
             Vector3 adjustedMovement;
 
-            if (gameplayCameraTransform)
+            if (m_GameplayCameraTransform)
             {
                 //Get the two axes from the camera and flatten them on the XZ plane
-                Vector3 cameraForward = gameplayCameraTransform.Transform.forward;
+                Vector3 cameraForward = m_GameplayCameraTransform.Transform.forward;
                 cameraForward.y = 0f;
-                Vector3 cameraRight = gameplayCameraTransform.Transform.right;
+                Vector3 cameraRight = m_GameplayCameraTransform.Transform.right;
                 cameraRight.y = 0f;
 
                 //Use the two axes, modulated by the corresponding inputs, and construct the final vector
-                adjustedMovement = cameraRight.normalized * m_InputVector.x +
-                    cameraForward.normalized * m_InputVector.y;
+                adjustedMovement = cameraRight.normalized * m_InputVector.x + cameraForward.normalized * m_InputVector.y;
             }
             else
             {
@@ -155,24 +125,17 @@ namespace Strungerhulder.Characters
                 adjustedMovement = new Vector3(m_InputVector.x, 0f, m_InputVector.y);
             }
 
+            return adjustedMovement;
+        }
+
+
+        private void RecalculateMovement()
+        {
+            float targetSpeed = Mathf.Clamp01(m_InputVector.magnitude);
 
             //Accelerate/decelerate
-            targetSpeed = Mathf.Clamp01(m_InputVector.magnitude);
-
-            /*if (targetSpeed > 0f)
-            {
-                // This is used to set the speed to the maximum if holding the Shift key,
-                // to allow keyboard players to "run"
-                if (isRunning)
-                    targetSpeed = 1f;
-
-                if (attackInput)
-                    targetSpeed = .05f;
-            }*/
-
-            targetSpeed = Mathf.Lerp(m_PreviousSpeed, targetSpeed, Time.deltaTime * moveAcceleration);
-
-            movementInput = adjustedMovement.normalized * targetSpeed;
+            targetSpeed = Mathf.Lerp(m_PreviousSpeed, targetSpeed, Time.deltaTime * movementStats.moveAcceleration);
+            movementInput = GetAdjustedMovement().normalized * targetSpeed;
 
             m_PreviousSpeed = targetSpeed;
         }

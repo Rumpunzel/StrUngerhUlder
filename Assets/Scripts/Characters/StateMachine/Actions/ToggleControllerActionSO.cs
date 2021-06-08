@@ -40,7 +40,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
             m_CharacterController = stateMachine.GetComponent<CharacterController>();
 
             m_NavAgent = stateMachine.GetComponent<NavMeshAgent>();
-            m_NavAgent.angularSpeed = Protagonist.TURN_RATE;
+            m_NavAgent.angularSpeed = m_Protagonist.movementStats.turnRate;
         }
 
         public override void OnStateEnter()

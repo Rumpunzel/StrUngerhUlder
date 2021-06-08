@@ -12,12 +12,14 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
     {
         //Component references
         private Protagonist m_Protagonist;
+        private CharacterMovementStatsSO m_MovementStats;
 
         private float m_VerticalMovement;
 
         public override void Awake(StateMachine stateMachine)
         {
             m_Protagonist = stateMachine.GetComponent<Protagonist>();
+            m_MovementStats = m_Protagonist.movementStats;
         }
 
         public override void OnStateEnter()
@@ -31,11 +33,10 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 
         public override void OnUpdate()
         {
-            m_VerticalMovement += Physics.gravity.y * Protagonist.GRAVITY_MULTIPLIER * Time.deltaTime;
-            //Note that even if it's added, the above value is negative due to Physics.gravity.y
+            m_VerticalMovement += Physics.gravity.y * m_MovementStats.gravityDescendMultiplier * Time.deltaTime;
 
             //Cap the maximum so the player doesn't reach incredible speeds when freefalling from high positions
-            m_VerticalMovement = Mathf.Clamp(m_VerticalMovement, Protagonist.MAX_FALL_SPEED, Protagonist.MAX_RISE_SPEED);
+            m_VerticalMovement = m_MovementStats.CalculateVerticalSpeed(m_VerticalMovement);
 
             m_Protagonist.movementVector.y = m_VerticalMovement;
         }
