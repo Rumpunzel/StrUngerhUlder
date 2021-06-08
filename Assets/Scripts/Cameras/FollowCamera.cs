@@ -66,7 +66,6 @@ namespace Strungerhulder.Cameras
 
         public void ZoomCamera(float value)
         {
-            Debug.Log(value);
             m_CameraZoom = Mathf.Lerp(m_CameraZoom, m_CameraZoom - value * m_CameraScrollSpeed, m_CameraTurnSmoothing);
         }
 
