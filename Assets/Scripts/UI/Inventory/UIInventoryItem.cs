@@ -27,7 +27,7 @@ namespace Strungerhulder.UI.Iventory
         public void SetItem(ItemStack itemStack, bool isSelected)
         {
             m_ItemPreviewImage.gameObject.SetActive(true);
-            m_ItemCount.gameObject.SetActive(true);
+            m_ItemCount.gameObject.SetActive(itemStack.Amount > 1);
             m_BackgroundImage.gameObject.SetActive(true);
             m_ImageHover.gameObject.SetActive(true);
             m_ImageSelected.gameObject.SetActive(true);
