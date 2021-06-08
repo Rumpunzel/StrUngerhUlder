@@ -9,53 +9,34 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
     public class CharacterMovementStatsSO : ScriptableObject
     {
         [Tooltip("Horizontal XZ plane speed multiplier")]
-        [SerializeField] private float m_MoveSpeed = 12f;
-        [SerializeField] private float m_MoveAcceleration = 12f;
-        [Range(0f, 1f)] [SerializeField] private float m_WalkingModifier = .7f;
+        public float moveSpeed = 12f;
+        public float moveAcceleration = 12f;
+        [Range(0f, 1f)] public float walkingModifier = .7f;
 
         [Space]
         [Tooltip("The initial upwards push when pressing jump. This is injected into verticalMovement, and gradually cancelled by gravity")]
-        [SerializeField] private float m_JumpHeight = 1.5f;
+        public float jumpHeight = 1.5f;
         [Tooltip("Desired horizontal movement speed percentage increase while in the air")]
-        [SerializeField] private float m_AerialModifier = 1.1f;
+        public float aerialModifier = 1.1f;
         [Tooltip("The acceleration applied to reach the desired speed")]
-        [SerializeField] private float m_AerialAcceleration = 200f;
+        public float aerialAcceleration = 200f;
 
         [Space]
-        [SerializeField] private float m_GravityDescendMultiplier = 4f;
-        [SerializeField] private float m_GravityAscendMultiplier = 2f;
+        public float gravityDescendMultiplier = 4f;
+        public float gravityAscendMultiplier = 2f;
 
         [Space]
         [SerializeField] private float m_MaxFallSpeed = 50f;
         [SerializeField] private float m_MaxRiseSpeed = 100f;
 
         [Space]
-        [SerializeField] private float m_AirResistance = 5f;
-        [SerializeField] private float m_TurnRate = 500f;
+        public float airResistance = 5f;
+        public float turnRate = 500f;
 
 
         public float ValidateVerticalSpeed(float verticalMovement)
         {
-            return Mathf.Clamp(verticalMovement, maxFallSpeed, maxRiseSpeed);
+            return Mathf.Clamp(verticalMovement, -m_MaxFallSpeed, m_MaxRiseSpeed);
         }
-
-
-        public float moveSpeed { get { return m_MoveSpeed; } set { m_MoveSpeed = value; } }
-        public float moveAcceleration { get { return m_MoveAcceleration; } set { m_MoveAcceleration = value; } }
-        public float walkingModifier { get { return m_WalkingModifier; } set { m_WalkingModifier = value; } }
-
-
-        public float jumpHeight { get { return m_JumpHeight; } set { m_JumpHeight = value; } }
-        public float aerialModifier { get { return m_AerialModifier; } set { m_AerialModifier = value; } }
-        public float aerialAcceleration { get { return m_AerialAcceleration; } set { m_AerialAcceleration = value; } }
-
-        public float gravityDescendMultiplier { get { return m_GravityDescendMultiplier; } set { m_GravityDescendMultiplier = value; } }
-        public float gravityAscendMultiplier { get { return m_GravityAscendMultiplier; } set { m_GravityAscendMultiplier = value; } }
-
-        public float maxFallSpeed { get { return -m_MaxFallSpeed; } set { m_MaxFallSpeed = value; } }
-        public float maxRiseSpeed { get { return m_MaxRiseSpeed; } set { m_MaxRiseSpeed = value; } }
-
-        public float airResistance { get { return m_AirResistance; } set { m_AirResistance = value; } }
-        public float turnRate { get { return m_TurnRate; } set { m_TurnRate = value; } }
     }
 }
