@@ -22,8 +22,8 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         [SerializeField] private float m_AerialAcceleration = 200f;
 
         [Space]
-        [SerializeField] private float m_GravityDescendMultiplier = 5f;
-        [SerializeField] private float m_GravityAscendMultiplier = 1.2f;
+        [SerializeField] private float m_GravityDescendMultiplier = 4f;
+        [SerializeField] private float m_GravityAscendMultiplier = 2f;
 
         [Space]
         [SerializeField] private float m_MaxFallSpeed = 50f;
