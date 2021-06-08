@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: ProtagonistMovementStats
   m_EditorClassIdentifier: 
   m_MoveSpeed: 12
-  m_MoveAcceleration: 4
-  m_RunningModifier: 1.5
+  m_MoveAcceleration: 12
+  m_WalkingModifier: 0.7
   m_JumpHeight: 1.5
-  m_JumpAdditioanlSpeed: 16
-  m_JumpAcceleration: 100
-  m_gravityMultiplier: 2.2
+  m_AerialModifier: 1.1
+  m_AerialAcceleration: 200
+  m_GravityDescendMultiplier: 4
+  m_GravityAscendMultiplier: 2
   m_MaxFallSpeed: 50
   m_MaxRiseSpeed: 100
-  m_AirResistance: 5
+  m_AirResistance: 10
   m_TurnRate: 500

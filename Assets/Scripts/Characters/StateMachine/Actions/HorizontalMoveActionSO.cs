@@ -22,7 +22,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 
         public override void OnUpdate()
         {
-            float moveSpeed = m_MovementStats.CalculateHorizontalSpeed(m_Protagonist.isRunning);
+            float moveSpeed = m_Protagonist.targetSpeed * m_MovementStats.moveSpeed;
 
             m_Protagonist.movementVector.x = m_Protagonist.movementInput.x * moveSpeed;
             m_Protagonist.movementVector.z = m_Protagonist.movementInput.z * moveSpeed;

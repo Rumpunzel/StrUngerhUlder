@@ -31,10 +31,9 @@ namespace Strungerhulder.Characters
         [NonSerialized] public Vector3 destinationPoint; // Final destination point, manipulated by the StateMachine actions
 
         [NonSerialized] public bool isRunning; // Used when using the keyboard to run, brings the normalised speed to 1
+        [NonSerialized] public float targetSpeed;
 
         [NonSerialized] public bool jumpInput;
-
-        [NonSerialized] public bool extraActionInput;
         [NonSerialized] public bool attackInput;
 
         [NonSerialized] public ControllerColliderHit lastHit;
@@ -42,12 +41,6 @@ namespace Strungerhulder.Characters
 
 
         private bool m_GettingPointFromMouse;
-
-        private Vector3 m_MovementInput;
-        private Vector3 m_MovementVector;
-
-        private Vector3 m_DestinationInput;
-        private Vector3 m_DestinationPoint;
 
         private Vector2 m_InputVector;
         private float m_PreviousSpeed;
@@ -90,14 +83,16 @@ namespace Strungerhulder.Characters
 
         private void Update()
         {
-            if (!movingToDestination)
+            if (movingToDestination)
+                CalculateTargetSpeed(1f);
+            else
+            {
+                CalculateTargetSpeed(m_InputVector.magnitude);
                 destinationInput = transform.position;
+            }
 
             if (m_GettingPointFromMouse)
-            {
-                movementInput = Vector3.zero;
                 GetPointFromMouse();
-            }
             else
                 RecalculateMovement();
         }
@@ -129,25 +124,24 @@ namespace Strungerhulder.Characters
         }
 
 
-        private void RecalculateMovement()
-        {
-            float targetSpeed = Mathf.Clamp01(m_InputVector.magnitude);
-
-            //Accelerate/decelerate
-            targetSpeed = Mathf.Lerp(m_PreviousSpeed, targetSpeed, Time.deltaTime * movementStats.moveAcceleration);
-            movementInput = GetAdjustedMovement().normalized * targetSpeed;
-
-            m_PreviousSpeed = targetSpeed;
-        }
-
+        private void RecalculateMovement() => movementInput = GetAdjustedMovement().normalized * targetSpeed;
 
         private void GetPointFromMouse()
         {
+            movementInput = Vector3.zero;
+
             Ray ray = Camera.main.ScreenPointToRay(m_InputReader.MousePosition());
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100f, m_WorldLayer))
                 destinationInput = hit.point;
+        }
+
+        private void CalculateTargetSpeed(float newTargetSpeed)
+        {
+            m_PreviousSpeed = targetSpeed;
+            newTargetSpeed = Mathf.Clamp01(newTargetSpeed) * (isRunning ? 1f : movementStats.walkingModifier);
+            targetSpeed = Mathf.Lerp(m_PreviousSpeed, newTargetSpeed, movementStats.moveAcceleration * Time.deltaTime);
         }
 
 

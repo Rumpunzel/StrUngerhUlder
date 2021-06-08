@@ -28,7 +28,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
 
         public override void OnUpdate()
         {
-            m_NavAgent.speed = m_MovementStats.CalculateHorizontalSpeed(m_Protagonist.isRunning);
+            m_NavAgent.speed = m_Protagonist.targetSpeed * m_MovementStats.moveSpeed;
             m_NavAgent.acceleration = m_Protagonist.movementStats.moveAcceleration;
             m_Protagonist.destinationPoint = m_Protagonist.destinationInput;
         }

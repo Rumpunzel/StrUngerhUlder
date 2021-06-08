@@ -29,8 +29,8 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         public override void OnUpdate()
         {
             Vector3 velocity = m_Protagonist.movementVector;
-            Vector3 input = m_Protagonist.GetAdjustedMovement();
-            float moveSpeed = m_MovementStats.CalculateHorizontalSpeed(m_Protagonist.isRunning, true);
+            Vector3 input = m_Protagonist.GetAdjustedMovement() * m_Protagonist.targetSpeed;
+            float moveSpeed = m_MovementStats.moveSpeed * m_MovementStats.aerialModifier;
 
             SetVelocityPerAxis(ref velocity.x, input.x, m_MovementStats.aerialAcceleration, moveSpeed);
             SetVelocityPerAxis(ref velocity.z, input.z, m_MovementStats.aerialAcceleration, moveSpeed);

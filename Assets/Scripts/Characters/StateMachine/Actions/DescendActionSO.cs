@@ -36,7 +36,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
             m_VerticalMovement += Physics.gravity.y * m_MovementStats.gravityDescendMultiplier * Time.deltaTime;
 
             //Cap the maximum so the player doesn't reach incredible speeds when freefalling from high positions
-            m_VerticalMovement = m_MovementStats.CalculateVerticalSpeed(m_VerticalMovement);
+            m_VerticalMovement = m_MovementStats.ValidateVerticalSpeed(m_VerticalMovement);
 
             m_Protagonist.movementVector.y = m_VerticalMovement;
         }

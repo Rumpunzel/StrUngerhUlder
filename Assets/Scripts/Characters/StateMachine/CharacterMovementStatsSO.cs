@@ -10,14 +10,14 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
     {
         [Tooltip("Horizontal XZ plane speed multiplier")]
         [SerializeField] private float m_MoveSpeed = 12f;
-        [SerializeField] private float m_MoveAcceleration = 4f;
-        [SerializeField] private float m_RunningModifier = 1.5f;
+        [SerializeField] private float m_MoveAcceleration = 12f;
+        [Range(0f, 1f)] [SerializeField] private float m_WalkingModifier = .7f;
 
         [Space]
         [Tooltip("The initial upwards push when pressing jump. This is injected into verticalMovement, and gradually cancelled by gravity")]
         [SerializeField] private float m_JumpHeight = 1.5f;
         [Tooltip("Desired horizontal movement speed percentage increase while in the air")]
-        [SerializeField] private float m_AerialModifier = 1.2f;
+        [SerializeField] private float m_AerialModifier = 1.1f;
         [Tooltip("The acceleration applied to reach the desired speed")]
         [SerializeField] private float m_AerialAcceleration = 200f;
 
@@ -34,21 +34,19 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         [SerializeField] private float m_TurnRate = 500f;
 
 
-        public float CalculateHorizontalSpeed(bool isRunning, bool isAerial = false)
-        {
-            return (moveSpeed * (isAerial ? m_AerialModifier : 1f)) * (isRunning ? runningModifier : 1f);
-        }
-        public float CalculateVerticalSpeed(float verticalMovement)
+        public float ValidateVerticalSpeed(float verticalMovement)
         {
             return Mathf.Clamp(verticalMovement, maxFallSpeed, maxRiseSpeed);
         }
 
+
         public float moveSpeed { get { return m_MoveSpeed; } set { m_MoveSpeed = value; } }
         public float moveAcceleration { get { return m_MoveAcceleration; } set { m_MoveAcceleration = value; } }
-        public float runningModifier { get { return m_RunningModifier; } set { m_RunningModifier = value; } }
+        public float walkingModifier { get { return m_WalkingModifier; } set { m_WalkingModifier = value; } }
 
 
         public float jumpHeight { get { return m_JumpHeight; } set { m_JumpHeight = value; } }
+        public float aerialModifier { get { return m_AerialModifier; } set { m_AerialModifier = value; } }
         public float aerialAcceleration { get { return m_AerialAcceleration; } set { m_AerialAcceleration = value; } }
 
         public float gravityDescendMultiplier { get { return m_GravityDescendMultiplier; } set { m_GravityDescendMultiplier = value; } }
