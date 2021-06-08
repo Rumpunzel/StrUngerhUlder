@@ -32,7 +32,7 @@ namespace Strungerhulder.UI.Iventory
                 if (m_InputReader != null)
                 {
                     m_HasEvent = true;
-                    m_InputReader.inventoryActionButtonEvent += ClickActionButton;
+                    m_InputReader.InventoryActionButtonEvent += ClickActionButton;
                 }
             }
             else
@@ -40,7 +40,7 @@ namespace Strungerhulder.UI.Iventory
                 if (m_InputReader != null)
                 {
                     if (m_HasEvent)
-                        m_InputReader.inventoryActionButtonEvent -= ClickActionButton;
+                        m_InputReader.InventoryActionButtonEvent -= ClickActionButton;
                 }
             }
         }
@@ -52,7 +52,7 @@ namespace Strungerhulder.UI.Iventory
             if (m_InputReader != null)
             {
                 if (m_HasEvent)
-                    m_InputReader.inventoryActionButtonEvent -= ClickActionButton;
+                    m_InputReader.InventoryActionButtonEvent -= ClickActionButton;
             }
         }
     }

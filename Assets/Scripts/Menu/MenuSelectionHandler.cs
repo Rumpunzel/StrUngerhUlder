@@ -17,16 +17,16 @@ namespace Strungerhulder.Menues
 
         private void OnEnable()
         {
-            m_InputReader.menuMouseMoveEvent += HandleMoveCursor;
-            m_InputReader.moveSelectionEvent += HandleMoveSelection;
+            m_InputReader.MenuMouseMoveEvent += HandleMoveCursor;
+            m_InputReader.MoveSelectionEvent += HandleMoveSelection;
 
             StartCoroutine(SelectDefault());
         }
 
         private void OnDisable()
         {
-            m_InputReader.menuMouseMoveEvent -= HandleMoveCursor;
-            m_InputReader.moveSelectionEvent -= HandleMoveSelection;
+            m_InputReader.MenuMouseMoveEvent -= HandleMoveCursor;
+            m_InputReader.MoveSelectionEvent -= HandleMoveSelection;
         }
 
         // Debug

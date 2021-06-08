@@ -23,7 +23,7 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
         public override void OnUpdate()
         {
             m_CharacterController.Move(m_Protagonist.movementVector * Time.deltaTime);
-            m_Protagonist.movementVector = m_CharacterController.velocity;
+            //m_Protagonist.movementVector = m_CharacterController.velocity;
 
             if (!(m_Protagonist.movementVector.x == 0f && m_Protagonist.movementVector.z == 0f))
             {

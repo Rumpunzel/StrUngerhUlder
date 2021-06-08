@@ -23,14 +23,8 @@ namespace Strungerhulder.Charaters.StateMachines.ScriptableObjects
             m_NavAgent = stateMachine.GetComponent<NavMeshAgent>();
         }
 
-        public IsActuallyMovingToPointCondition(float threshold)
-        {
-            m_Threshold = threshold;
-        }
+        public IsActuallyMovingToPointCondition(float threshold) => m_Threshold = threshold;
 
-        protected override bool Statement()
-        {
-            return m_NavAgent.velocity.sqrMagnitude > m_Threshold * m_Threshold;
-        }
+        protected override bool Statement() => m_NavAgent.velocity.sqrMagnitude > m_Threshold * m_Threshold;
     }
 }

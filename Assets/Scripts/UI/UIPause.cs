@@ -20,7 +20,7 @@ namespace Strungerhulder.UI
         private void OnEnable()
         {
             _ResumeButton.SetButton(true);
-            m_InputReader.menuCloseEvent += Resume;
+            m_InputReader.MenuCloseEvent += Resume;
             _ResumeButton.clicked += Resume;
             m_SettingsButton.clicked += OpenSettingsScreen;
             m_BackToMenuButton.clicked += BackToMainMenuConfirmation;
@@ -28,7 +28,7 @@ namespace Strungerhulder.UI
 
         private void OnDisable()
         {
-            m_InputReader.menuCloseEvent -= Resume;
+            m_InputReader.MenuCloseEvent -= Resume;
 
             _ResumeButton.clicked -= Resume;
             m_SettingsButton.clicked -= OpenSettingsScreen;

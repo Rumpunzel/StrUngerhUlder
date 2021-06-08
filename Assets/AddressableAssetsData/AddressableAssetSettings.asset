@@ -98,13 +98,6 @@ MonoBehaviour:
     - default
     - Locale
     - Locale-en
-    - MenuScenes
-    - WorldScenes
-    - ManagerScenes
-    - LogicScriptableObjects
-    - DataScriptableObjects
-    - MusicTracks
-    - SFX
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 4a730ef65c4511244ac9eab7508608fd, type: 2}

@@ -41,7 +41,7 @@ namespace Strungerhulder.UI
         {
             m_PopupButton2.clicked -= CancelButtonClicked;
             m_PopupButton1.clicked -= ConfirmButtonClicked;
-            m_InputReader.menuCloseEvent -= ClosePopupButtonClicked;
+            m_InputReader.MenuCloseEvent -= ClosePopupButtonClicked;
         }
 
         public void SetPopup(PopupType popupType)
@@ -100,7 +100,7 @@ namespace Strungerhulder.UI
             m_ButtonClose.gameObject.SetActive(hasExitButton);
 
             if (hasExitButton) // can exit : Has to take the decision or aknowledge the information
-                m_InputReader.menuCloseEvent += ClosePopupButtonClicked;
+                m_InputReader.MenuCloseEvent += ClosePopupButtonClicked;
         }
 
 

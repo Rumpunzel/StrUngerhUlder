@@ -48,16 +48,16 @@ namespace Strungerhulder.Interactions
 
         private void OnEnable()
         {
-            m_InputReader.interactEvent += OnInteractEvent;
-            m_InputReader.interactCanceledEvent += OnInteractCanceledEvent;
+            m_InputReader.InteractEvent += OnInteractEvent;
+            m_InputReader.InteractCanceledEvent += OnInteractCanceledEvent;
 
             m_OnInteractionEnded.onEventRaised += OnInteractionEnd;
         }
 
         private void OnDisable()
         {
-            m_InputReader.interactEvent -= OnInteractEvent;
-            m_InputReader.interactCanceledEvent -= OnInteractCanceledEvent;
+            m_InputReader.InteractEvent -= OnInteractEvent;
+            m_InputReader.InteractCanceledEvent -= OnInteractCanceledEvent;
 
             m_OnInteractionEnded.onEventRaised -= OnInteractionEnd;
         }

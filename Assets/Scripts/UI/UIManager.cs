@@ -55,12 +55,12 @@ namespace Strungerhulder.UI
             m_OnSceneReady.onEventRaised += ResetUI;
             //m_OpenUIDialogueEvent.onEventRaised += OpenUIDialogue;
             m_CloseUIDialogueEvent.onEventRaised += CloseUIDialogue;
-            m_InputReader.menuPauseEvent += OpenUIPause; // subscription to open Pause UI event happens in OnEnabled, but the close Event is only subscribed to when the popup is open
+            m_InputReader.MenuPauseEvent += OpenUIPause; // subscription to open Pause UI event happens in OnEnabled, but the close Event is only subscribed to when the popup is open
 
             //m_OpenInventoryScreenForCookingEvent.onEventRaised += SetInventoryScreenForCooking;
             m_SetInteractionEvent.onEventRaised += SetInteractionPanel;
 
-            m_InputReader.openInventoryEvent += SetInventoryScreen;
+            m_InputReader.OpenInventoryEvent += SetInventoryScreen;
             m_InventoryPanel.closed += CloseInventoryScreen;
         }
 
@@ -95,18 +95,18 @@ namespace Strungerhulder.UI
             //m_OpenUIDialogueEvent.onEventRaised -= OpenUIDialogue;
             m_CloseUIDialogueEvent.onEventRaised -= CloseUIDialogue;
 
-            m_InputReader.menuPauseEvent -= OpenUIPause;
+            m_InputReader.MenuPauseEvent -= OpenUIPause;
 
             //m_OpenInventoryScreenForCookingEvent.onEventRaised -= SetInventoryScreenForCooking;
             m_SetInteractionEvent.onEventRaised -= SetInteractionPanel;
-            m_InputReader.openInventoryEvent -= SetInventoryScreen;
+            m_InputReader.OpenInventoryEvent -= SetInventoryScreen;
 
             m_InventoryPanel.closed -= CloseInventoryScreen;
         }
 
         private void OpenUIPause()
         {
-            m_InputReader.menuPauseEvent -= OpenUIPause; // you can open UI pause menu again, if it's closed
+            m_InputReader.MenuPauseEvent -= OpenUIPause; // you can open UI pause menu again, if it's closed
 
             //	Time.timeScale = 0; // Pause time
 
@@ -124,7 +124,7 @@ namespace Strungerhulder.UI
         {
             Time.timeScale = 1; // unpause time
 
-            m_InputReader.menuPauseEvent += OpenUIPause; // you can open UI pause menu again, if it's closed
+            m_InputReader.MenuPauseEvent += OpenUIPause; // you can open UI pause menu again, if it's closed
 
             // once the popup is closed, you can't listen to the following events 
             m_PauseScreen.settingsScreenOpened -= OpenSettingScreen;//once the UI Pause popup is open, listen to open Settings 
@@ -214,12 +214,12 @@ namespace Strungerhulder.UI
 
         private void OpenInventoryScreen()
         {
-            m_InputReader.menuPauseEvent -= OpenUIPause; // you cant open the UI Pause again when you are in inventory  
-            m_InputReader.menuUnpauseEvent -= CloseUIPause; // you can close the UI Pause popup when you are in inventory 
+            m_InputReader.MenuPauseEvent -= OpenUIPause; // you cant open the UI Pause again when you are in inventory  
+            m_InputReader.MenuUnpauseEvent -= CloseUIPause; // you can close the UI Pause popup when you are in inventory 
 
-            m_InputReader.menuCloseEvent += CloseInventoryScreen;
+            m_InputReader.MenuCloseEvent += CloseInventoryScreen;
 
-            m_InputReader.closeInventoryEvent += CloseInventoryScreen;
+            m_InputReader.CloseInventoryEvent += CloseInventoryScreen;
 
             if (m_IsForCooking)
                 m_InventoryPanel.FillInventory(InventoryTabType.Recipe, true);
@@ -235,10 +235,10 @@ namespace Strungerhulder.UI
 
         private void CloseInventoryScreen()
         {
-            m_InputReader.menuPauseEvent += OpenUIPause; // you cant open the UI Pause again when you are in inventory  
+            m_InputReader.MenuPauseEvent += OpenUIPause; // you cant open the UI Pause again when you are in inventory  
 
-            m_InputReader.menuCloseEvent -= CloseInventoryScreen;
-            m_InputReader.closeInventoryEvent -= CloseInventoryScreen;
+            m_InputReader.MenuCloseEvent -= CloseInventoryScreen;
+            m_InputReader.CloseInventoryEvent -= CloseInventoryScreen;
 
             m_InventoryPanel.gameObject.SetActive(false);
 

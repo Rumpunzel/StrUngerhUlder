@@ -57,12 +57,12 @@ namespace Strungerhulder.UI.Settings
 
         private void OnEnable()
         {
-            m_InputReader.menuCloseEvent += CloseScreen;
+            m_InputReader.MenuCloseEvent += CloseScreen;
         }
 
         private void OnDisable()
         {
-            m_InputReader.menuCloseEvent -= CloseScreen;
+            m_InputReader.MenuCloseEvent -= CloseScreen;
         }
 
 

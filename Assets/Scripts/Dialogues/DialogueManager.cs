@@ -72,7 +72,7 @@ namespace Strungerhulder.Dialogues
                 m_CloseDialogueUIEvent.RaiseEvent();
 
             m_GameState.ResetToPreviousGameState();
-            m_InputReader.advanceDialogueEvent -= OnAdvance;
+            m_InputReader.AdvanceDialogueEvent -= OnAdvance;
             m_InputReader.EnableGameplayInput();
         }
 
@@ -84,7 +84,7 @@ namespace Strungerhulder.Dialogues
         {
             m_Counter = 0;
             m_InputReader.EnableDialogueInput();
-            m_InputReader.advanceDialogueEvent += OnAdvance;
+            m_InputReader.AdvanceDialogueEvent += OnAdvance;
             m_CurrentDialogue = dialogueDataSO;
         }
 
@@ -105,7 +105,7 @@ namespace Strungerhulder.Dialogues
 
         private void DisplayChoices(List<Choice> choices)
         {
-            m_InputReader.advanceDialogueEvent -= OnAdvance;
+            m_InputReader.AdvanceDialogueEvent -= OnAdvance;
 
             m_MakeDialogueChoiceEvent.onEventRaised += MakeDialogueChoice;
             m_ShowChoicesUIEvent.RaiseEvent(choices);

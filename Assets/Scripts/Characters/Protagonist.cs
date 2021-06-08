@@ -63,32 +63,32 @@ namespace Strungerhulder.Characters
         //Adds listeners for events being triggered in the InputReader script
         private void OnEnable()
         {
-            m_InputReader.moveEvent += OnMove;
-            m_InputReader.moveToPointEvent += OnMoveToPoint;
-            m_InputReader.moveToPointCanceledEvent += OnMoveToPointCanceled;
+            m_InputReader.MoveEvent += OnMove;
+            m_InputReader.MoveToPointEvent += OnMoveToPoint;
+            m_InputReader.MoveToPointCanceledEvent += OnMoveToPointCanceled;
 
-            m_InputReader.jumpEvent += OnJumpInitiated;
-            m_InputReader.jumpCanceledEvent += OnJumpCanceled;
+            m_InputReader.JumpEvent += OnJumpInitiated;
+            m_InputReader.JumpCanceledEvent += OnJumpCanceled;
 
-            m_InputReader.startedRunning += OnStartedRunning;
-            m_InputReader.stoppedRunning += OnStoppedRunning;
-            //m_InputReader.attackEvent += OnStartedAttack;
+            m_InputReader.StartedRunning += OnStartedRunning;
+            m_InputReader.StoppedRunning += OnStoppedRunning;
+            //m_InputReader.AttackEvent += OnStartedAttack;
             //...
         }
 
         //Removes all listeners to the events coming from the InputReader script
         private void OnDisable()
         {
-            m_InputReader.moveEvent -= OnMove;
-            m_InputReader.moveToPointEvent -= OnMoveToPoint;
-            m_InputReader.moveToPointCanceledEvent -= OnMoveToPointCanceled;
+            m_InputReader.MoveEvent -= OnMove;
+            m_InputReader.MoveToPointEvent -= OnMoveToPoint;
+            m_InputReader.MoveToPointCanceledEvent -= OnMoveToPointCanceled;
 
-            m_InputReader.jumpEvent -= OnJumpInitiated;
-            m_InputReader.jumpCanceledEvent -= OnJumpCanceled;
+            m_InputReader.JumpEvent -= OnJumpInitiated;
+            m_InputReader.JumpCanceledEvent -= OnJumpCanceled;
 
-            m_InputReader.startedRunning -= OnStartedRunning;
-            m_InputReader.stoppedRunning -= OnStoppedRunning;
-            //m_InputReader.attackEvent -= OnStartedAttack;
+            m_InputReader.StartedRunning -= OnStartedRunning;
+            m_InputReader.StoppedRunning -= OnStoppedRunning;
+            //m_InputReader.AttackEvent -= OnStartedAttack;
             //...
         }
 
@@ -98,7 +98,10 @@ namespace Strungerhulder.Characters
                 destinationInput = transform.position;
 
             if (m_GettingPointFromMouse)
+            {
+                movementInput = Vector3.zero;
                 GetPointFromMouse();
+            }
             else
                 RecalculateMovement();
         }
@@ -128,9 +131,6 @@ namespace Strungerhulder.Characters
                 adjustedMovement = new Vector3(m_InputVector.x, 0f, m_InputVector.y);
             }
 
-            //Fix to avoid getting a Vector3.zero vector, which would result in the player turning to x:0, z:0
-            if (m_InputVector.sqrMagnitude == 0f)
-                adjustedMovement = transform.forward * (adjustedMovement.magnitude + .01f);
 
             //Accelerate/decelerate
             targetSpeed = Mathf.Clamp01(m_InputVector.magnitude);

@@ -11,8 +11,8 @@ namespace Strungerhulder.UI
         [SerializeField] private InputReader m_InputReader = default;
 
 
-        private void OnEnable() => m_InputReader.menuCloseEvent += CloseCreditsScreen;
-        private void OnDisable() => m_InputReader.menuCloseEvent -= CloseCreditsScreen;
+        private void OnEnable() => m_InputReader.MenuCloseEvent += CloseCreditsScreen;
+        private void OnDisable() => m_InputReader.MenuCloseEvent -= CloseCreditsScreen;
 
 
         public void SetCreditsScreen() { }

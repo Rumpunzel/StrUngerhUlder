@@ -51,7 +51,7 @@ CharacterController:
   m_Height: 1.95
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.05
+  m_StepOffset: 0.1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
@@ -91,7 +91,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplayCameraTransform: {fileID: 11400000, guid: 8c24202029e259941afcfc7f68d3a014, type: 2}
   m_InputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
-  m_OpenInventoryChannel: {fileID: 0}
   m_WorldLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -133,7 +132,6 @@ MonoBehaviour:
   m_PerceptionRange: 5
   m_InteractionRange: 1
   m_OnObjectPickUp: {fileID: 11400000, guid: 83b35fd45376cb64798a07c8f538b727, type: 2}
-  m_ToggleInteractionUI: {fileID: 11400000, guid: 5477bab539af3be4cbe72917bf53717d, type: 2}
   m_OnInteractionEnded: {fileID: 11400000, guid: d72cb6331dbd3c74ebe7708d18f88e22, type: 2}
 --- !u!95 &2052951113435455114
 Animator:

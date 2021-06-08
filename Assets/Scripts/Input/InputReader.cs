@@ -12,54 +12,54 @@ namespace Strungerhulder.Input
 
         // Gameplay
         #region Event Delegates
-        public event UnityAction<Vector2> moveEvent = delegate { };
-        public event UnityAction moveToPointEvent = delegate { };
-        public event UnityAction moveToPointCanceledEvent = delegate { };
+        public event UnityAction<Vector2> MoveEvent = delegate { };
+        public event UnityAction MoveToPointEvent = delegate { };
+        public event UnityAction MoveToPointCanceledEvent = delegate { };
 
-        public event UnityAction startedRunning = delegate { };
-        public event UnityAction stoppedRunning = delegate { };
+        public event UnityAction StartedRunning = delegate { };
+        public event UnityAction StoppedRunning = delegate { };
 
-        public event UnityAction jumpEvent = delegate { };
-        public event UnityAction jumpCanceledEvent = delegate { };
+        public event UnityAction JumpEvent = delegate { };
+        public event UnityAction JumpCanceledEvent = delegate { };
 
-        public event UnityAction attackEvent = delegate { };
-        public event UnityAction attackCanceledEvent = delegate { };
+        public event UnityAction AttackEvent = delegate { };
+        public event UnityAction AttackCanceledEvent = delegate { };
 
-        public event UnityAction interactEvent = delegate { }; // Used to talk, pickup objects, interact with tools like the cooking cauldron
-        public event UnityAction interactCanceledEvent = delegate { };
-        public event UnityAction inventoryActionButtonEvent = delegate { };
+        public event UnityAction InteractEvent = delegate { }; // Used to talk, pickup objects, interact with tools like the cooking cauldron
+        public event UnityAction InteractCanceledEvent = delegate { };
+        public event UnityAction InventoryActionButtonEvent = delegate { };
         #endregion
 
         // Shared between menus and dialogues
-        public event UnityAction moveSelectionEvent = delegate { };
+        public event UnityAction MoveSelectionEvent = delegate { };
 
         // Dialogues
-        public event UnityAction advanceDialogueEvent = delegate { };
+        public event UnityAction AdvanceDialogueEvent = delegate { };
 
         // Menus
-        public event UnityAction menuMouseMoveEvent = delegate { };
+        public event UnityAction MenuMouseMoveEvent = delegate { };
 
-        public event UnityAction menuClickButtonEvent = delegate { };
-        public event UnityAction menuUnpauseEvent = delegate { };
-        public event UnityAction menuPauseEvent = delegate { };
-        public event UnityAction menuCloseEvent = delegate { };
-        public event UnityAction openInventoryEvent = delegate { }; // Used to bring up the inventory
-        public event UnityAction closeInventoryEvent = delegate { }; // Used to bring up the inventory
+        public event UnityAction MenuClickButtonEvent = delegate { };
+        public event UnityAction MenuUnpauseEvent = delegate { };
+        public event UnityAction MenuPauseEvent = delegate { };
+        public event UnityAction MenuCloseEvent = delegate { };
+        public event UnityAction OpenInventoryEvent = delegate { }; // Used to bring up the inventory
+        public event UnityAction CloseInventoryEvent = delegate { }; // Used to bring up the inventory
 
         public event UnityAction<float> TabSwitched = delegate { };
 
 
-        private GameInput gameInput;
+        private GameInput m_GameInput;
 
 
         private void OnEnable()
         {
-            if (gameInput == null)
+            if (m_GameInput == null)
             {
-                gameInput = new GameInput();
-                gameInput.Menus.SetCallbacks(this);
-                gameInput.Gameplay.SetCallbacks(this);
-                gameInput.Dialogues.SetCallbacks(this);
+                m_GameInput = new GameInput();
+                m_GameInput.Menus.SetCallbacks(this);
+                m_GameInput.Gameplay.SetCallbacks(this);
+                m_GameInput.Dialogues.SetCallbacks(this);
             }
 
             EnableGameplayInput();
@@ -75,10 +75,10 @@ namespace Strungerhulder.Input
             switch (context.phase)
             {
                 case InputActionPhase.Performed:
-                    attackEvent.Invoke();
+                    AttackEvent.Invoke();
                     break;
                 case InputActionPhase.Canceled:
-                    attackCanceledEvent.Invoke();
+                    AttackCanceledEvent.Invoke();
                     break;
             }
         }
@@ -86,68 +86,68 @@ namespace Strungerhulder.Input
         public void OnOpenInventory(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                openInventoryEvent.Invoke();
+                OpenInventoryEvent.Invoke();
         }
 
         public void OnCancel(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                menuCloseEvent.Invoke();
+                MenuCloseEvent.Invoke();
         }
 
         public void OnInventoryActionButton(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                inventoryActionButtonEvent.Invoke();
+                InventoryActionButtonEvent.Invoke();
 
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                interactEvent.Invoke();
+                InteractEvent.Invoke();
 
             if (context.phase == InputActionPhase.Canceled)
-                interactCanceledEvent.Invoke();
+                InteractCanceledEvent.Invoke();
         }
 
 
         public void OnJump(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                jumpEvent.Invoke();
+                JumpEvent.Invoke();
 
             if (context.phase == InputActionPhase.Canceled)
-                jumpCanceledEvent.Invoke();
+                JumpCanceledEvent.Invoke();
         }
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            moveEvent.Invoke(context.ReadValue<Vector2>());
+            MoveEvent.Invoke(context.ReadValue<Vector2>());
         }
 
         public void OnMoveToPoint(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                moveToPointEvent.Invoke();
+                MoveToPointEvent.Invoke();
 
             if (context.phase == InputActionPhase.Canceled)
-                moveToPointCanceledEvent.Invoke();
+                MoveToPointCanceledEvent.Invoke();
         }
 
         public void OnRun(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                startedRunning.Invoke();
+                StartedRunning.Invoke();
 
             if (context.phase == InputActionPhase.Canceled)
-                stoppedRunning.Invoke();
+                StoppedRunning.Invoke();
         }
 
         public void OnPause(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                menuPauseEvent.Invoke();
+                MenuPauseEvent.Invoke();
         }
 
         private bool IsDeviceMouse(InputAction.CallbackContext context) => context.control.device.name == "Mouse";
@@ -155,63 +155,63 @@ namespace Strungerhulder.Input
         public void OnMoveSelection(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                moveSelectionEvent.Invoke();
+                MoveSelectionEvent.Invoke();
         }
 
         public void OnAdvanceDialogue(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                advanceDialogueEvent.Invoke();
+                AdvanceDialogueEvent.Invoke();
         }
 
         public void OnConfirm(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                menuClickButtonEvent.Invoke();
+                MenuClickButtonEvent.Invoke();
         }
 
 
         public void OnMouseMove(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                menuMouseMoveEvent.Invoke();
+                MenuMouseMoveEvent.Invoke();
         }
 
         public void OnUnpause(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
-                menuUnpauseEvent.Invoke();
+                MenuUnpauseEvent.Invoke();
         }
 
         public void EnableDialogueInput()
         {
-            gameInput.Menus.Enable();
-            gameInput.Gameplay.Disable();
+            m_GameInput.Menus.Enable();
+            m_GameInput.Gameplay.Disable();
 
-            gameInput.Dialogues.Enable();
+            m_GameInput.Dialogues.Enable();
         }
 
         public void EnableGameplayInput()
         {
-            gameInput.Menus.Disable();
-            gameInput.Dialogues.Disable();
+            m_GameInput.Menus.Disable();
+            m_GameInput.Dialogues.Disable();
 
-            gameInput.Gameplay.Enable();
+            m_GameInput.Gameplay.Enable();
         }
 
         public void EnableMenuInput()
         {
-            gameInput.Dialogues.Disable();
-            gameInput.Gameplay.Disable();
+            m_GameInput.Dialogues.Disable();
+            m_GameInput.Gameplay.Disable();
 
-            gameInput.Menus.Enable();
+            m_GameInput.Menus.Enable();
         }
 
         public void DisableAllInput()
         {
-            gameInput.Gameplay.Disable();
-            gameInput.Menus.Disable();
-            gameInput.Dialogues.Disable();
+            m_GameInput.Gameplay.Disable();
+            m_GameInput.Menus.Disable();
+            m_GameInput.Dialogues.Disable();
         }
 
         public void OnChangeTab(InputAction.CallbackContext context)
@@ -236,6 +236,6 @@ namespace Strungerhulder.Input
 
         public void OnNavigate(InputAction.CallbackContext context) { }
 
-        public void OnCloseInventory(InputAction.CallbackContext context) => closeInventoryEvent.Invoke();
+        public void OnCloseInventory(InputAction.CallbackContext context) => CloseInventoryEvent.Invoke();
     }
 }
