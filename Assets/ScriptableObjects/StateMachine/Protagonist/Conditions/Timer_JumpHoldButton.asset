@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc30b80d5a182946837b78c826561eb, type: 3}
   m_Name: Timer_JumpHoldButton
   m_EditorClassIdentifier: 
-  timerLength: 0.5
+  timerLength: 0.3

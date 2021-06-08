@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d712c9d4bb01504aa4d794ec305fcbf, type: 3}
   m_Name: ProtagonistMovementStats
   m_EditorClassIdentifier: 
-  m_MoveSpeed: 12
-  m_MoveAcceleration: 12
-  m_WalkingModifier: 0.7
-  m_JumpHeight: 1.5
-  m_AerialModifier: 1.1
-  m_AerialAcceleration: 200
-  m_GravityDescendMultiplier: 4
-  m_GravityAscendMultiplier: 2
+  moveSpeed: 10
+  moveAcceleration: 12
+  walkingModifier: 0.8
+  jumpHeight: 1
+  aerialModifier: 1.1
+  aerialAcceleration: 200
+  gravityDescendMultiplier: 3
+  gravityAscendMultiplier: 2
   m_MaxFallSpeed: 50
   m_MaxRiseSpeed: 100
-  m_AirResistance: 10
-  m_TurnRate: 500
+  airResistance: 10
+  turnRate: 500
