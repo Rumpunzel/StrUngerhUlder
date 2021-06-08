@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6299ea99e8f78954e91d078947e0b0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShoulderHeight: 1
+  m_ShoulderHeight: 1.3
   m_DistanceOffGround: 23
   m_DistanceFromFollow: 36
   m_CameraAngleOffset: 45
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191a4e74c99881d4f9a5066dfa4085e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
-  mainCamera: {fileID: 2946606310002307282}
+  m_InputReader: {fileID: 11400000, guid: caa672b8f03d02a44b4297ab5d39c953, type: 2}
+  m_MainCamera: {fileID: 5412454770239105303}
   m_CameraTransformAnchor: {fileID: 11400000, guid: 8c24202029e259941afcfc7f68d3a014, type: 2}
   m_FrameObjectChannel: {fileID: 11400000, guid: cb361e21ea4ec1e4f90c8aa92bf747a3, type: 2}

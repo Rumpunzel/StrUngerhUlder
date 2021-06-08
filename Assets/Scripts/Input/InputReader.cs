@@ -48,6 +48,9 @@ namespace Strungerhulder.Input
 
         public event UnityAction<float> TabSwitched = delegate { };
 
+        public event UnityAction<float> RotateCamera = delegate { };
+        public event UnityAction<float> ZoomCamera = delegate { };
+
 
         private GameInput m_GameInput;
 
@@ -99,7 +102,6 @@ namespace Strungerhulder.Input
         {
             if (context.phase == InputActionPhase.Performed)
                 InventoryActionButtonEvent.Invoke();
-
         }
 
         public void OnInteract(InputAction.CallbackContext context)
@@ -121,10 +123,7 @@ namespace Strungerhulder.Input
                 JumpCanceledEvent.Invoke();
         }
 
-        public void OnMove(InputAction.CallbackContext context)
-        {
-            MoveEvent.Invoke(context.ReadValue<Vector2>());
-        }
+        public void OnMove(InputAction.CallbackContext context) => MoveEvent.Invoke(context.ReadValue<Vector2>());
 
         public void OnMoveToPoint(InputAction.CallbackContext context)
         {
@@ -149,8 +148,6 @@ namespace Strungerhulder.Input
             if (context.phase == InputActionPhase.Performed)
                 MenuPauseEvent.Invoke();
         }
-
-        private bool IsDeviceMouse(InputAction.CallbackContext context) => context.control.device.name == "Mouse";
 
         public void OnMoveSelection(InputAction.CallbackContext context)
         {
@@ -224,18 +221,22 @@ namespace Strungerhulder.Input
         public bool RightMouseDown() => Mouse.current.rightButton.isPressed;
         public Vector2 MousePosition() => Mouse.current.position.ReadValue();
 
-
-
         public void OnClick(InputAction.CallbackContext context) { }
-
         public void OnSubmit(InputAction.CallbackContext context) { }
-
         public void OnPoint(InputAction.CallbackContext context) { }
-
         public void OnRightClick(InputAction.CallbackContext context) { }
-
         public void OnNavigate(InputAction.CallbackContext context) { }
-
         public void OnCloseInventory(InputAction.CallbackContext context) => CloseInventoryEvent.Invoke();
+
+        public void OnCameraRotate(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+                RotateCamera.Invoke(context.ReadValue<float>());
+        }
+
+        public void OnCameraZoom(InputAction.CallbackContext context) => ZoomCamera.Invoke(context.ReadValue<float>());
+
+
+        private bool IsDeviceMouse(InputAction.CallbackContext context) => context.control.device.name == "Mouse";
     }
 }
