@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using Strungerhulder.Editors;
+using Strungerhulder.EditorTools;
 
 namespace Strungerhulder.Input
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Strungerhulder.Editors
+namespace Strungerhulder.EditorTools
 {
     public static class ScriptableObjectHelper
     {
@@ -9,6 +9,7 @@ namespace Strungerhulder.Editors
             where T : ScriptableObject
         {
             var targetIr = target as T;
+
             if (targetIr != null)
             {
                 var typeIr = targetIr.GetType();

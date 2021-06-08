@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Strungerhulder.Editors
+namespace Strungerhulder.EditorTools
 {
     /// <summary>
     /// Custom base editor class. Inherited from Editor class.
@@ -20,9 +20,18 @@ namespace Strungerhulder.Editors
 
             //Draw reference information about script being edited
             if (typeof(ScriptableObject).IsAssignableFrom(typeof(T)))
-                EditorGUILayout.ObjectField("Script", MonoScript.FromScriptableObject((ScriptableObject)target), typeof(T), false);
+                EditorGUILayout.ObjectField(
+                    "Script",
+                    MonoScript.FromScriptableObject((ScriptableObject)target),
+                    typeof(T),
+                    false
+                );
             else if (typeof(MonoBehaviour).IsAssignableFrom(typeof(T)))
-                EditorGUILayout.ObjectField("Script", MonoScript.FromMonoBehaviour((MonoBehaviour)target), typeof(T), false);
+                EditorGUILayout.ObjectField("Script",
+                MonoScript.FromMonoBehaviour((MonoBehaviour)target),
+                typeof(T),
+                false
+            );
 
             //Make GUI editable
             GUI.enabled = true;
