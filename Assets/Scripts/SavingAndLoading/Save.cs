@@ -18,14 +18,7 @@ namespace Strungerhulder.SavingAndLoading
         public string m_LocationId;
         public List<SerializedItemStack> m_ItemStacks = new List<SerializedItemStack>();
 
-        public string ToJson()
-        {
-            return JsonUtility.ToJson(this);
-        }
-
-        public void LoadFromJson(string json)
-        {
-            JsonUtility.FromJsonOverwrite(json, this);
-        }
+        public string ToJson() => JsonUtility.ToJson(this);
+        public void LoadFromJson(string json) => JsonUtility.FromJsonOverwrite(json, this);
     }
 }

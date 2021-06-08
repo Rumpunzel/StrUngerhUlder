@@ -74,7 +74,7 @@ namespace Strungerhulder.SavingAndLoading
 
             foreach (var itemStack in m_ProtagonistInventory.Items)
             {
-                //	saveData._itemStacks.Add(new SerializedItemStack(itemStack.Item.Guid, itemStack.Amount));
+                saveData.m_ItemStacks.Add(new SerializedItemStack(itemStack.Item.Guid, itemStack.Amount));
             }
 
             if (FileManager.MoveFile(saveFilename, backupSaveFilename))
