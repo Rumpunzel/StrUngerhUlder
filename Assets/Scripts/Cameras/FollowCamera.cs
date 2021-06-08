@@ -46,17 +46,20 @@ namespace Strungerhulder.Cameras
 
             m_Offset = new Vector3(
                 m_DistanceFromFollow * Mathf.Cos(m_CameraAngle) * Mathf.Sqrt(m_CameraZoom),
-                0f,//Mathf.Lerp(m_Offset.y, m_ShoulderHeight + m_DistanceOffGround * m_CameraZoom, m_CameraScrollSpeed),
+                0f,
                 m_DistanceFromFollow * Mathf.Sin(m_CameraAngle) * Mathf.Sqrt(m_CameraZoom)
             );
 
+            float thirdPersonFactor = m_FollowTransform.position.y * (1f - m_CameraZoom);
+
             m_CameraPosition = m_FollowTransform.position + m_Offset;
-            m_CameraPosition.y = m_ShoulderHeight + m_DistanceOffGround * m_CameraZoom;
+            m_CameraPosition.y = m_ShoulderHeight + m_DistanceOffGround * m_CameraZoom + thirdPersonFactor;
 
             this.transform.position = m_CameraPosition;
+
             this.transform.LookAt(new Vector3(
                 m_FollowTransform.position.x,
-                m_ShoulderHeight,
+                m_ShoulderHeight + thirdPersonFactor,
                 m_FollowTransform.position.z
             ));
         }
