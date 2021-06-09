@@ -19,6 +19,7 @@ namespace Strungerhulder.Inventories
 
 
         public void UseItemEventRaised(Item item) => RemoveItem(item);
+
         public void EquipItemEventRaised(Item item) { }
 
 
