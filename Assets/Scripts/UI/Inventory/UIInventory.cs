@@ -120,7 +120,7 @@ namespace Strungerhulder.UI.Iventory
             m_ActionButton.Clicked += OnActionButtonClicked;
             m_TabsPanel.tabChanged += OnChangeTab;
 
-            m_OnInteractionEndedEvent.onEventRaised += InteractionEnded;
+            m_OnInteractionEndedEvent.OnEventRaised += InteractionEnded;
 
             foreach (UIInventoryItem item in m_AvailableItemSlots)
             {
@@ -263,10 +263,7 @@ namespace Strungerhulder.UI.Iventory
                 m_AvailableItemSlots[itemIndex].UnselectItem();
         }
 
-        private void UpdateInventory()
-        {
-            FillInventory(m_SelectedTab.TabType);
-        }
+        private void UpdateInventory() => FillInventory(m_SelectedTab.TabType);
 
         private void OnActionButtonClicked()
         {
@@ -301,7 +298,7 @@ namespace Strungerhulder.UI.Iventory
         {
             Debug.Log("USE ITEM " + itemToUse.name);
 
-            m_UseItemEvent.onEventRaised(itemToUse);
+            m_UseItemEvent.OnEventRaised(itemToUse);
             //update inventory
             UpdateInventory();
         }
@@ -310,13 +307,13 @@ namespace Strungerhulder.UI.Iventory
         private void EquipItem(Item itemToUse)
         {
             Debug.Log("Equip ITEM " + itemToUse.name);
-            m_EquipItemEvent.onEventRaised(itemToUse);
+            m_EquipItemEvent.OnEventRaised(itemToUse);
         }
 
         private void CookRecipe(Item recipeToCook)
         {
             //get item
-            //m_CookRecipeEvent.onEventRaised(recipeToCook);
+            //m_CookRecipeEvent.OnEventRaised(recipeToCook);
 
             //update inspector
             InspectItem(recipeToCook);

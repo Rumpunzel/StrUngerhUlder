@@ -12,11 +12,11 @@ namespace Strungerhulder.Events.ScriptableObjects
     [CreateAssetMenu(menuName = "Events/Toogle Interaction UI Event Channel")]
     public class InteractionUIEventChannelSO : ScriptableObject
     {
-        public UnityAction<bool, InteractionType> onEventRaised;
+        public UnityAction<bool, InteractionType> OnEventRaised;
         public void RaiseEvent(bool state, InteractionType interactionType)
         {
-            if (onEventRaised != null)
-                onEventRaised.Invoke(state, interactionType);
+            if (OnEventRaised != null)
+                OnEventRaised.Invoke(state, interactionType);
         }
 
     }

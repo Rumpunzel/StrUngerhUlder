@@ -28,6 +28,9 @@ namespace Strungerhulder.Input
         public event UnityAction InteractEvent = delegate { }; // Used to talk, pickup objects, interact with tools like the cooking cauldron
         public event UnityAction InteractCanceledEvent = delegate { };
         public event UnityAction InventoryActionButtonEvent = delegate { };
+
+        public event UnityAction<float> RotateCamera = delegate { };
+        public event UnityAction<float> ZoomCamera = delegate { };
         #endregion
 
         // Shared between menus and dialogues
@@ -47,9 +50,6 @@ namespace Strungerhulder.Input
         public event UnityAction CloseInventoryEvent = delegate { }; // Used to bring up the inventory
 
         public event UnityAction<float> TabSwitched = delegate { };
-
-        public event UnityAction<float> RotateCamera = delegate { };
-        public event UnityAction<float> ZoomCamera = delegate { };
 
 
         private GameInput m_GameInput;

@@ -10,12 +10,12 @@ namespace Strungerhulder.Events.ScriptableObjects
     [CreateAssetMenu(menuName = "Events/Transform Event Channel")]
     public class TransformEventChannelSO : EventChannelBaseSO
     {
-        public UnityAction<Transform> onEventRaised;
+        public UnityAction<Transform> OnEventRaised;
 
         public void RaiseEvent(Transform value)
         {
-            if (onEventRaised != null)
-                onEventRaised.Invoke(value);
+            if (OnEventRaised != null)
+                OnEventRaised.Invoke(value);
         }
     }
 }

@@ -11,26 +11,26 @@ namespace Strungerhulder.Events
     {
         [SerializeField] private VoidEventChannelSO m_Channel = default;
 
-        public UnityEvent onEventRaised;
+        public UnityEvent OnEventRaised;
 
 
         private void OnEnable()
         {
             if (m_Channel != null)
-                m_Channel.onEventRaised += Respond;
+                m_Channel.OnEventRaised += Respond;
         }
 
         private void OnDisable()
         {
             if (m_Channel != null)
-                m_Channel.onEventRaised -= Respond;
+                m_Channel.OnEventRaised -= Respond;
         }
 
 
         private void Respond()
         {
-            if (onEventRaised != null)
-                onEventRaised.Invoke();
+            if (OnEventRaised != null)
+                OnEventRaised.Invoke();
         }
     }
 }

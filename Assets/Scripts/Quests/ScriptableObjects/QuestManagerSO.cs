@@ -37,8 +37,8 @@ namespace Strungerhulder.Quests.ScriptableObjects
         public void StartGame()
         {
             //Add code for saved information
-            m_CheckStepValidityEvent.onEventRaised += CheckStepValidity;
-            m_EndDialogueEvent.onEventRaised += EndDialogue;
+            m_CheckStepValidityEvent.OnEventRaised += CheckStepValidity;
+            m_EndDialogueEvent.OnEventRaised += EndDialogue;
 
             StartQuestline();
         }

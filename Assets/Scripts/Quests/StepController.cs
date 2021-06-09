@@ -62,20 +62,20 @@ namespace Strungerhulder.Quests
         private void StartDialogue()
         {
             m_StartDialogueEvent.RaiseEvent(m_CurrentDialogue);
-            m_EndDialogueEvent.onEventRaised += EndDialogue;
+            m_EndDialogueEvent.OnEventRaised += EndDialogue;
 
             StopConversation();
 
-            m_WinDialogueEvent.onEventRaised += PlayWinDialogue;
-            m_LoseDialogueEvent.onEventRaised += PlayLoseDialogue;
+            m_WinDialogueEvent.OnEventRaised += PlayWinDialogue;
+            m_LoseDialogueEvent.OnEventRaised += PlayLoseDialogue;
             isInDialogue = true;
         }
 
         private void EndDialogue()
         {
-            m_EndDialogueEvent.onEventRaised -= EndDialogue;
-            m_WinDialogueEvent.onEventRaised -= PlayWinDialogue;
-            m_LoseDialogueEvent.onEventRaised -= PlayLoseDialogue;
+            m_EndDialogueEvent.OnEventRaised -= EndDialogue;
+            m_WinDialogueEvent.OnEventRaised -= PlayWinDialogue;
+            m_LoseDialogueEvent.OnEventRaised -= PlayLoseDialogue;
 
             ResumeConversation();
 

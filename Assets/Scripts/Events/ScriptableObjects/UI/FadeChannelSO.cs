@@ -8,7 +8,7 @@ namespace Strungerhulder.Events.ScriptableObjects
     [CreateAssetMenu(menuName = "Events/UI/Fade Channel")]
     public class FadeChannelSO : ScriptableObject
     {
-        public UnityAction<bool, float, Color> onEventRaised;
+        public UnityAction<bool, float, Color> OnEventRaised;
         /// <summary>
         /// Generic fade function. Communicates with <seealso cref="FadeManager.cs"/>.
         /// </summary>
@@ -20,8 +20,8 @@ namespace Strungerhulder.Events.ScriptableObjects
             if (color == default && fadeIn) // If no fadein color is assigned, black is given as default. If we are supposed to fadeout the rectangle, default is simply passed through.
                 color = Color.black;
 
-            if (onEventRaised != null)
-                onEventRaised.Invoke(fadeIn, duration, color);
+            if (OnEventRaised != null)
+                OnEventRaised.Invoke(fadeIn, duration, color);
         }
 
         /// <summary>

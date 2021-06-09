@@ -11,24 +11,24 @@ namespace Strungerhulder.Events.ScriptableObjects
     [CreateAssetMenu(menuName = "Events/Bool Event Channel")]
     public class BoolEventChannelSO : ScriptableObject
     {
-        public UnityAction<bool> onEventRaised;
+        public UnityAction<bool> OnEventRaised;
 
 
         public void RaiseEvent(bool value)
         {
-            if (onEventRaised != null)
-                onEventRaised.Invoke(value);
+            if (OnEventRaised != null)
+                OnEventRaised.Invoke(value);
         }
 
         public void UnsubscribeAll()
         {
-            if (onEventRaised != null)
+            if (OnEventRaised != null)
             {
-                if (onEventRaised.GetInvocationList() != null)
+                if (OnEventRaised.GetInvocationList() != null)
                 {
-                    foreach (System.Delegate systemDelegate in onEventRaised.GetInvocationList())
+                    foreach (System.Delegate systemDelegate in OnEventRaised.GetInvocationList())
                     {
-                        onEventRaised -= systemDelegate as UnityAction<bool>;
+                        OnEventRaised -= systemDelegate as UnityAction<bool>;
                     }
                 }
             }

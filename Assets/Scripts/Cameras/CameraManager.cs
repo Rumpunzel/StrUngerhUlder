@@ -29,7 +29,7 @@ namespace Strungerhulder.Cameras
             m_InputReader.ZoomCamera += OnCameraZoom;
 
             if (m_FrameObjectChannel != null)
-                m_FrameObjectChannel.onEventRaised += OnFrameObjectEvent;
+                m_FrameObjectChannel.OnEventRaised += OnFrameObjectEvent;
 
             m_CameraTransformAnchor.Transform = m_MainCamera.transform;
         }
@@ -41,7 +41,7 @@ namespace Strungerhulder.Cameras
             m_InputReader.ZoomCamera -= OnCameraZoom;
 
             if (m_FrameObjectChannel != null)
-                m_FrameObjectChannel.onEventRaised -= OnFrameObjectEvent;
+                m_FrameObjectChannel.OnEventRaised -= OnFrameObjectEvent;
         }
 
 

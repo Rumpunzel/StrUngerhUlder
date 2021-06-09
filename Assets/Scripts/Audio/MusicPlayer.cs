@@ -13,8 +13,8 @@ namespace Strungerhulder.Audio
         [SerializeField] private AudioConfigurationSO m_AudioConfig = default;
 
 
-        private void OnEnable() => m_OnSceneReady.onEventRaised += PlayMusic;
-        private void OnDisable() => m_OnSceneReady.onEventRaised -= PlayMusic;
+        private void OnEnable() => m_OnSceneReady.OnEventRaised += PlayMusic;
+        private void OnDisable() => m_OnSceneReady.OnEventRaised -= PlayMusic;
         private void PlayMusic() => m_PlayMusicOn.RaisePlayEvent(m_ThisSceneSO.musicTrack, m_AudioConfig);
     }
 }

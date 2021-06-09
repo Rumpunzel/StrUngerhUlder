@@ -131,7 +131,7 @@ namespace Strungerhulder.UI
             if (quitConfirmed)
             {
                 Application.Quit();
-                m_OnGameExitEvent.onEventRaised();
+                m_OnGameExitEvent.OnEventRaised();
             }
 
             m_MainMenuPanel.SetMenuScreen(m_HasSaveData);

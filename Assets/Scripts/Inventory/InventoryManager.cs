@@ -25,22 +25,22 @@ namespace Strungerhulder.Inventories
         private void OnEnable()
         {
             //Check if the event exists to avoid errors
-            //m_CookRecipeEvent.onEventRaised += CookRecipeEventRaised;
-            m_UseItemEvent.onEventRaised += UseItemEventRaised;
-            m_EquipItemEvent.onEventRaised += EquipItemEventRaised;
-            m_AddItemEvent.onEventRaised += AddItem;
-            m_RemoveItemEvent.onEventRaised += RemoveItem;
-            //m_RewardItemEvent.onEventRaised += AddItem;
-            //m_GiveItemEvent.onEventRaised += RemoveItem;
+            //m_CookRecipeEvent.OnEventRaised += CookRecipeEventRaised;
+            m_UseItemEvent.OnEventRaised += UseItemEventRaised;
+            m_EquipItemEvent.OnEventRaised += EquipItemEventRaised;
+            m_AddItemEvent.OnEventRaised += AddItem;
+            m_RemoveItemEvent.OnEventRaised += RemoveItem;
+            //m_RewardItemEvent.OnEventRaised += AddItem;
+            //m_GiveItemEvent.OnEventRaised += RemoveItem;
         }
 
         private void OnDisable()
         {
-            //m_CookRecipeEvent.onEventRaised -= CookRecipeEventRaised;
-            m_UseItemEvent.onEventRaised -= UseItemEventRaised;
-            m_EquipItemEvent.onEventRaised -= EquipItemEventRaised;
-            m_AddItemEvent.onEventRaised -= AddItem;
-            m_RemoveItemEvent.onEventRaised -= RemoveItem;
+            //m_CookRecipeEvent.OnEventRaised -= CookRecipeEventRaised;
+            m_UseItemEvent.OnEventRaised -= UseItemEventRaised;
+            m_EquipItemEvent.OnEventRaised -= EquipItemEventRaised;
+            m_AddItemEvent.OnEventRaised -= AddItem;
+            m_RemoveItemEvent.OnEventRaised -= RemoveItem;
         }
 
 

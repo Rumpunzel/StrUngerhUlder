@@ -16,13 +16,13 @@ namespace Strungerhulder.SceneManagement
         private void OnEnable()
         {
             if (m_ToggleLoadingScreen != null)
-                m_ToggleLoadingScreen.onEventRaised += ToggleLoadingScreen;
+                m_ToggleLoadingScreen.OnEventRaised += ToggleLoadingScreen;
         }
 
         private void OnDisable()
         {
             if (m_ToggleLoadingScreen != null)
-                m_ToggleLoadingScreen.onEventRaised -= ToggleLoadingScreen;
+                m_ToggleLoadingScreen.OnEventRaised -= ToggleLoadingScreen;
         }
 
 

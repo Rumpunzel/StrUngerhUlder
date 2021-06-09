@@ -16,7 +16,7 @@ namespace Strungerhulder.Events
     /// </summary>
     public class IntEventListener : MonoBehaviour
     {
-        public IntEvent onEventRaised;
+        public IntEvent OnEventRaised;
 
         [SerializeField] private IntEventChannelSO m_Channel = default;
 
@@ -24,20 +24,20 @@ namespace Strungerhulder.Events
         private void OnEnable()
         {
             if (m_Channel != null)
-                m_Channel.onEventRaised += Respond;
+                m_Channel.OnEventRaised += Respond;
         }
 
         private void OnDisable()
         {
             if (m_Channel != null)
-                m_Channel.onEventRaised -= Respond;
+                m_Channel.OnEventRaised -= Respond;
         }
 
 
         private void Respond(int value)
         {
-            if (onEventRaised != null)
-                onEventRaised.Invoke(value);
+            if (OnEventRaised != null)
+                OnEventRaised.Invoke(value);
         }
     }
 }

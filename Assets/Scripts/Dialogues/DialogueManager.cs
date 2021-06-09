@@ -37,7 +37,7 @@ namespace Strungerhulder.Dialogues
         private bool m_ReachedEndOfDialogue { get => m_Counter >= m_CurrentDialogue.DialogueLines.Count; }
 
 
-        private void Start() => m_StartDialogue.onEventRaised += DisplayDialogueData;
+        private void Start() => m_StartDialogue.OnEventRaised += DisplayDialogueData;
 
 
         /// <summary>
@@ -107,13 +107,13 @@ namespace Strungerhulder.Dialogues
         {
             m_InputReader.AdvanceDialogueEvent -= OnAdvance;
 
-            m_MakeDialogueChoiceEvent.onEventRaised += MakeDialogueChoice;
+            m_MakeDialogueChoiceEvent.OnEventRaised += MakeDialogueChoice;
             m_ShowChoicesUIEvent.RaiseEvent(choices);
         }
 
         private void MakeDialogueChoice(Choice choice)
         {
-            m_MakeDialogueChoiceEvent.onEventRaised -= MakeDialogueChoice;
+            m_MakeDialogueChoiceEvent.OnEventRaised -= MakeDialogueChoice;
 
             if (choice.ActionType == ChoiceActionType.continueWithStep)
             {

@@ -29,12 +29,12 @@ namespace Strungerhulder.Gameplay
 
         private void OnEnable()
         {
-            m_OnSceneReady.onEventRaised += SpawnPlayer;
+            m_OnSceneReady.OnEventRaised += SpawnPlayer;
         }
 
         private void OnDisable()
         {
-            m_OnSceneReady.onEventRaised -= SpawnPlayer;
+            m_OnSceneReady.OnEventRaised -= SpawnPlayer;
         }
 
         private void SpawnPlayer()

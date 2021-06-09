@@ -32,14 +32,14 @@ namespace Strungerhulder.SceneManagement
         private void Start()
         {
             m_HasSaveData = m_SaveSystem.LoadSaveDataFromDisk();
-            m_StartNewGameEvent.onEventRaised += StartNewGame;
-            m_ContinueGameEvent.onEventRaised += ContinuePreviousGame;
+            m_StartNewGameEvent.OnEventRaised += StartNewGame;
+            m_ContinueGameEvent.OnEventRaised += ContinuePreviousGame;
         }
 
         private void OnDestroy()
         {
-            m_StartNewGameEvent.onEventRaised -= StartNewGame;
-            m_ContinueGameEvent.onEventRaised -= ContinuePreviousGame;
+            m_StartNewGameEvent.OnEventRaised -= StartNewGame;
+            m_ContinueGameEvent.OnEventRaised -= ContinuePreviousGame;
         }
 
 

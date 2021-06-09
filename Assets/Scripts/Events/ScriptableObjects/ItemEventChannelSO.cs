@@ -11,11 +11,11 @@ namespace Strungerhulder.Events.ScriptableObjects
     [CreateAssetMenu(menuName = "Events/UI/Item Event Channel")]
     public class ItemEventChannelSO : ScriptableObject
     {
-        public UnityAction<Item> onEventRaised;
+        public UnityAction<Item> OnEventRaised;
         public void RaiseEvent(Item item)
         {
-            if (onEventRaised != null)
-                onEventRaised.Invoke(item);
+            if (OnEventRaised != null)
+                OnEventRaised.Invoke(item);
         }
     }
 }

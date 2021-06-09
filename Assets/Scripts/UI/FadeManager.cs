@@ -15,12 +15,12 @@ namespace Strungerhulder.UI
 
         private void OnEnable()
         {
-            m_FadeChannelSO.onEventRaised += InitiateFade;
+            m_FadeChannelSO.OnEventRaised += InitiateFade;
         }
 
         private void OnDisable()
         {
-            m_FadeChannelSO.onEventRaised -= InitiateFade;
+            m_FadeChannelSO.OnEventRaised -= InitiateFade;
         }
 
 

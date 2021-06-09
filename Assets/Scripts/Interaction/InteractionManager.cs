@@ -51,7 +51,7 @@ namespace Strungerhulder.Interactions
             m_InputReader.InteractEvent += OnInteractEvent;
             m_InputReader.InteractCanceledEvent += OnInteractCanceledEvent;
 
-            m_OnInteractionEnded.onEventRaised += OnInteractionEnd;
+            m_OnInteractionEnded.OnEventRaised += OnInteractionEnd;
         }
 
         private void OnDisable()
@@ -59,7 +59,7 @@ namespace Strungerhulder.Interactions
             m_InputReader.InteractEvent -= OnInteractEvent;
             m_InputReader.InteractCanceledEvent -= OnInteractCanceledEvent;
 
-            m_OnInteractionEnded.onEventRaised -= OnInteractionEnd;
+            m_OnInteractionEnded.OnEventRaised -= OnInteractionEnd;
         }
 
         private void Awake()

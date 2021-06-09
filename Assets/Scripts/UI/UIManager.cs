@@ -52,13 +52,13 @@ namespace Strungerhulder.UI
 
         private void Start()
         {
-            m_OnSceneReady.onEventRaised += ResetUI;
-            //m_OpenUIDialogueEvent.onEventRaised += OpenUIDialogue;
-            m_CloseUIDialogueEvent.onEventRaised += CloseUIDialogue;
+            m_OnSceneReady.OnEventRaised += ResetUI;
+            //m_OpenUIDialogueEvent.OnEventRaised += OpenUIDialogue;
+            m_CloseUIDialogueEvent.OnEventRaised += CloseUIDialogue;
             m_InputReader.MenuPauseEvent += OpenUIPause; // subscription to open Pause UI event happens in OnEnabled, but the close Event is only subscribed to when the popup is open
 
-            //m_OpenInventoryScreenForCookingEvent.onEventRaised += SetInventoryScreenForCooking;
-            m_SetInteractionEvent.onEventRaised += SetInteractionPanel;
+            //m_OpenInventoryScreenForCookingEvent.OnEventRaised += SetInventoryScreenForCooking;
+            m_SetInteractionEvent.OnEventRaised += SetInteractionPanel;
 
             m_InputReader.OpenInventoryEvent += SetInventoryScreen;
             m_InventoryPanel.closed += CloseInventoryScreen;
@@ -91,14 +91,14 @@ namespace Strungerhulder.UI
         private void OnDestroy()
         {
             //Check if the event exists to avoid errors
-            m_OnSceneReady.onEventRaised -= ResetUI;
-            //m_OpenUIDialogueEvent.onEventRaised -= OpenUIDialogue;
-            m_CloseUIDialogueEvent.onEventRaised -= CloseUIDialogue;
+            m_OnSceneReady.OnEventRaised -= ResetUI;
+            //m_OpenUIDialogueEvent.OnEventRaised -= OpenUIDialogue;
+            m_CloseUIDialogueEvent.OnEventRaised -= CloseUIDialogue;
 
             m_InputReader.MenuPauseEvent -= OpenUIPause;
 
-            //m_OpenInventoryScreenForCookingEvent.onEventRaised -= SetInventoryScreenForCooking;
-            m_SetInteractionEvent.onEventRaised -= SetInteractionPanel;
+            //m_OpenInventoryScreenForCookingEvent.OnEventRaised -= SetInventoryScreenForCooking;
+            m_SetInteractionEvent.OnEventRaised -= SetInteractionPanel;
             m_InputReader.OpenInventoryEvent -= SetInventoryScreen;
 
             m_InventoryPanel.closed -= CloseInventoryScreen;

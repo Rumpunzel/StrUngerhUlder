@@ -15,7 +15,7 @@ namespace Strungerhulder.UI.Dialogues
         [SerializeField] private DialogueChoicesChannelSO m_ShowChoicesEvent = default;
 
 
-        private void Start() => m_ShowChoicesEvent.onEventRaised += ShowChoices;
+        private void Start() => m_ShowChoicesEvent.OnEventRaised += ShowChoices;
 
 
         public void SetDialogue(LocalizedString dialogueLine, ActorSO actor)

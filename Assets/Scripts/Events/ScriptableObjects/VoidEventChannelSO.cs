@@ -9,12 +9,12 @@ namespace Strungerhulder.Events.ScriptableObjects
     [CreateAssetMenu(menuName = "Events/Void Event Channel")]
     public class VoidEventChannelSO : EventChannelBaseSO
     {
-        public UnityAction onEventRaised;
+        public UnityAction OnEventRaised;
 
         public void RaiseEvent()
         {
-            if (onEventRaised != null)
-                onEventRaised.Invoke();
+            if (OnEventRaised != null)
+                OnEventRaised.Invoke();
         }
     }
 }

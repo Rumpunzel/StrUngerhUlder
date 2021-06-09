@@ -10,11 +10,11 @@ namespace Strungerhulder.Events.ScriptableObjects
     [CreateAssetMenu(menuName = "Events/Int Event Channel")]
     public class IntEventChannelSO : EventChannelBaseSO
     {
-        public UnityAction<int> onEventRaised;
+        public UnityAction<int> OnEventRaised;
 
         public void RaiseEvent(int value)
         {
-            onEventRaised.Invoke(value);
+            OnEventRaised.Invoke(value);
         }
     }
 }

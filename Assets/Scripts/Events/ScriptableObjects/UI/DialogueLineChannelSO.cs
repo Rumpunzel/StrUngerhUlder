@@ -8,12 +8,12 @@ namespace Strungerhulder.Events.ScriptableObjects
     [CreateAssetMenu(menuName = "Events/UI/Dialogue Line Channel")]
     public class DialogueLineChannelSO : ScriptableObject
     {
-        public UnityAction<LocalizedString, ActorSO> onEventRaised;
+        public UnityAction<LocalizedString, ActorSO> OnEventRaised;
 
         public void RaiseEvent(LocalizedString line, ActorSO actor)
         {
-            if (onEventRaised != null)
-                onEventRaised.Invoke(line, actor);
+            if (OnEventRaised != null)
+                OnEventRaised.Invoke(line, actor);
         }
     }
 }

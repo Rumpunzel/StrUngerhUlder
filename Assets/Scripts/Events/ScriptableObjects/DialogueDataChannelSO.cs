@@ -11,12 +11,12 @@ namespace Strungerhulder.Events.ScriptableObjects
     [CreateAssetMenu(menuName = "Events/UI/Dialogue Data Channel")]
     public class DialogueDataChannelSO : ScriptableObject
     {
-        public UnityAction<DialogueDataSO> onEventRaised;
+        public UnityAction<DialogueDataSO> OnEventRaised;
 
         public void RaiseEvent(DialogueDataSO dialogue)
         {
-            if (onEventRaised != null)
-                onEventRaised.Invoke(dialogue);
+            if (OnEventRaised != null)
+                OnEventRaised.Invoke(dialogue);
         }
     }
 }
