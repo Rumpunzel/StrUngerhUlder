@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpawnLocation
   - Pickable
+  - Tree
   layers:
   - Default
   - TransparentFX

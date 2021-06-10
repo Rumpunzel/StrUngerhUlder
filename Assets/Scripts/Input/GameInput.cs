@@ -464,7 +464,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""DPadX"",
+                    ""name"": ""Gamepad Shoulders"",
                     ""id"": ""2cc12f0c-bdd9-47ee-98d8-a49eb0dc7023"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -477,7 +477,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""03aa558d-d271-4507-8763-b1c93f992cdf"",
-                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
@@ -488,7 +488,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""1fd39898-e550-417e-af33-b528b2d9bbf3"",
-                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",

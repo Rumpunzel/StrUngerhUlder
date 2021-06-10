@@ -2,6 +2,7 @@
 using UnityEngine.AI;
 using System.Collections.Generic;
 using System.Linq;
+using Strungerhulder.Characters.ScriptableObjects;
 
 namespace Strungerhulder.EditorTools.PathwayTool
 {

@@ -12,6 +12,7 @@ namespace Strungerhulder.Interactions
     {
         None = 0,
         PickUp,
+        Attack,
     };
 
     [RequireComponent(typeof(Protagonist))]
@@ -35,6 +36,7 @@ namespace Strungerhulder.Interactions
         //Events for the different interaction types
         [Header("Broadcasting on")]
         [SerializeField] private ItemEventChannelSO m_OnObjectPickUp = default;
+        [SerializeField] private ItemEventChannelSO m_OnObjectAttack = default;
         //[SerializeField] private VoidEventChannelSO m_OnCookingStart = default;
         //[SerializeField] private DialogueActorChannelSO m_StartTalking = default;
 
@@ -91,6 +93,22 @@ namespace Strungerhulder.Interactions
             {
                 Item currentItem = itemObject.GetComponent<CollectableItem>().GetItem();
                 m_OnObjectPickUp.RaiseEvent(currentItem);
+            }
+
+            currentInteraction = null;
+            Destroy(itemObject); //TODO: maybe move this destruction in a more general manger, to implement a removal SFX
+
+            RequestUpdateUI(false);
+        }
+
+        private void Attack()
+        {
+            GameObject itemObject = currentInteraction.interactableObject;
+
+            if (m_OnObjectAttack != null)
+            {
+                Item currentItem = itemObject.GetComponent<CollectableItem>().GetItem();
+                m_OnObjectAttack.RaiseEvent(currentItem);
             }
 
             currentInteraction = null;
@@ -159,6 +177,10 @@ namespace Strungerhulder.Interactions
                 if (newPotentialInteraction.interactableObject.CompareTag(PickableTag))
                 {
                     newPotentialInteraction.type = InteractionType.PickUp;
+                }
+                else if (newPotentialInteraction.interactableObject.CompareTag("Tree"))
+                {
+                    newPotentialInteraction.type = InteractionType.Attack;
                 }
                 /*else if (obj.CompareTag("CookingPot"))
                 {

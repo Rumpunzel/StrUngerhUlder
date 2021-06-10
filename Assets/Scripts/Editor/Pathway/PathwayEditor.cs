@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
+using Strungerhulder.Characters.ScriptableObjects;
 
 namespace Strungerhulder.EditorTools.PathwayTool
 {

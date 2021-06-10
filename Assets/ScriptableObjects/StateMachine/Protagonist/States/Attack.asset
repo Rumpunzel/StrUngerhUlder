@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61870ae30c9ce7946bfdb7d77d0d1568, type: 3}
-  m_Name: PickUp
+  m_Name: Attack
   m_EditorClassIdentifier: 
   m_Actions:
-  - {fileID: 11400000, guid: c0395719ea5011b4aaa5e400c50ebc5e, type: 2}
+  - {fileID: 11400000, guid: aef61c00233a5a8418ed57eabb7d99b1, type: 2}

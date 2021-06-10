@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61870ae30c9ce7946bfdb7d77d0d1568, type: 3}
-  m_Name: PickUp
+  m_Script: {fileID: 11500000, guid: b838876579d2821428fd70c84f0df12e, type: 3}
+  m_Name: AttackTrigger_OnEnter
   m_EditorClassIdentifier: 
-  m_Actions:
-  - {fileID: 11400000, guid: c0395719ea5011b4aaa5e400c50ebc5e, type: 2}
+  parameterType: 3
+  parameterName: Attack
+  boolValue: 0
+  intValue: 0
+  floatValue: 0
+  whenToRun: 0
